@@ -14,9 +14,51 @@
         {% block javascripts %}
         {% endblock %}
     </head>
+
     <body>
+        {% if app.user %}
+        <header>
+            <nav class="navbar navbar-expand-sm navbar-light bg-primary">
+                {#        <a class="navbar-brand" href="#"><img src="{{ asset('build/logo/logo.png') }}"></a>   #}
+                <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
+                        data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-center w-100" id="collapsibleNavId">
+                    <ul class="navbar-nav mr-auto mt-0 mt-lg-0 fw-bold text-uppercase ">
+
+                        <li class="nav-item">
+                            <a class="nav-link " href="">Villes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="">Campus</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Mon Profil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_logout') }}">Se déconnecter</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        {% endif %}
+
         <div class="container">
             {% block body %}{% endblock %}
         </div>
+
+        <footer>
+            <div>
+                <p id="copyright">&copy;Eni - Projet 'Sortir'
+                    {{ "now" |date('Y') }} <br>
+                </p>
+            </div>
+        </footer>
     </body>
 </html>
