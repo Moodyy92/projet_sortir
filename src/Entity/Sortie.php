@@ -35,7 +35,7 @@ class Sortie
     private $duree;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="datetime")
      */
     private $dateLimiteInscription;
 
@@ -116,17 +116,7 @@ class Sortie
         return $this;
     }
 
-    public function getDuree(): ?\DateInterval
-    {
-        return $this->duree;
-    }
 
-    public function setDuree(\DateInterval $duree): self
-    {
-        $this->duree = $duree;
-
-        return $this;
-    }
 
     public function getDateLimiteInscription(): ?\DateTimeInterface
     {
@@ -244,6 +234,18 @@ class Sortie
     public function setLastUpdate(?\DateTimeInterface $last_update): self
     {
         $this->last_update = $last_update;
+
+        return $this;
+    }
+
+    public function getDuree(): ?\DateInterval
+    {
+        return $this->duree;
+    }
+
+    public function setDuree(\DateInterval $duree): self
+    {
+        $this->duree = $duree;
 
         return $this;
     }
