@@ -7,14 +7,42 @@
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/wamp64/www/projet_sortir/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/wamp64/www/projet_sortir/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Etat</th>
+                <th>Lieu</th>
+                <th>Organisateur</th>
+                <th>Participants</th>
+                <th>Nom</th>
+                <th>Date Début </th>
+                <th>Durée</th>
+                <th>Limite date d'inscription</th>
+                <th>Nombre D'inscription MAX</th>
+                <th>Descriptions</th>
+            </tr>
+        </thead>
+    <tbody>
+        {% for sortie in liste %}
+            <tr>
+                <td>{{ sortie.id }}</td>
+                <td>{{ sortie.etat.libelle }}</td>
+                <td>{{ sortie.lieu.nom }}</td>
+                <td>{{ sortie.organisateur }}</td>
+                    <td>
+                        {% for p in sortie.participant %}
+                        {{ p.nom }}<br>
+                        {% endfor %}
+                    </td>
+                <td>{{ sortie.nom }}</td>
+                <td>{{ sortie.dateHeureDebut | date('d-m-Y H:i') }}</td>
+                <td>{{ sortie.duree | date('%d j %h h') }}</td>
+                <td>{{ sortie.dateLimiteInscription | date('d-m-Y H:i') }}</td>
+                <td>{{ sortie.nbInscriptionMax }}</td>
+                <td>{{ sortie.infosSortie | truncate }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}
