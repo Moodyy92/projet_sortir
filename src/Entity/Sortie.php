@@ -35,7 +35,7 @@ class Sortie
     private $duree;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
     private $dateLimiteInscription;
 
@@ -115,8 +115,6 @@ class Sortie
 
         return $this;
     }
-
-
 
     public function getDateLimiteInscription(): ?\DateTimeInterface
     {

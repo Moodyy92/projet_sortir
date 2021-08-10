@@ -21,7 +21,6 @@ class HomeController extends AbstractController
         //dd($dateCourante);
         
         $list = $sortieRepository->findAll();
-//    dd($list);
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
             'liste' => $list,
