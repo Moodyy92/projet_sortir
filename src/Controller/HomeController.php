@@ -14,7 +14,6 @@ class HomeController extends AbstractController
     public function index(SortieRepository $sortieRepository): Response
     {
         $list = $sortieRepository->findAll();
-//    dd($list);
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
             'liste' => $list,
