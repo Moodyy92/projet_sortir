@@ -53,7 +53,7 @@ class SortieController extends AbstractController
         $etatChoisi = $etatRepo->findOneBy(['libelle' => 'Annulée']);
         $sortieChoisie = $sortieRepo->findOneBy(['id' => $idSortie]);
 
-        if($sortieChoisie->getDateHeureDebut() < new \DateTime()){
+        if($sortieChoisie->getDateHeureDebut() > new \DateTime()){
             $sortieChoisie->setEtat($etatChoisi);
             $em->flush();
         }

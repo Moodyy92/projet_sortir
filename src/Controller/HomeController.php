@@ -21,12 +21,11 @@ class HomeController extends AbstractController
 
         $nomUserConnecte = $this->getUser()->getNom();
 
-
         //Recuperation date courante
         $dateCourante=new \DateTime();
         //dd($dateCourante);
-        
-        $list = $sortieRepository->findAll();
+
+
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
             'liste' => $list,
