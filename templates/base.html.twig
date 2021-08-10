@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="h-100">
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
@@ -15,18 +15,18 @@
         {% endblock %}
     </head>
 
-    <body>
+    <body class="d-flex flex-column h-100 ">
         {% if app.user %}
         <header>
-            <nav class="navbar navbar-expand-sm navbar-light bg-primary">
+            <nav class="navbar navbar-expand-sm navbar-light bg-secondary ">
                 {#        <a class="navbar-brand" href="#"><img src="{{ asset('build/logo/logo.png') }}"></a>   #}
                 <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
                         data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse justify-content-center w-100" id="collapsibleNavId">
-                    <ul class="navbar-nav mr-auto mt-0 mt-lg-0 fw-bold text-uppercase ">
+                <div class="collapse navbar-collapse " id="collapsibleNavId">
+                    <ul class="navbar-nav mt-0 mt-lg-0 font-weight-bold justify-content-center w-100 text-uppercase ">
 
                         <li class="nav-item">
                             <a class="nav-link " href="">Villes</a>
@@ -49,13 +49,13 @@
         </header>
         {% endif %}
 
-        <div class="container">
+        <div class="container flex-grow-1 ">
             {% block body %}{% endblock %}
         </div>
 
         <footer>
             <div>
-                <p id="copyright">&copy;Eni - Projet 'Sortir'
+                <p class="d-flex justify-content-center w-100" id="copyright">&copy;Eni - Projet 'Sortir'
                     {{ "now" |date('Y') }} <br>
                 </p>
             </div>
