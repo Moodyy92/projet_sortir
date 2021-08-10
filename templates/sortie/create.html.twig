@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Creer une sortie{% endblock %}
+
+{% block body %}
+    <h1>Create new Sortie</h1>
+
+    {% form_theme form 'bootstrap_4_horizontal_layout.html.twig' %}
+    {{ form_start(form) }}
+
+    <!--- PARTIE GAUCHE DE LA PAGE -------------------------------------------->
+
+        {{ form_row(form.nom) }}
+        {{ form_row(form.dateHeureDebut) }}
+        {{ form_row(form.dateLimiteInscription) }}
+        {{ form_row(form.nbInscriptionMax) }}
+        {{ form_row(form.duree) }}
+        {{ form_row(form.infosSortie) }}
+
+
+    <!--- PARTIE DROITE DE LA PAGE -------------------------------------------->
+
+        <p> Campus : {{ app.user.campus.nom }}</p>
+
+        <label for="lieu"> Lieu </label>
+        <select name="lieu" id="lieu">
+            {% for lieu in lieux %}
+            <option value="{{ lieu.nom }}"> {{ lieu.nom }} </option>
+            {% endfor %}
+        </select>
+
+        <label for="ville"> Ville </label>
+        <select name="ville" id="ville">
+            {% for lieu in lieux %}
+                <option value="{{ lieu.ville.nom }}"> {{ lieu.ville.nom }} </option>
+            {% endfor %}
+        </select>
+
+        {{ form_row(form.ville) }}
+        {{ form_row(form.lieu) }}
+
+        <p> Rue : Rue </p>
+        <p> Code Postal : 00000 </p>
+
+        {{ form_row(form.longitude) }}
+        {{ form_row(form.latitude) }}
+
+        <button>Publier la sortie</button>
+        {{ form_errors(form) }}
+
+    {{ form_end(form) }}
+{% endblock %}
