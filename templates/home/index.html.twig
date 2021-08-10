@@ -72,6 +72,12 @@
                     {% endif %}
                 </td>
 
+                {% if sortie.organisateur.nom == app.user.nom %}
+                <td>
+                    <a href="{{ path('sortie_annuler', {'idSortie': sortie.id}) }}"> Annuler la sortie </a>
+                </td>
+                {% endif %}
+
 
 {#                <td>{{ sortie.id }}</td>#}
 {#                    <td>#}
