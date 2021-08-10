@@ -18,6 +18,7 @@
                 <th scope="col">Inscrit</th>
                 <th scope="col">Organisateur</th>
                 <th scope="col">Actions</th>
+                <th scope="col">Inscription</th>
 {#                <th scope="col">Id</th>#}
 {#                <th scope="col">Participants</th>#}
 {#                <th scope="col">Durée</th>#}
@@ -55,6 +56,24 @@
                         </div>
                     </div>
                 </td>
+                <td>
+                    {% set bool = false %}
+                    {% for p in sortie.participant %}
+                        {%if p.nom==nomUser %}
+                        Vous etes deja inscris
+                            {% set bool = true %}
+                        {% endif %}
+                    {% endfor %}
+                    {% if sortie.etat.libelle=='Ouverte' and sortie.dateLimiteInscription > ajourdhui and bool==false %}
+
+                     <a href="{{ path('inscription', {'idSortie': sortie.id}) }}">S'incrire</a>
+
+                     {% elseif  sortie.etat.libelle!='Ouverte' or sortie.dateLimiteInscription <= ajourdhui%}
+
+                         Inscription indisponible
+
+                    {% endif %}
+                </td>
 
 
 {#                <td>{{ sortie.id }}</td>#}
@@ -67,6 +86,7 @@
 {#                <td>{{ sortie.infosSortie | truncate }}</td>#}
             </tr>
         {% endfor %}
+        {{ message }}
     </tbody>
 </table>
 {% endblock %}

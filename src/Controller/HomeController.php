@@ -14,8 +14,14 @@ class HomeController extends AbstractController
 
     #[Route('/', name: 'home')]
     public function index(SortieRepository $sortieRepository): Response
-    {   //pour pas qu'il me mette qu'il existe pas
+    {
+        //pour pas qu'il me mette qu'il existe pas
         $message='';
+        $bool=false;
+
+        $nomUserConnecte = $this->getUser()->getNom();
+
+
         //Recuperation date courante
         $dateCourante=new \DateTime();
         //dd($dateCourante);
@@ -25,7 +31,9 @@ class HomeController extends AbstractController
             'controller_name' => 'HomeController',
             'liste' => $list,
             'ajourdhui' =>$dateCourante,
-            'message' => $message
+            'message' => $message,
+            'nomUser'=>$nomUserConnecte,
+            'bool'=>$bool
         ]);
     }
 
@@ -35,8 +43,10 @@ class HomeController extends AbstractController
         //Recuperation date courante Sinon il ne prend pas en compte mon IF de l'inscription
         $dateCourante=new \DateTime();
         //dd($dateCourante);
-        
-        
+
+        $nomUserConnecte = $this->getUser()->getNom();
+        $bool=false;
+
         $list = $sortieRepository->findAll();
         //dd($list);
 
@@ -59,7 +69,9 @@ class HomeController extends AbstractController
             'controller_name' => 'HomeController',
             'liste' => $list,
             'ajourdhui' =>$dateCourante,
-            'message' => $message
+            'message' => $message,
+            'nomUser'=>$nomUserConnecte,
+            'bool'=>$bool
 
         ]);
     }
