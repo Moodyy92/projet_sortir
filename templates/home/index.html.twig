@@ -56,22 +56,19 @@
                         </div>
                     </div>
                 </td>
-                <td>
-                    {% set bool = false %}
+                <td> {% set bool = false %}
                     {% for p in sortie.participant %}
                         {%if p.nom==nomUser %}
-                        Vous etes deja inscris
+                             Vous etes deja inscris
                             {% set bool = true %}
                         {% endif %}
                     {% endfor %}
-                    {% if sortie.etat.libelle=='Ouverte' and sortie.dateLimiteInscription > ajourdhui and bool==false %}
 
-                     <a href="{{ path('inscription', {'idSortie': sortie.id}) }}">S'incrire</a>
+                    {% if sortie.etat.libelle=='Ouverte' and sortie.dateLimiteInscription >= ajourdhui and bool==false %}
+                        <a href="{{ path('inscription', {'idSortie': sortie.id}) }}">S'incrire</a>
 
-                     {% elseif  sortie.etat.libelle!='Ouverte' or sortie.dateLimiteInscription <= ajourdhui%}
-
-                         Inscription indisponible
-
+                        {% elseif  sortie.etat.libelle!='Ouverte' or sortie.dateLimiteInscription <= ajourdhui%}
+                            Inscription indisponible
                     {% endif %}
                 </td>
 
