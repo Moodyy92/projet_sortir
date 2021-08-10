@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Sortie;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use mysqli;
 
 /**
  * @method Sortie|null find($id, $lockMode = null, $lockVersion = null)
@@ -17,6 +18,27 @@ class SortieRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Sortie::class);
+    }
+
+    public function insertSortieParticipant($idPartipant,$idSortie){
+
+       
+
+        $conn = new mysqli('localhost', 'root', '', 'projetsortir');
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        $sql = "INSERT INTO sortie_participant (sortie_id, participant_id) VALUES ($idSortie, $idPartipant)";
+
+        if ($conn->query($sql) === TRUE) {
+            return 'Inscription reussie!';
+        } else {
+            return 'vous etes deja inscrit a la sortie!';
+
+
+
     }
 
     // /**
@@ -47,4 +69,4 @@ class SortieRepository extends ServiceEntityRepository
         ;
     }
     */
-}
+}}
