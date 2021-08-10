@@ -30,12 +30,40 @@ class AppFixtures extends Fixture
         $manager->persist($paris);
         $manager->flush();
 
+        $bordeaux = new Ville();
+        $bordeaux->setNom("Bordeaux");
+        $bordeaux->setCodePostal(33000);
+        $manager->persist($bordeaux);
+        $manager->flush();
+
+        $brest = new Ville();
+        $brest->setNom("Brest");
+        $brest->setCodePostal(29200);
+        $manager->persist($brest);
+        $manager->flush();
+
         $lieu = new Lieu();
         $lieu->setNom("Arc de Triomphe");
         $lieu->setRue("Champs Elysées");
         $lieu->setVille($paris);
         $lieu->setLatitude(2.29531);
         $lieu->setLongitude(48.87366);
+        $manager->persist($lieu);
+
+        $lieu = new Lieu();
+        $lieu->setNom("Tour Eiffel");
+        $lieu->setRue("Champs de Mars");
+        $lieu->setVille($paris);
+        $lieu->setLatitude(2.25351);
+        $lieu->setLongitude(33.83456);
+        $manager->persist($lieu);
+
+        $lieu = new Lieu();
+        $lieu->setNom("Chateau de Brest");
+        $lieu->setRue("rue du chateau");
+        $lieu->setVille($brest);
+        $lieu->setLatitude(4.525351);
+        $lieu->setLongitude(22.83446);
         $manager->persist($lieu);
 
         $creee = new Etat();
@@ -84,7 +112,7 @@ class AppFixtures extends Fixture
         $manager->flush();
 
         $sortie= new Sortie();
-        $sortie->setNom("Mathieu");
+        $sortie->setNom("Balade a Paris");
         $sortie->setDateHeureDebut((new \DateTime())->add(new \DateInterval("P4D"))); //P pour +, 4 pour nombre, D pour Day
         $sortie->setDuree(new \DateInterval("P1W"));//P pour +, 1 pour nombre, W pour week
         $sortie->setDateLimiteInscription((new \DateTime())->add(new \DateInterval("P1D")));
