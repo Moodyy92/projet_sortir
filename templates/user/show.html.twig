@@ -1,54 +1,44 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Participant{% endblock %}
+{% block title %}Mon profil{% endblock %}
 
 {% block body %}
-    <h1>Participant</h1>
+    <h1>Mon profil</h1>
 
     <table class="table">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ participant.id }}</td>
+             <tr>
+                <th>Prenom</th>
+                <td>{{ participant.prenom }}</td>
+             </tr>
+             <tr>
+                <th>Nom</th>
+                <td>{{ participant.nom }}</td>
             </tr>
             <tr>
                 <th>Email</th>
                 <td>{{ participant.email }}</td>
             </tr>
             <tr>
-                <th>Roles</th>
-                <td>{{ participant.roles ? participant.roles|json_encode : '' }}</td>
-            </tr>
-            <tr>
-                <th>Password</th>
-                <td>{{ participant.password }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ participant.nom }}</td>
-            </tr>
-            <tr>
-                <th>Prenom</th>
-                <td>{{ participant.prenom }}</td>
-            </tr>
-            <tr>
                 <th>Telephone</th>
                 <td>{{ participant.telephone }}</td>
             </tr>
+             <tr>
+                 <th> Campus</th>
+                 <td> {{ participant.campus.nom }}</td>
+             </tr>
+
             <tr>
-                <th>Actif</th>
-                <td>{{ participant.actif ? 'Yes' : 'No' }}</td>
-            </tr>
-            <tr>
-                <th>Created_at</th>
+                <th>Date de création du compte</th>
                 <td>{{ participant.createdAt ? participant.createdAt|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
         </tbody>
     </table>
+<div>
+    <a href="{{ path('user_index') }}">Revenir</a> </br>
 
-    <a href="{{ path('user_index') }}">back to list</a>
+    <a href="{{ path('user_edit', {'id': participant.id}) }}">Modifier mon Profil</a>
 
-    <a href="{{ path('user_edit', {'id': participant.id}) }}">edit</a>
-
-    {{ include('user/_delete_form.html.twig') }}
+   {{ include('user/_delete_form.html.twig') }}
+</div>
 {% endblock %}
