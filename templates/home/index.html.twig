@@ -64,7 +64,7 @@
                             {% set bool = true %}
                         {% endif %}
                     {% endfor %}
-                    {% if sortie.etat.libelle=='Ouverte' and sortie.dateLimiteInscription > ajourdhui and bool==false %}
+                    {% if sortie.etat.libelle=='Ouverte' and sortie.dateLimiteInscription >= ajourdhui and bool==false %}
 
                      <a href="{{ path('inscription', {'idSortie': sortie.id}) }}">S'incrire</a>
 

@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="75e77b8d-5f5f-4d91-abde-f59e40488651" name="Default Changelist" comment="&quot;fonctionnalites inscription&quot;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/home/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/index.html.twig" afterDir="false" />
     </list>
     <list id="211da08b-e0a1-4073-acd1-51b2d3b1f42a" name="&quot;rien&quot;" comment="" />
@@ -214,7 +212,8 @@
       <workItem from="1628512790126" duration="3424000" />
       <workItem from="1628516994730" duration="1079000" />
       <workItem from="1628518093833" duration="3357000" />
-      <workItem from="1628576808369" duration="25017000" />
+      <workItem from="1628576808369" duration="27858000" />
+      <workItem from="1628608854742" duration="758000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;rien&quot;">
       <created>1628506424284</created>
@@ -251,7 +250,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628598486732</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="&quot;fonctionnalites inscription&quot;">
+      <created>1628602858008</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1628602858008</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
