@@ -1,33 +1,40 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Creer une sortie{% endblock %}
+{% block stylesheets %}
+    <style>
+        label{  }
+    </style>
+{% endblock %}
+
 
 {% block body %}
     <h1>Create new Sortie</h1>
 
     {% form_theme form 'bootstrap_4_horizontal_layout.html.twig' %}
-    {{ form_start(form) }}
+    {{ form_start(form, {'attr': {'class': 'd-flex justify-content-around border border-dark'} }) }}
 
     <!--- PARTIE GAUCHE DE LA PAGE -------------------------------------------->
-
+    <div class="border border-primary">
         {{ form_row(form.nom) }}
         {{ form_row(form.dateHeureDebut) }}
         {{ form_row(form.dateLimiteInscription) }}
         {{ form_row(form.nbInscriptionMax) }}
         {{ form_row(form.duree) }}
         {{ form_row(form.infosSortie) }}
-
+    </div>
 
     <!--- PARTIE DROITE DE LA PAGE -------------------------------------------->
+    <div class="border border-primary">
 
-        <p> Campus : {{ app.user.campus.nom }}</p>
+        <div> Campus : {{ app.user.campus.nom }}</div>
 
         <label for="lieu"> Lieu </label>
         <select name="lieu" id="lieu">
             {% for lieu in lieux %}
             <option value="{{ lieu.nom }}"> {{ lieu.nom }} </option>
             {% endfor %}
-        </select>
+        </select><br>
 
         <label for="ville"> Ville </label>
         <select name="ville" id="ville">
@@ -36,17 +43,15 @@
             {% endfor %}
         </select>
 
-        {{ form_row(form.ville) }}
-        {{ form_row(form.lieu) }}
-
-        <p> Rue : Rue </p>
-        <p> Code Postal : 00000 </p>
+        <div> Rue : Rue </div>
+        <div> Code Postal : 00000 </div>
 
         {{ form_row(form.longitude) }}
         {{ form_row(form.latitude) }}
 
         <button>Publier la sortie</button>
         {{ form_errors(form) }}
+    </div>
 
     {{ form_end(form) }}
 {% endblock %}

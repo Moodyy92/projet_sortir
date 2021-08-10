@@ -27,8 +27,6 @@ class SortieCreate extends AbstractType
             ])
             ->add('nbInscriptionMax')
             ->add('infosSortie')
-            ->add('ville', ChoiceType::class, [ 'mapped' => false])
-            ->add('lieu', ChoiceType::class, [ 'mapped' => false])
             ->add('latitude', TextType::class, [ 'mapped' => false ])
             ->add('longitude', TextType::class, [ 'mapped' => false ])
         ;
