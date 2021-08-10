@@ -21,6 +21,7 @@
                 <th>Limite date d'inscription</th>
                 <th>Nombre D'inscription MAX</th>
                 <th>Descriptions</th>
+                <th>Inscription</th>
             </tr>
         </thead>
     <tbody>
@@ -41,8 +42,18 @@
                 <td>{{ sortie.dateLimiteInscription | date('d-m-Y H:i') }}</td>
                 <td>{{ sortie.nbInscriptionMax }}</td>
                 <td>{{ sortie.infosSortie | truncate }}</td>
+                {% if sortie.etat.id==56 and sortie.dateLimiteInscription > ajourdhui %}
+                <td> <a href="{{ path('inscription', {'idSortie': sortie.id}) }}">S'incrire</a></td>
+                {% else %}
+                    <td>Inscription indisponible</td>
+                {% endif %}
+
+
             </tr>
+
+
         {% endfor %}
+    {{ message }}
     </tbody>
 </table>
 {% endblock %}
