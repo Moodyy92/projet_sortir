@@ -39,7 +39,7 @@
                 <td>{{ sortie.nom }}</td>
                 <td>{{ sortie.dateHeureDebut | date('d-m-Y H:i') }}</td>
                 <td>{{ sortie.duree | date('%d j %h h') }}</td>
-                <td>{{ sortie.dateLimiteInscription | date('d-m-Y H:i') }}</td>
+                <td>{{ sortie.dateLimiteInscription | date('d-m-Y') }}</td>
                 <td>{{ sortie.nbInscriptionMax }}</td>
                 <td>{{ sortie.infosSortie | truncate }}</td>
                 {% if sortie.etat.id==56 and sortie.dateLimiteInscription > ajourdhui %}
