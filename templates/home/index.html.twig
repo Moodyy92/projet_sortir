@@ -1,46 +1,70 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Accueil{% endblock %}
 
 {% block body %}
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
-    <table class="table">
+    <table class="flex-column table table-dark mt-5">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Etat</th>
-                <th>Lieu</th>
-                <th>Organisateur</th>
-                <th>Participants</th>
-                <th>Nom</th>
-                <th>Date Début </th>
-                <th>Durée</th>
-                <th>Limite date d'inscription</th>
-                <th>Nombre D'inscription MAX</th>
-                <th>Descriptions</th>
+            <tr scope="row">
+                <th scope="col ">Nom de la sortie</th>
+                <th scope="col">Date de la sortie</th>
+                <th scope="col">Clôture</th>
+                <th scope="col">nb inscrit max</th>
+                <th scope="col">Etat</th>
+                <th scope="col">Inscrit</th>
+                <th scope="col">Organisateur</th>
+                <th scope="col">Actions</th>
+{#                <th scope="col">Id</th>#}
+{#                <th scope="col">Participants</th>#}
+{#                <th scope="col">Durée</th>#}
+{#                <th scope="col">Descriptions</th>#}
             </tr>
         </thead>
-    <tbody>
+    <tbody class="flex-column">
         {% for sortie in liste %}
             <tr>
-                <td>{{ sortie.id }}</td>
-                <td>{{ sortie.etat.libelle }}</td>
                 <td>{{ sortie.lieu.nom }}</td>
-                <td>{{ sortie.organisateur }}</td>
-                    <td>
-                        {% for p in sortie.participant %}
-                        {{ p.nom }}<br>
-                        {% endfor %}
-                    </td>
-                <td>{{ sortie.nom }}</td>
                 <td>{{ sortie.dateHeureDebut | date('d-m-Y H:i') }}</td>
-                <td>{{ sortie.duree | date('%d j %h h') }}</td>
-                <td>{{ sortie.dateLimiteInscription | date('d-m-Y H:i') }}</td>
+                <td>{{ sortie.dateLimiteInscription | date('d-m-Y') }}</td>
                 <td>{{ sortie.nbInscriptionMax }}</td>
-                <td>{{ sortie.infosSortie | truncate }}</td>
+                <td>{{ sortie.etat.libelle }}</td>
+                <td> </td>
+                <td>{{ sortie.organisateur }}</td>
+                <td><button type="button" data-toggle="modal" data-target="#infos" class="btn btn-outline-info">Informations
+                    </button>
+                    <div class="modal bg-dark" id="infos">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title text-dark">Plus d'informations</h4>
+                                    <button type="button" class="close" data-dismiss="modal">
+                                        <span>&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body text-dark">
+                                    Le Tigre (Panthera tigris) est un mammifère carnivore de la famille des félidés...
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">Fermer</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+
+
+{#                <td>{{ sortie.id }}</td>#}
+{#                    <td>#}
+{#                        {% for p in sortie.participant %}#}
+{#                        {{ p.nom }}<br>#}
+{#                        {% endfor %}#}
+{#                    </td>#}
+{#                <td>{{ sortie.duree | date('%d j %h h') }}</td>#}
+{#                <td>{{ sortie.infosSortie | truncate }}</td>#}
             </tr>
         {% endfor %}
     </tbody>
