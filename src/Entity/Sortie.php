@@ -30,7 +30,7 @@ class Sortie
     private $dateHeureDebut;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="dateinterval")
      */
     private $duree;
 
@@ -73,7 +73,7 @@ class Sortie
     private $organisateur;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime_immutable")
      */
     private $created_at;
 
@@ -112,18 +112,6 @@ class Sortie
     public function setDateHeureDebut(\DateTimeInterface $dateHeureDebut): self
     {
         $this->dateHeureDebut = $dateHeureDebut;
-
-        return $this;
-    }
-
-    public function getDuree(): ?int
-    {
-        return $this->duree;
-    }
-
-    public function setDuree(int $duree): self
-    {
-        $this->duree = $duree;
 
         return $this;
     }
@@ -224,12 +212,12 @@ class Sortie
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTime
+    public function getCreatedAt(): ?\DateTimeImmutable
     {
         return $this->created_at;
     }
 
-    public function setCreatedAt(\DateTime $created_at): self
+    public function setCreatedAt(\DateTimeImmutable $created_at): self
     {
         $this->created_at = $created_at;
 
@@ -244,6 +232,18 @@ class Sortie
     public function setLastUpdate(?\DateTimeInterface $last_update): self
     {
         $this->last_update = $last_update;
+
+        return $this;
+    }
+
+    public function getDuree(): ?\DateInterval
+    {
+        return $this->duree;
+    }
+
+    public function setDuree(\DateInterval $duree): self
+    {
+        $this->duree = $duree;
 
         return $this;
     }

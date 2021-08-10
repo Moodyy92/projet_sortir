@@ -81,7 +81,6 @@ class AppFixtures extends Fixture
         $admin->setCampus($campus);
         $admin->addRole('ROLE_ADMIN');
         $manager->persist($admin);
-
         $manager->flush();
 
         $sortie= new Sortie();
