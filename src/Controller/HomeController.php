@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Form\FiltreType;
 use App\Repository\SortieRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -45,7 +46,7 @@ class HomeController extends AbstractController
     }
 
     #[Route('/inscription', name: 'inscription')]
-    public function inscription(SortieRepository $sortieRepository,Request $request,EntityManagerInterface $em): Response
+    public function inscription(SortieRepository $sortieRepository,Request $request, EntityManagerInterface $em): Response
     {
 
         $idSortie=$request->get('idSortie');
@@ -54,41 +55,38 @@ class HomeController extends AbstractController
         $em->persist($sortie);
         $em->flush();
         return $this->redirectToRoute('home');
-        /*
-        //Recuperation date courante Sinon il ne prend pas en compte mon IF de l'inscription
-        $dateCourante=new \DateTime();
-        //dd($dateCourante);
 
-        $nomUserConnecte = $this->getUser()->getNom();
-        $bool=false;
+//        Recuperation date courante Sinon il ne prend pas en compte mon IF de l'inscription
+//        $dateCourante=new \DateTime();
+//        dd($dateCourante);
+//
+//        $nomUserConnecte = $this->getUser()->getNom();
+//        $bool=false;
+//
+//        $list = $sortieRepository->findAll();
+//        dd($list);
+//
+//        Recuperation de l'id du Particpant
+//        $idPartipant = $this->getUser()->getId();
+//         dd($id);
+//
+//        Recuperation de l'id sortie...
+//        dd($idSortie);
+//
+//        Insert l'inscription dans sortie_participant
+//        $message=$sortieRepository->insertSortieParticipant($idPartipant,$idSortie);
 
-        $list = $sortieRepository->findAll();
-        //dd($list);
+//    Envoie du message succes ou deja inscrit
 
-        //Recuperation de l'id du Particpant
-        $idPartipant = $this->getUser()->getId();
-        // dd($id);
-
-        //Recuperation de l'id sortie...
-        $idSortie=$request->get('idSortie');
-       // dd($idSortie);
-        
-        //Insert l'inscription dans sortie_participant
-        $message=$sortieRepository->insertSortieParticipant($idPartipant,$idSortie);
-        //Envoie du message succes ou deja inscrit
-        
-        
-
-
-        return $this->render('home/index.html.twig', [
-            'controller_name' => 'HomeController',
-            'liste' => $list,
-            'ajourdhui' =>$dateCourante,
-            'message' => $message,
-            'nomUser'=>$nomUserConnecte,
-            'bool'=>$bool
-
-        ]);*/
+//        return $this->render('home/index.html.twig', [
+//            'controller_name' => 'HomeController',
+//            'liste' => $list,
+//            'ajourdhui' =>$dateCourante,
+//            'message' => $message,
+//            'nomUser'=>$nomUserConnecte,
+//            'bool'=>$bool
+//
+//        ]);
     }
 
 
