@@ -51,7 +51,7 @@ class HomeController extends AbstractController
 
         $idSortie=$request->get('idSortie');
         $sortie = $sortieRepository->find($idSortie);
-        $sortie->removeParticipant($this->getUser());
+        $sortie->addParticipant($this->getUser());
         $em->persist($sortie);
         $em->flush();
         return $this->redirectToRoute('home');
@@ -64,7 +64,7 @@ class HomeController extends AbstractController
 
         $idSortie=$request->get('idSortie');
         $sortie = $sortieRepository->find($idSortie);
-        $sortie->addParticipant($this->getUser());
+        $sortie->removeParticipant($this->getUser());
         $em->persist($sortie);
         $em->flush();
         return $this->redirectToRoute('home');
