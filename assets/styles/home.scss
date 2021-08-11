@@ -1,0 +1,10 @@
+#filtre_choices{
+  display: flex;
+  flex-direction: column;
+}
+
+#list-table {
+  height: 40% !important;
+  overflow-y: auto !important;
+  display:inline-block;
+}

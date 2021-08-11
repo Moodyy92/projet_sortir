@@ -7,71 +7,56 @@
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
-    <table class="flex-column table table-dark mt-5">
-        <thead>
+    {{ form_start(filtres) }}
+    {{ form_row(filtres.contient) }}
+    {{ form_widget(filtres.choices) }}
+
+
+    {{ form_end(filtres) }}
+    <table class="flex-column table table-dark mt-5  mx-auto" id="list-table">
+        <thead class="">
             <tr scope="row">
-                <th scope="col ">Nom de la sortie</th>
-                <th scope="col">Date de la sortie</th>
-                <th scope="col">Clôture</th>
-                <th scope="col">nb inscrit max</th>
-                <th scope="col">Etat</th>
-                <th scope="col">Inscrit</th>
-                <th scope="col">Organisateur</th>
-                <th scope="col">Actions</th>
-                <th scope="col">Inscription</th>
-{#                <th scope="col">Id</th>#}
-{#                <th scope="col">Participants</th>#}
-{#                <th scope="col">Durée</th>#}
-{#                <th scope="col">Descriptions</th>#}
+                <th class="col-1" scope="col">Nom de la sortie</th>
+                <th class="col-2" scope="col">Date de la sortie</th>
+                <th class="col-2" scope="col">Clôture</th>
+                <th class="col-1" scope="col">Place</th>
+                <th class="col-1" scope="col">Etat</th>
+                <th class="col-1" scope="col">Inscrit</th>
+                <th class="col-1" scope="col">Organisateur</th>
+                <th class="col-1" scope="col">Actions</th>
+                <th class="col-1" scope="col">Inscription</th>
+                <th class="col-1"></th>
             </tr>
         </thead>
-    <tbody class="flex-column">
+    <tbody class="flex-column  mx-auto">
         {% for sortie in liste %}
-            <tr>
-                <td>{{ sortie.lieu.nom }}</td>
+            <tr class="">
+                <td>{{ sortie.nom }}</td>
                 <td>{{ sortie.dateHeureDebut | date('d-m-Y H:i') }}</td>
                 <td>{{ sortie.dateLimiteInscription | date('d-m-Y') }}</td>
-                <td>{{ sortie.nbInscriptionMax }}</td>
+                <td>0/{{ sortie.nbInscriptionMax }}</td>
                 <td>{{ sortie.etat.libelle }}</td>
-                <td> </td>
+                <td>{{ sortie.nbInscriptionMax }}</td>
                 <td>{{ sortie.organisateur }}</td>
-                <td><button type="button" data-toggle="modal" data-target="#infos" class="btn btn-outline-info">Informations
+
+                <td><button type="button" data-toggle="modal" data-target="#infos{{ sortie.id }}" class="btn btn-outline-info">Info
                     </button>
-                    <div class="modal bg-dark" id="infos">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title text-dark">Plus d'informations</h4>
-                                    <button type="button" class="close" data-dismiss="modal">
-                                        <span>&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body text-dark">
-                                    Le Tigre (Panthera tigris) est un mammifère carnivore de la famille des félidés...
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">Fermer</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {% include "home/detailsModal.html.twig" %}
                 </td>
-                <td>
-                    {% set bool = false %}
+
+                <td> {% set bool = false %}
                     {% for p in sortie.participant %}
                         {%if p.nom==nomUser %}
-                        Vous etes deja inscris
+                             Vous êtes déjà inscrit
                             {% set bool = true %}
                         {% endif %}
                     {% endfor %}
+
                     {% if sortie.etat.libelle=='Ouverte' and sortie.dateLimiteInscription >= ajourdhui and bool==false %}
+                        <a href="{{ path('inscription', {'idSortie': sortie.id}) }}">S'incrire</a>
 
-                     <a href="{{ path('inscription', {'idSortie': sortie.id}) }}">S'incrire</a>
-
-                     {% elseif  sortie.etat.libelle!='Ouverte' or sortie.dateLimiteInscription <= ajourdhui%}
-
-                         Inscription indisponible
-
+                        {% elseif  sortie.etat.libelle!='Ouverte' or sortie.dateLimiteInscription <= ajourdhui%}
+                            Inscription indisponible
                     {% endif %}
                 </td>
 
@@ -80,19 +65,12 @@
                     <a href="{{ path('sortie_annuler', {'idSortie': sortie.id}) }}"> Annuler la sortie </a>
                 </td>
                 {% endif %}
-
-
-{#                <td>{{ sortie.id }}</td>#}
-{#                    <td>#}
-{#                        {% for p in sortie.participant %}#}
-{#                        {{ p.nom }}<br>#}
-{#                        {% endfor %}#}
-{#                    </td>#}
-{#                <td>{{ sortie.duree | date('%d j %h h') }}</td>#}
-{#                <td>{{ sortie.infosSortie | truncate }}</td>#}
             </tr>
         {% endfor %}
         {{ message }}
     </tbody>
 </table>
+    <button type="button" class="btn btn-outline-info"><a href="{{ path('sortie_create') }}"> Créer une sortie </a></button>
 {% endblock %}
+
+
