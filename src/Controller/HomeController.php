@@ -13,8 +13,16 @@ class HomeController extends AbstractController
 {
 
     #[Route('/', name: 'home')]
-    public function index(SortieRepository $sortieRepository): Response
+    public function index(Request $request, SortieRepository $sortieRepository): Response
     {
+        $filtres = $this->createForm(FiltreType::class);
+
+        $filtres->handleRequest($request);
+        $list = $sortieRepository->findAll();
+        if($filtres->isSubmitted() && $filtres->isValid()){
+            $datas = $filtres->getData();
+            $list = $sortieRepository->search($datas);
+        }
         //pour pas qu'il me mette qu'il existe pas
         $message='';
         $bool=false;
@@ -25,20 +33,28 @@ class HomeController extends AbstractController
         $dateCourante=new \DateTime();
         //dd($dateCourante);
 
-
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
             'liste' => $list,
             'ajourdhui' =>$dateCourante,
             'message' => $message,
             'nomUser'=>$nomUserConnecte,
-            'bool'=>$bool
+            'bool'=>$bool,
+            'filtres'=>$filtres->createView(),
         ]);
     }
 
     #[Route('/inscription', name: 'inscription')]
-    public function inscription(SortieRepository $sortieRepository,Request $request): Response
+    public function inscription(SortieRepository $sortieRepository,Request $request,EntityManagerInterface $em): Response
     {
+
+        $idSortie=$request->get('idSortie');
+        $sortie = $sortieRepository->find($idSortie);
+        $sortie->addParticipant($this->getUser());
+        $em->persist($sortie);
+        $em->flush();
+        return $this->redirectToRoute('home');
+        /*
         //Recuperation date courante Sinon il ne prend pas en compte mon IF de l'inscription
         $dateCourante=new \DateTime();
         //dd($dateCourante);
@@ -72,7 +88,7 @@ class HomeController extends AbstractController
             'nomUser'=>$nomUserConnecte,
             'bool'=>$bool
 
-        ]);
+        ]);*/
     }
 
 

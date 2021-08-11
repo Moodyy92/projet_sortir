@@ -19,7 +19,7 @@ class SortieRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Sortie::class);
     }
-
+/*
     public function insertSortieParticipant($idPartipant,$idSortie){
 
        
@@ -69,4 +69,4 @@ class SortieRepository extends ServiceEntityRepository
         ;
     }
     */
-}}
+}
