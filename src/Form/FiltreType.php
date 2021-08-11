@@ -24,7 +24,7 @@ class FiltreType extends AbstractType
             ])
             ->add('contient', TextType::class, [
                 'label'=> 'Le nom de la sortie contient :',
-                'required' => true
+                'required' => false,
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Rechercher',

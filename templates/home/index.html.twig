@@ -11,10 +11,11 @@
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
-
-
-    <div class="mt-5 d-flex flex-row">
+            <!------------------------------------------------->
+            <!---------------FORMULAIRE SEARCH----------------->
+            <!------------------------------------------------->
         {{ form_start(filtres) }}
+    <div class="mt-5 d-flex flex-row">
         <div class="">
             <h1>Filtrer les sorties</h1>
             <div>
@@ -26,11 +27,11 @@
         </div>
         <div class="d-flex justify-content-lg-start">
             <div>
-                {{ form(filtres.dateDeb) }}
+                {{ form_row(filtres.dateDeb) }}
             </div>
             <p class="ml-2 mr-2">et</p>
             <div>
-                {{ form(filtres.dateFin) }}
+                {{ form_row(filtres.dateFin) }}
             </div>
         </div>
         <div class="ml-5 mr-5">
@@ -40,15 +41,11 @@
             {{ form_widget(filtres.submit) }}
         </div>
     </div>
-
-
-
-
-
-
-
-
     {{ form_end(filtres) }}
+
+            <!------------------------------------------------->
+            <!---------------------TABLEAU--------------------->
+            <!------------------------------------------------->
     <table class="flex-column table table-dark mt-5  mx-auto" id="list-table">
         <thead class="">
             <tr scope="row">
@@ -75,8 +72,8 @@
                 <td>{{ sortie.nbInscriptionMax }}</td>
                 <td>{{ sortie.organisateur }}</td>
 
-                <td><button type="button" data-toggle="modal" data-target="#infos{{ sortie.id }}" class="btn btn-outline-info">Info
-                    </button>
+                <td>
+                    <button type="button" data-toggle="modal" data-target="#infos{{ sortie.id }}" class="btn btn-outline-info">Info</button>
                     {% include "home/detailsModal.html.twig" %}
                 </td>
 
