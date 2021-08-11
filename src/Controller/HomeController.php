@@ -56,37 +56,19 @@ class HomeController extends AbstractController
         $em->flush();
         return $this->redirectToRoute('home');
 
-//        Recuperation date courante Sinon il ne prend pas en compte mon IF de l'inscription
-//        $dateCourante=new \DateTime();
-//        dd($dateCourante);
-//
-//        $nomUserConnecte = $this->getUser()->getNom();
-//        $bool=false;
-//
-//        $list = $sortieRepository->findAll();
-//        dd($list);
-//
-//        Recuperation de l'id du Particpant
-//        $idPartipant = $this->getUser()->getId();
-//         dd($id);
-//
-//        Recuperation de l'id sortie...
-//        dd($idSortie);
-//
-//        Insert l'inscription dans sortie_participant
-//        $message=$sortieRepository->insertSortieParticipant($idPartipant,$idSortie);
+    }
 
-//    Envoie du message succes ou deja inscrit
+    #[Route('/seDesister', name: 'seDesister')]
+    public function seDesister(SortieRepository $sortieRepository,Request $request, EntityManagerInterface $em): Response
+    {
 
-//        return $this->render('home/index.html.twig', [
-//            'controller_name' => 'HomeController',
-//            'liste' => $list,
-//            'ajourdhui' =>$dateCourante,
-//            'message' => $message,
-//            'nomUser'=>$nomUserConnecte,
-//            'bool'=>$bool
-//
-//        ]);
+        $idSortie=$request->get('idSortie');
+        $sortie = $sortieRepository->find($idSortie);
+        $sortie->removeParticipant($this->getUser());
+        $em->persist($sortie);
+        $em->flush();
+        return $this->redirectToRoute('home');
+
     }
 
 
