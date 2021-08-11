@@ -27,14 +27,18 @@ class SortieRepository extends ServiceEntityRepository
 
     public function search($datas)
     {
-        $query = $this->createQueryBuilder('s');
-        if(isset($datas['nom'])){
-            $query->andWhere('s.nom LIKE :val')
-                ->setParameter('val', '%'.$datas['nom'].'%');
+        $query = $this->createQueryBuilder('s');                             // SELECT * FROM sorties AS s
+
+        if($datas['contient']){
+            $query->andWhere('s.nom LIKE :val')                                   //WHERE s.nom LIKE ?
+                ->setParameter('val', '%'.$datas['contient'].'%');      //? = $datas['contient']
         }
-        $query->orderBy('s.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
+
+        if($datas["choices"]){
+        }
+
+
+         $response = $query->getQuery()
             ->getResult()
         ;
         return $query;

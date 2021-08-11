@@ -21,9 +21,19 @@ class HomeController extends AbstractController
 
         $filtres->handleRequest($request);
         $list = $sortieRepository->findAll();
+
         if($filtres->isSubmitted() && $filtres->isValid()){
             $datas = $filtres->getData();
+            dump($datas);
             $list = $sortieRepository->search($datas);
+            if(in_array('passees', $datas['choices'])) {                                            //Si la case "sorties passées" a été cochée
+                foreach ($list as $key => $sortie) {                                                      //On parcourt les sorties issues de la requête
+                    if($sortie->getDateHeureDebut()->add($sortie->getDuree()) > new \DateTime()) {        //si la date de debut plus la durée (soit la date de fin) de la sortie est posterieure à la date d'aujourd'hui
+                        unset($list[$key]);                                                               // On l'enlève de la liste des sorties
+                    }
+                }
+            }
+//            dd($list);
         }
         //pour pas qu'il me mette qu'il existe pas
         $message='';
