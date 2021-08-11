@@ -38,7 +38,7 @@
                 <td>{{ sortie.nom }}</td>
                 <td>{{ sortie.dateHeureDebut | date('d-m-Y H:i') }}</td>
                 <td>{{ sortie.dateLimiteInscription | date('d-m-Y') }}</td>
-                <td>0/{{ sortie.nbInscriptionMax }}</td>
+                <td>{{ sortie.participant.count }} / {{ sortie.nbInscriptionMax }}</td>
                 <td>{{ sortie.etat.libelle }}</td>
                 <td>{{ sortie.nbInscriptionMax }}</td>
                 <td>{{ sortie.organisateur }}</td>
@@ -51,12 +51,16 @@
                 <td> {% set bool = false %}
                     {% for p in sortie.participant %}
                         {%if p.nom==nomUser %}
-                             Vous êtes déjà inscrit
+                            {% if sortie.dateHeureDebut >= ajourdhui%}
+                                      <a href="{{ path('seDesister', {'idSortie': sortie.id}) }}">Se desister</a>
+                                {% else %}
+                                        Desistement impossible
+                             {% endif%}
                             {% set bool = true %}
                         {% endif %}
                     {% endfor %}
 
-                    {% if sortie.etat.libelle=='Ouverte' and sortie.dateLimiteInscription >= ajourdhui and bool==false %}
+                    {% if sortie.etat.libelle=='Ouverte' and sortie.dateLimiteInscription >= ajourdhui and bool==false and sortie.participant.count<=sortie.nbInscriptionMax %}
                         <a href="{{ path('inscription', {'idSortie': sortie.id}) }}">S'incrire</a>
 
                         {% elseif  sortie.etat.libelle!='Ouverte' or sortie.dateLimiteInscription <= ajourdhui%}
