@@ -27,8 +27,8 @@ class SortieCreate extends AbstractType
             ])
             ->add('nbInscriptionMax')
             ->add('infosSortie')
-            ->add('latitude', TextType::class, [ 'mapped' => false ])
-            ->add('longitude', TextType::class, [ 'mapped' => false ])
+//            ->add('latitude', TextType::class, [ 'mapped' => false ])
+//            ->add('longitude', TextType::class, [ 'mapped' => false ])
         ;
     }
 
