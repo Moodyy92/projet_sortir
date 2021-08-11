@@ -21,17 +21,25 @@ class SortieRepository extends ServiceEntityRepository
         parent::__construct($registry, Sortie::class);
     }
 
-    public function insertSortieParticipant($idPartipant,$idSortie){
+    /**
+     * @return Sortie[] Returns an array of Sortie objects
+     */
 
-       
-
-        $conn = new mysqli('localhost', 'root', '', 'projetsortir');
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
+    public function search($datas)
+    {
+        $query = $this->createQueryBuilder('s');
+        if(isset($datas['nom'])){
+            $query->andWhere('s.nom LIKE :val')
+                ->setParameter('val', '%'.$datas['nom'].'%');
         }
+        $query->orderBy('s.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+        return $query;
+    }
 
-        $sql = "INSERT INTO sortie_participant (sortie_id, participant_id) VALUES ($idSortie, $idPartipant)";
 
         if ($conn->query($sql) === TRUE) {
             return 'Inscription reussie!';

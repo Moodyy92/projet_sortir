@@ -25,7 +25,6 @@ class HomeController extends AbstractController
         $dateCourante=new \DateTime();
         //dd($dateCourante);
 
-
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
             'liste' => $list,
