@@ -16,6 +16,7 @@ class HomeController extends AbstractController
     #[Route('/', name: 'home')]
     public function index(Request $request, SortieRepository $sortieRepository): Response
     {
+//        dd($this->getUser());
         $filtres = $this->createForm(FiltreType::class);
 
         $filtres->handleRequest($request);
