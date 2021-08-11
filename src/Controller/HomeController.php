@@ -46,11 +46,9 @@ class HomeController extends AbstractController
         ]);
     }
 
-    #[Route('/inscription', name: 'inscription')]
-    public function inscription(SortieRepository $sortieRepository,Request $request, EntityManagerInterface $em): Response
+    #[Route('/inscription/{idSortie}', name: 'inscription')]
+    public function inscription(SortieRepository $sortieRepository,Request $request, EntityManagerInterface $em, $idSortie): Response
     {
-
-        $idSortie=$request->get('idSortie');
         $sortie = $sortieRepository->find($idSortie);
         $sortie->addParticipant($this->getUser());
         $em->persist($sortie);
