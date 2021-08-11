@@ -2,9 +2,16 @@
 
 namespace App\Controller;
 
+
+use App\Entity\Participant;
+use App\Form\ParticipantType;
+use App\Repository\ParticipantRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class AdminController extends AbstractController
 {
@@ -14,5 +21,48 @@ class AdminController extends AbstractController
         return $this->render('admin/index.html.twig', [
             'controller_name' => 'AdminController',
         ]);
+    }
+
+    #[Route('/addParticipant', name: 'addParticipant')]
+    public function new(Request $request ,EntityManagerInterface $entityManager,UserPasswordEncoderInterface $passwordEncoder): Response
+    {
+        $newParticipant = new Participant();
+        $form = $this->createForm(ParticipantType::class, $newParticipant);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            //Role user par defaut
+            $newParticipant->setRoles(array("ROLE_USER"));
+            $newParticipant->setActif('true');
+
+            //Date courante
+            $newParticipant->setCreatedAt(new \DateTimeImmutable());
+
+            //Encodage du mot de passe
+            $newParticipant->setPassword(
+                $passwordEncoder->encodePassword(
+                    $newParticipant,
+                    $form->get('password')->getData()
+                )
+
+            );
+            //Et Boom en Bdd...
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($newParticipant);
+            $entityManager->flush();
+
+            $this->addFlash('success','Participant Ajouter!');
+
+            return $this->redirectToRoute('addParticipant');
+
+        }
+
+
+        return $this->render('admin/formParticipant.html.twig',
+            [
+
+            'form' => $form->createView()
+             ]);
     }
 }

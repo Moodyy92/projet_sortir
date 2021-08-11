@@ -7,10 +7,14 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use phpDocumentor\Reflection\Types\Boolean;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
+ * @UniqueEntity("email")
+ * @UniqueEntity("pseudo")
  * @ORM\Entity(repositoryClass=ParticipantRepository::class)
  */
 class Participant implements UserInterface, PasswordAuthenticatedUserInterface
@@ -23,6 +27,16 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
     private $id;
 
     /**
+     *
+     * @Assert\Length(min=3,minMessage="Le pseudo doit etre de plus de 3 characteres",max=15,maxMessage="Le pseudo doit etre de plus de 15 characteres")
+     * @ORM\Column(type="string", length=25, nullable=true)
+     */
+    private $pseudo;
+
+    /**
+     *
+     * @Assert\Length(max=180,maxMessage="L'email est trop long")
+     * @Assert\Email(message="Please enter a valid email address.")
      * @ORM\Column(type="string", length=180, unique=true)
      */
     private $email;
@@ -33,22 +47,31 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
     private $roles = [];
 
     /**
+     * @Assert\Length(min="10",minMessage="Le mot de passe doit d'etre de minimum 10 characteres.",
+     *                  max="50", maxMessage="Le mot de passe doit d'etre de maximun 50 characteres.")
      * @var string The hashed password
      * @ORM\Column(type="string")
      */
     private $password;
 
     /**
+     *  @Assert\Length(min="3",minMessage="Le nom doit d'etre de minimum 3 characteres.",
+     *                  max="15", maxMessage="Le nom doit d'etre de maximun 15 characteres.")
+     *
      * @ORM\Column(type="string", length=255)
      */
     private $nom;
 
     /**
+     * @Assert\Length(min="3",minMessage="Le prenom doit d'etre de minimum 3 characteres.",
+     *                  max="15", maxMessage="Le prenom doit d'etre de maximun 15 characteres.")
      * @ORM\Column(type="string", length=255)
      */
     private $prenom;
 
     /**
+     *
+     * @Assert\Length(max="10",min="10",exactMessage="Veuillez saisir un numero valide")
      * @ORM\Column(type="string", length=11)
      */
     private $telephone;
@@ -78,6 +101,8 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\OneToMany(targetEntity=Sortie::class, mappedBy="organisateur")
      */
     private $organisations;
+
+
 
     public function __construct()
     {
@@ -344,6 +369,18 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
                 $organisation->setOrganisateur(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPseudo(): ?string
+    {
+        return $this->pseudo;
+    }
+
+    public function setPseudo(?string $pseudo): self
+    {
+        $this->pseudo = $pseudo;
 
         return $this;
     }
