@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello GestionVillesLieuxController!{% endblock %}
+
+{% block body %}
+    <table>
+        <tr>
+            <td>Ville</td>
+            <td>Rue</td>
+            <td>Nom du Lieu</td>
+            <td>Latitude</td>
+            <td>Longitude</td>
+            <td>Action</td>
+        </tr>
+
+        {% for lieu in lieux %}
+        <tr>
+            <td>{{ lieu.ville.nom }}</td>
+            <td>{{ lieu.rue }}</td>
+            <td>{{ lieu.nom }}</td>
+            <td>{{ lieu.latitude }}</td>
+            <td>{{ lieu.longitude }}</td>
+            <td> <a href="{{ path('delete_lieu', {'idLieu': lieu.id}) }}"> Supprimer </a></td>
+        </tr>
+        {% endfor %}
+
+        <tr>
+            {{ form_start(formLieu) }}
+            <td>
+                <select name="ville">
+                    {% for ville in villes %}
+                    <option value="{{ ville.nom }}"> {{ ville.nom }} </option>
+                    {% endfor %}
+                </select>
+            </td>
+            <td> {{ form_widget(formLieu.rue) }} </td>
+            <td> {{ form_widget(formLieu.nom) }} </td>
+            <td> {{ form_widget(formLieu.latitude) }}</td>
+            <td> {{ form_widget(formLieu.longitude) }}</td>
+            <td> {{ form_widget((formLieu.Ajouter)) }}</td>
+            {{ form_end(formLieu) }}
+        </tr>
+    </table>
+{% endblock %}
