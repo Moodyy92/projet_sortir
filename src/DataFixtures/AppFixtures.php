@@ -95,6 +95,11 @@ class AppFixtures extends Fixture
         $manager->persist($campus);
         $manager->flush();
 
+        $campus2 = new Campus();
+        $campus2->setNom("ENI ecole");
+        $manager->persist($campus2);
+        $manager->flush();
+
         $admin = new Participant();
         $admin->setNom("admin");
         $admin->setPrenom("admin");
@@ -109,6 +114,22 @@ class AppFixtures extends Fixture
         $admin->setCampus($campus);
         $admin->addRole('ROLE_ADMIN');
         $manager->persist($admin);
+        $manager->flush();
+
+        $user1 = new Participant();
+        $user1->setNom("user");
+        $user1->setPrenom("userPrenom");
+        $user1->setTelephone("0654218532");
+        $user1->setEmail("user@hotmail.fr");
+        $user1->setPassword($this->passwordHasher->hashPassword(
+            $user1,
+            "password"
+        ));
+        $user1->setActif(true);
+        $user1->setCreatedAt(new \DateTimeImmutable());
+        $user1->setCampus($campus);
+        $user1->addRole('');
+        $manager->persist($user1);
         $manager->flush();
 
         $sortie= new Sortie();
