@@ -30,12 +30,40 @@ class AppFixtures extends Fixture
         $manager->persist($paris);
         $manager->flush();
 
+        $bordeaux = new Ville();
+        $bordeaux->setNom("Bordeaux");
+        $bordeaux->setCodePostal(33000);
+        $manager->persist($bordeaux);
+        $manager->flush();
+
+        $brest = new Ville();
+        $brest->setNom("Brest");
+        $brest->setCodePostal(29200);
+        $manager->persist($brest);
+        $manager->flush();
+
         $lieu = new Lieu();
         $lieu->setNom("Arc de Triomphe");
         $lieu->setRue("Champs Elysées");
         $lieu->setVille($paris);
         $lieu->setLatitude(2.29531);
         $lieu->setLongitude(48.87366);
+        $manager->persist($lieu);
+
+        $lieu = new Lieu();
+        $lieu->setNom("Tour Eiffel");
+        $lieu->setRue("Champs de Mars");
+        $lieu->setVille($paris);
+        $lieu->setLatitude(2.25351);
+        $lieu->setLongitude(33.83456);
+        $manager->persist($lieu);
+
+        $lieu = new Lieu();
+        $lieu->setNom("Chateau de Brest");
+        $lieu->setRue("rue du chateau");
+        $lieu->setVille($brest);
+        $lieu->setLatitude(4.525351);
+        $lieu->setLongitude(22.83446);
         $manager->persist($lieu);
 
         $creee = new Etat();
@@ -67,6 +95,11 @@ class AppFixtures extends Fixture
         $manager->persist($campus);
         $manager->flush();
 
+        $campus2 = new Campus();
+        $campus2->setNom("ENI ecole");
+        $manager->persist($campus2);
+        $manager->flush();
+
         $admin = new Participant();
         $admin->setNom("admin");
         $admin->setPrenom("admin");
@@ -83,8 +116,24 @@ class AppFixtures extends Fixture
         $manager->persist($admin);
         $manager->flush();
 
+        $user1 = new Participant();
+        $user1->setNom("user");
+        $user1->setPrenom("userPrenom");
+        $user1->setTelephone("0654218532");
+        $user1->setEmail("user@hotmail.fr");
+        $user1->setPassword($this->passwordHasher->hashPassword(
+            $user1,
+            "password"
+        ));
+        $user1->setActif(true);
+        $user1->setCreatedAt(new \DateTimeImmutable());
+        $user1->setCampus($campus);
+        $user1->addRole('');
+        $manager->persist($user1);
+        $manager->flush();
+
         $sortie= new Sortie();
-        $sortie->setNom("Mathieu");
+        $sortie->setNom("Balade a Paris");
         $sortie->setDateHeureDebut((new \DateTime())->add(new \DateInterval("P4D"))); //P pour +, 4 pour nombre, D pour Day
         $sortie->setDuree(new \DateInterval("P1W"));//P pour +, 1 pour nombre, W pour week
         $sortie->setDateLimiteInscription((new \DateTime())->add(new \DateInterval("P1D")));

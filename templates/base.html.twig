@@ -19,26 +19,25 @@
         {% if app.user %}
         <header>
             <nav class="navbar navbar-expand-sm navbar-light bg-secondary ">
-                {#        <a class="navbar-brand" href="#"><img src="{{ asset('build/logo/logo.png') }}"></a>   #}
                 <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
                         data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
                 <div class="collapse navbar-collapse " id="collapsibleNavId">
                     <ul class="navbar-nav mt-0 mt-lg-0 font-weight-bold justify-content-center w-100 text-uppercase ">
-
-                        <li class="nav-item">
-                            <a class="nav-link " href="{{ path('sortie_create') }}"> Créer une sortie </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " href="">Villes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " href="">Campus</a>
-                        </li>
                         <li class="nav-item">
                             <a class="nav-link " href="{{ path('home') }}">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="{{ path('gestion_villes') }}">Villes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="{{ path('gestion_lieux') }}">Lieux</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="{{ path('gestion_campus') }}">Campus</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('user_index') }}" title="Gérer mon profil">Mon Profil</a>
@@ -46,15 +45,18 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('app_logout') }}">Se déconnecter</a>
                         </li>
+                        {% if is_granted('ROLE_ADMIN') %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('admin') }}">Panel Admin</a>
+                        </li>
+                        {% endif %}
                     </ul>
                 </div>
             </nav>
         </header>
         {% endif %}
 
-        <div class="container flex-grow-1 ">
-            {% block body %}{% endblock %}
-        </div>
+        <div class="container flex-grow-1"> {% block body %}{% endblock %} </div>
 
         <footer>
             <div>
