@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Creer une sortie{% endblock %}
+
 {% block stylesheets %}
     <style>
         label{  }
@@ -36,18 +37,18 @@
             {% endfor %}
         </select><br>
 
-        <label for="ville"> Ville </label>
-        <select name="ville" id="ville">
-            {% for lieu in lieux %}
-                <option value="{{ lieu.ville.nom }}"> {{ lieu.ville.nom }} </option>
-            {% endfor %}
-        </select>
+{#        <label for="ville"> Ville </label>#}
+{#        <select name="ville" id="ville">#}
+{#            {% for lieu in lieux %}#}
+{#                <option value="{{ lieu.ville.nom }}"> {{ lieu.ville.nom }} </option>#}
+{#            {% endfor %}#}
+{#        </select>#}
 
         <div> Rue : Rue </div>
         <div> Code Postal : 00000 </div>
 
-        {{ form_row(form.longitude) }}
-        {{ form_row(form.latitude) }}
+{#        {{ form_row(form.longitude) }}#}
+{#        {{ form_row(form.latitude) }}#}
 
         <button>Publier la sortie</button>
         {{ form_errors(form) }}
