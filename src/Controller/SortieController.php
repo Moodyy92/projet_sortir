@@ -35,6 +35,7 @@ class SortieController extends AbstractController
                 $etatChoisi = $etatRepo->findOneBy(['libelle' => 'Créée']);
             }
 
+            $sortie->setCampus($this->getUser()->getCampus());
             $sortie->setEtat($etatChoisi);                             //ETAT DE LA SORTIE = OBJET ETAT
             $sortie->setLieu($lieuChoisi);                             //LIEU DE LA SORTIE = OBJET LIEU
             $sortie->setCreatedAt(new \DateTimeImmutable());           //SORTIE CREE = DATE COURANTE

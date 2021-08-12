@@ -4,7 +4,7 @@
 
 {% block stylesheets %}
     <style>
-        form{ height: 600px; }
+        form{ height: 600px; width: 85%; }
         form div { margin-top: 15px; }
         label { margin-right: 12px; }
         #sortie_create_duree { display: inline-block; }
@@ -17,7 +17,7 @@
 
 {% block body %}
 
-    {{ form_start(form, {'attr': {'class': 'm-2 bg-light'} }) }}
+    {{ form_start(form, {'attr': {'class': 'm-2 mx-5 bg-light'} }) }}
 
     <div class="d-flex justify-content-around h-75 p-2">
 
@@ -36,17 +36,32 @@
 
         <!--- PARTIE DROITE DE LA PAGE -------------------------------------------->
         <div>
-            <div> Campus : {{ app.user.campus.nom }}</div>
-            <label for="lieu"> Lieu </label>
-            <select name="lieu" id="lieu">
-                {% for lieu in lieux %}
-                <option value="{{ lieu.nom }}"> {{ lieu.nom }} </option>
-                {% endfor %}
-            </select>
-            <button class="btn btn-outline-primary" type="button"><a href="{{ path('gestion_lieux') }}"> + </a></button>
-            <br>
+            <div>
+                Campus : {{ app.user.campus.nom }}
+                <button class="btn btn-outline-primary mx-2" type="button">
+                    <a href="{{ path('gestion_campus') }}"> + </a>
+                </button>
+            </div>
 
-            <div> Ville : ville </div>
+            <div>
+                <label for="lieu"> Lieu </label>
+                <select name="lieu" id="lieu">
+                    {% for lieu in lieux %}
+                    <option value="{{ lieu.nom }}"> {{ lieu.nom }} </option>
+                    {% endfor %}
+                </select>
+                <button class="btn btn-outline-primary mx-2" type="button">
+                    <a href="{{ path('gestion_lieux') }}"> + </a>
+                </button>
+            </div>
+
+            <div>
+                Ville : ville
+                <button class="btn btn-outline-primary mx-2" type="button">
+                    <a href="{{ path('gestion_villes') }}"> + </a>
+                </button>
+            </div>
+
             <div> Rue : Rue </div>
             <div> Code Postal : 00000 </div>
             <div> Longitude : </div>
