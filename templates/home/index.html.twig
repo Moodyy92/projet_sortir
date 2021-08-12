@@ -17,6 +17,7 @@
 
 
     {{ form_end(filtres) }}
+    <button type="button" class="btn btn-outline-info"><a href="{{ path('sortie_create') }}"> Créer une sortie </a></button>
     <table class="flex-column table table-dark mt-5  mx-auto" id="list-table">
         <thead class="">
             <tr scope="row">
@@ -32,6 +33,7 @@
                 <th class="col-1"></th>
             </tr>
         </thead>
+        <!-- Voir indentation tbody et table ci-dessous -->
     <tbody class="flex-column  mx-auto">
         {% for sortie in liste %}
             <tr class="">
@@ -78,7 +80,6 @@
         {{ message }}
     </tbody>
 </table>
-    <button type="button" class="btn btn-outline-info"><a href="{{ path('sortie_create') }}"> Créer une sortie </a></button>
 {% endblock %}
 
 
