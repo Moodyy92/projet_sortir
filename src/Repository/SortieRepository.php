@@ -6,8 +6,6 @@ use App\Entity\Sortie;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
-
-
 /**
  * @method Sortie|null find($id, $lockMode = null, $lockVersion = null)
  * @method Sortie|null findOneBy(array $criteria, array $orderBy = null)
@@ -27,57 +25,23 @@ class SortieRepository extends ServiceEntityRepository
 
     public function search($datas)
     {
-        $query = $this->createQueryBuilder('s');                             // SELECT * FROM sorties AS s
+        $query = $this->createQueryBuilder('s')                    // SELECT * FROM sorties AS s
+            ->join('s.campus', 'c')                           //INER JOIN campus AS c ON campus.id = sortie.campus_id
+            ->andWhere('c.id = :val')                                   // WHERE c.id = ?
+            ->setParameter('val', $datas['campus']-> getId());                 //?= $datas['campus'] -> id
 
         if($datas['contient']){
             $query->andWhere('s.nom LIKE :val')                                   //WHERE s.nom LIKE ?
                 ->setParameter('val', '%'.$datas['contient'].'%');      //? = $datas['contient']
         }
 
-        if($datas["choices"]){
-        }
+        if($datas["campus"]){
 
+        }
 
          $response = $query->getQuery()
             ->getResult()
         ;
         return $query;
     }
-
-
-    /*****************************************************************************************************************
-     *                                                  ILLEGAL                                                      *
-     *****************************************************************************************************************/
-//    public function insertSortieParticipant($idPartipant,$idSortie){
-//
-//
-//
-//        $conn = new mysqli('localhost', 'root', '', 'projetsortir');
-//        // Check connection
-//        if ($conn->connect_error) {
-//            die("Connection failed: " . $conn->connect_error);
-//        }
-//
-//        $sql = "INSERT INTO sortie_participant (sortie_id, participant_id) VALUES ($idSortie, $idPartipant)";
-//
-//        if ($conn->query($sql) === TRUE) {
-//            return 'Inscription reussie!';
-//        } else {
-//            return 'vous etes deja inscrit a la sortie!';
-//
-//
-//
-//    }
-
-
-//    public function findOneBySomeField($value): ?Sortie
-//    {
-//        return $this->createQueryBuilder('s')
-//            ->andWhere('s.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
-//
 }

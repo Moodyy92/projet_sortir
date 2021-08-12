@@ -82,6 +82,12 @@ class Sortie
      */
     private $last_update;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Campus::class, inversedBy="sorties")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $campus;
+
     public function __construct()
     {
         $this->participant = new ArrayCollection();
@@ -244,6 +250,18 @@ class Sortie
     public function setDuree(\DateInterval $duree): self
     {
         $this->duree = $duree;
+
+        return $this;
+    }
+
+    public function getCampus(): ?Campus
+    {
+        return $this->campus;
+    }
+
+    public function setCampus(?Campus $campus): self
+    {
+        $this->campus = $campus;
 
         return $this;
     }

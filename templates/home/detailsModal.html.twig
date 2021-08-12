@@ -14,14 +14,9 @@
                 <a href="#" class="list-group-item list-group-item-action list-group-item-primary text-center font-weight-bold text-uppercase">{{ sortie.nom }}</a>
                 <a href="#" class="list-group-item list-group-item-action list-group-item-primary">Lieu visiter : {{ sortie.lieu.nom }}</a>
                 <a href="#" class="list-group-item list-group-item-action list-group-item-primary">Nombre de place : {{ sortie.nbInscriptionMax }}</a>
-                <a href="#" class="list-group-item list-group-item-action list-group-item-primary">Nombre de place : {{ sortie.duree | date('%d j %h h')}}</a>
-
+                <a href="#" class="list-group-item list-group-item-action list-group-item-primary">Durée de la sortie : {{ sortie.duree | date('%d j %h h')}}</a>
                 <a href="#" class="list-group-item list-group-item-action list-group-item-primary">{{ sortie.infosSortie}}</a>
             </div>
-
-
-
-
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-info" data-dismiss="modal">Fermer</button>
             </div>
