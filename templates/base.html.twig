@@ -40,7 +40,7 @@
                             <a class="nav-link " href="{{ path('gestion_campus') }}">Campus</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('user_index') }}" title="Gérer mon profil">Mon Profil</a>
+                            <a class="nav-link" href="{{ path('user_show', {'id':app.user.id}) }}" title="Gérer mon profil">Mon Profil</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('app_logout') }}">Se déconnecter</a>

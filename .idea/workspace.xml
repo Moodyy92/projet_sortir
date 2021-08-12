@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dd2ddf08-bc59-4b09-8855-121f6438b90f" name="Changes" comment="commit après pull, fonctionnalité mon profil">
+    <list default="true" id="dd2ddf08-bc59-4b09-8855-121f6438b90f" name="Changes" comment="update anthony">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ParticipantType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ParticipantType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/_form.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/user/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/user/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/new.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/user/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/show.html.twig" afterDir="false" />
     </list>
@@ -184,7 +187,8 @@
       <option name="presentableId" value="Default" />
       <updated>1628607523270</updated>
       <workItem from="1628607524474" duration="984000" />
-      <workItem from="1628666837016" duration="7937000" />
+      <workItem from="1628666837016" duration="9959000" />
+      <workItem from="1628754929194" duration="11045000" />
     </task>
     <task id="LOCAL-00001" summary="commit après pull, fonctionnalité mon profil">
       <created>1628607661944</created>
@@ -193,7 +197,28 @@
       <option name="project" value="LOCAL" />
       <updated>1628607661944</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="commit formulaire participant">
+      <created>1628689720595</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1628689720595</updated>
+    </task>
+    <task id="LOCAL-00003" summary="commit formulaire participant">
+      <created>1628689785017</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1628689785017</updated>
+    </task>
+    <task id="LOCAL-00004" summary="update anthony">
+      <created>1628690001036</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1628690001036</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -213,6 +238,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="commit après pull, fonctionnalité mon profil" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit après pull, fonctionnalité mon profil" />
+    <MESSAGE value="commit formulaire participant" />
+    <MESSAGE value="update anthony" />
+    <option name="LAST_COMMIT_MESSAGE" value="update anthony" />
   </component>
 </project>

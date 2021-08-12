@@ -6,16 +6,17 @@
 
     <h1>Modifier mon profil</h1>
 
-<div>
+<div >
+    {% form_theme form 'bootstrap_4_horizontal_layout.html.twig' %}
     {{ form_start(form) }}
     {{ form_widget(form) }}
-    <button> Enregistrer les modifications</button>
+    <button type="submit"  class="btn-block"><strong> Enregistrer les modifications</strong></button>
     {{ form_end(form) }}
 
 </div>
-
+<div >
     <a href="{{ path('user_index') }}">Revenir</a>
+</div>
 
-    {{ include('user/_delete_form.html.twig') }}
 
 {% endblock %}
