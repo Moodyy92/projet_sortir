@@ -4,54 +4,77 @@
 
 {% block stylesheets %}
     <style>
-        label{  }
+        form{ height: 600px; width: 85%; }
+        form div { margin-top: 15px; }
+        label { margin-right: 12px; }
+        #sortie_create_duree { display: inline-block; }
+        table, th, td { border: 1px solid black; }
+        table select { width: 100%; }
+        textarea { resize: both; }
     </style>
 {% endblock %}
 
 
 {% block body %}
-    <h1>Create new Sortie</h1>
 
-    {% form_theme form 'bootstrap_4_horizontal_layout.html.twig' %}
-    {{ form_start(form, {'attr': {'class': 'd-flex justify-content-around border border-dark'} }) }}
+    {{ form_start(form, {'attr': {'class': 'm-2 mx-5 bg-light'} }) }}
 
-    <!--- PARTIE GAUCHE DE LA PAGE -------------------------------------------->
-    <div class="border border-primary">
-        {{ form_row(form.nom) }}
-        {{ form_row(form.dateHeureDebut) }}
-        {{ form_row(form.dateLimiteInscription) }}
-        {{ form_row(form.nbInscriptionMax) }}
-        {{ form_row(form.duree) }}
-        {{ form_row(form.infosSortie) }}
-    </div>
+    <div class="d-flex justify-content-around h-75 p-2">
 
-    <!--- PARTIE DROITE DE LA PAGE -------------------------------------------->
-    <div class="border border-primary">
+        <!--- PARTIE GAUCHE DE LA PAGE -------------------------------------------->
+        <div>
+            {{ form_row(form.nom) }}
+            {{ form_row(form.dateHeureDebut) }}
+            {{ form_row(form.dateLimiteInscription) }}
+            {{ form_row(form.nbInscriptionMax) }}
+            {{ form_row(form.duree) }}
+            <div>
+                {{ form_label(form.infosSortie) }} <br>
+                {{ form_widget(form.infosSortie, {'attr': {'rows': 4, 'cols': 50} }) }}
+            </div>
+        </div>
 
-        <div> Campus : {{ app.user.campus.nom }}</div>
+        <!--- PARTIE DROITE DE LA PAGE -------------------------------------------->
+        <div>
+            <div>
+                Campus : {{ app.user.campus.nom }}
+                <button class="btn btn-outline-primary mx-2" type="button">
+                    <a href="{{ path('gestion_campus') }}"> + </a>
+                </button>
+            </div>
 
-        <label for="lieu"> Lieu </label>
-        <select name="lieu" id="lieu">
-            {% for lieu in lieux %}
-            <option value="{{ lieu.nom }}"> {{ lieu.nom }} </option>
-            {% endfor %}
-        </select><br>
+            <div>
+                <label for="lieu"> Lieu </label>
+                <select name="lieu" id="lieu">
+                    {% for lieu in lieux %}
+                    <option value="{{ lieu.nom }}"> {{ lieu.nom }} </option>
+                    {% endfor %}
+                </select>
+                <button class="btn btn-outline-primary mx-2" type="button">
+                    <a href="{{ path('gestion_lieux') }}"> + </a>
+                </button>
+            </div>
 
-{#        <label for="ville"> Ville </label>#}
-{#        <select name="ville" id="ville">#}
-{#            {% for lieu in lieux %}#}
-{#                <option value="{{ lieu.ville.nom }}"> {{ lieu.ville.nom }} </option>#}
-{#            {% endfor %}#}
-{#        </select>#}
+            <div>
+                Ville : ville
+                <button class="btn btn-outline-primary mx-2" type="button">
+                    <a href="{{ path('gestion_villes') }}"> + </a>
+                </button>
+            </div>
 
-        <div> Rue : Rue </div>
-        <div> Code Postal : 00000 </div>
+            <div> Rue : Rue </div>
+            <div> Code Postal : 00000 </div>
+            <div> Longitude : </div>
+            <div> Latitude : </div>
+        </div>
+    </div><br>
 
-{#        {{ form_row(form.longitude) }}#}
-{#        {{ form_row(form.latitude) }}#}
-
-        <button>Publier la sortie</button>
+    <div class="d-flex justify-content-around">
+        <span>
         {{ form_errors(form) }}
+        {{ form_widget(form.Creer, {'attr': {'class': 'btn btn-outline-dark'} }) }}
+        {{ form_widget(form.Publier, {'attr': {'class': 'btn btn-outline-dark'} }) }}
+        </span>
     </div>
 
     {{ form_end(form) }}
