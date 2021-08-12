@@ -24,16 +24,18 @@
             <div>
                 {{ form_row(filtres.contient) }}
             </div>
-        </div>
-        <div class="d-flex justify-content-lg-start">
-            <div>
-                {{ form_row(filtres.dateDeb) }}
+
+            <div class="d-flex justify-content-center align-items-center">
+                <div class="">
+                    {{ form_row(filtres.dateDeb) }}
+                </div>
+
+                <div class="">
+                    {{ form_row(filtres.dateFin) }}
+                </div>
             </div>
-            <p class="ml-2 mr-2">et</p>
-            <div>
-                {{ form_row(filtres.dateFin) }}
-            </div>
         </div>
+
         <div class="ml-5 mr-5">
             {{ form_widget(filtres.choices) }}
         </div>
