@@ -26,8 +26,16 @@ class SortieController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $lieuChoisi = $lieuRepo->findOneBy(['nom' => $_POST['lieu']]);
-            $etatChoisi = $etatRepo->findOneBy(['libelle' => 'Ouverte']);
+            $clickedButton = $form->getClickedButton()->getName();
 
+            if ($clickedButton === "Publier"){
+                $etatChoisi = $etatRepo->findOneBy(['libelle' => 'Ouverte']);
+            }
+            if ($clickedButton === "Creer"){
+                $etatChoisi = $etatRepo->findOneBy(['libelle' => 'Créée']);
+            }
+
+            $sortie->setCampus($this->getUser()->getCampus());
             $sortie->setEtat($etatChoisi);                             //ETAT DE LA SORTIE = OBJET ETAT
             $sortie->setLieu($lieuChoisi);                             //LIEU DE LA SORTIE = OBJET LIEU
             $sortie->setCreatedAt(new \DateTimeImmutable());           //SORTIE CREE = DATE COURANTE
