@@ -52,8 +52,8 @@
         <thead class="">
             <tr scope="row">
                 <th class="col-1" scope="col">Nom de la sortie</th>
-                <th class="col-2" scope="col">Date de la sortie</th>
-                <th class="col-2" scope="col">Clôture</th>
+                <th class="col-2" scope="col">Date et heure de la sortie</th>
+                <th class="col-2" scope="col">Date limite d'inscription</th>
                 <th class="col-1" scope="col">Place</th>
                 <th class="col-1" scope="col">Etat</th>
                 <th class="col-1" scope="col">Inscrit</th>
@@ -109,7 +109,7 @@
         {{ message }}
     </tbody>
 </table>
-    <button type="button" class="btn btn-outline-info"><a href="{{ path('sortie_create') }}"> Créer une sortie </a></button>
+    <button type="button" class="btn border-white text-uppercase "><a class="text-white " href="{{ path('sortie_create') }}"> Créer une sortie </a></button>
 {% endblock %}
 
 
