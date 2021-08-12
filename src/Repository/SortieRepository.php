@@ -41,43 +41,9 @@ class SortieRepository extends ServiceEntityRepository
          $response = $query->getQuery()
             ->getResult()
         ;
-        return $query;
+        return $response;
     }
 
 
-    /*****************************************************************************************************************
-     *                                                  ILLEGAL                                                      *
-     *****************************************************************************************************************/
-//    public function insertSortieParticipant($idPartipant,$idSortie){
-//
-//
-//
-//        $conn = new mysqli('localhost', 'root', '', 'projetsortir');
-//        // Check connection
-//        if ($conn->connect_error) {
-//            die("Connection failed: " . $conn->connect_error);
-//        }
-//
-//        $sql = "INSERT INTO sortie_participant (sortie_id, participant_id) VALUES ($idSortie, $idPartipant)";
-//
-//        if ($conn->query($sql) === TRUE) {
-//            return 'Inscription reussie!';
-//        } else {
-//            return 'vous etes deja inscrit a la sortie!';
-//
-//
-//
-//    }
 
-
-//    public function findOneBySomeField($value): ?Sortie
-//    {
-//        return $this->createQueryBuilder('s')
-//            ->andWhere('s.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
-//
 }
