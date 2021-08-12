@@ -36,7 +36,7 @@
                                 Profil
                             </a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a class="nav-link" href="#" title="Gérer mon profil">Mon Profil</a>
+                                <a class="nav-link" href="{{ path('user_show', {'id':app.user.id}) }}" title="Gérer mon profil">Mon Profil</a>
                                 <a class="nav-link" href="{{ path('app_logout') }}">Se déconnecter</a>
                             </div>
                         </div>

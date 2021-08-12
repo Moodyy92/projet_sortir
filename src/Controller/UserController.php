@@ -45,26 +45,60 @@ class UserController extends AbstractController
     #[Route('/{id}', name: 'user_show', methods: ['GET'])]
     public function show(Participant $participant): Response
     {
+
         return $this->render('user/show.html.twig', [
-            'participant' => $participant,
-        ]);
+            'participant' => $participant
+         ]);
+
     }
 
     #[Route('/{id}/edit', name: 'user_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Participant $participant): Response
     {
+        $participant= new Participant();
         $form = $this->createForm(ParticipantType::class, $participant);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            if (!empty($pseudo))
+            {
+                $pseudo->setPseudo($pseudo);
+            }
+            if (!empty($nom))
+            {
+                $nom->setNom($nom);
+            }
+            if (!empty($prenom))
+            {
+                $prenom->setPrenom($prenom);
+            }
+            if (!empty($telephone))
+            {
+                $telephone->setTelephone($telephone);
+            }
+            if (!empty($campus))
+            {
+                $campus->setCampus($campus);
+            }
+            if (!empty($email))
+            {
+                $email->setEmail($email);
+            }
+            if (!empty($password))
+            {
+                $password->setPassword($password);
+            }
+
+            $this->addFlash('success', 'Vous avez bien mis à jour vos informations de profil');
+
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('user/edit.html.twig', [
+        return $this->render('user/edit.html.twig', [
             'participant' => $participant,
-            'form' => $form,
+            'form' => $form->createView(),
         ]);
     }
 
