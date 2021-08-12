@@ -24,7 +24,7 @@ class FiltreType extends AbstractType
             ])
             ->add('contient', TextType::class, [
                 'label'=> 'Le nom de la sortie contient :',
-                'required' => true
+                'required' => false,
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Rechercher',
@@ -42,12 +42,14 @@ class FiltreType extends AbstractType
                 'label'=>''
             ])
         ->add('dateDeb', DateType::class, [
+            'label'=> 'Entre',
             'widget' => 'single_text',
             'html5' => true,
             'attr' => ['class' => 'js-datepicker'],
             'required'=>false,
         ])
         ->add('dateFin', DateType::class, [
+            'label'=> 'et ',
             'widget' => 'single_text',
             'html5' => true,
             'attr' => ['class' => 'js-datepicker'],
