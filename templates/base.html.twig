@@ -13,8 +13,9 @@
         {{ encore_entry_script_tags('app') }}
         {% block javascripts %}
         {% endblock %}
-    </head>
-
+                        <!------------------------------------------------->
+                        <!---------------------NAV BAR--------------------->
+                        <!------------------------------------------------->
     <body class="d-flex flex-column h-100 ">
         {% if app.user %}
         <header>
@@ -36,25 +37,41 @@
                         <li class="nav-item">
                             <a class="nav-link " href="{{ path('gestion_campus') }}">Campus</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('user_index') }}" title="Gérer mon profil">Mon Profil</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('app_logout') }}">Se déconnecter</a>
-                        </li>
+                        <div class="dropdown nav-item d-flex flex-row-reverse">
+                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Profil
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="nav-link" href="#" title="Gérer mon profil">Mon Profil</a>
+                                <a class="nav-link" href="{{ path('app_logout') }}">Se déconnecter</a>
+                            </div>
+                        </div>
                         {% if is_granted('ROLE_ADMIN') %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('admin') }}">Panel Admin</a>
-                        </li>
+                            <div class="dropdown nav-item ">
+                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Administration
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" href="{{ path('admin') }}">Panel Admin</a>
+                                    <a class="dropdown-item" href="{{ path('user_index') }}">Liste utilisateur</a>
+                                    <a class="dropdown-item" href="{{ path('user_new') }}">Add new utilisateur</a>
+                                </div>
+                            </div>
                         {% endif %}
                     </ul>
                 </div>
             </nav>
         </header>
         {% endif %}
-
-        <div class="container flex-grow-1"> {% block body %}{% endblock %} </div>
-
+                        <!------------------------------------------------->
+                        <!-----------------------BODY---------------------->
+                        <!------------------------------------------------->
+        <div class="container flex-grow-1">
+            {% block body %}{% endblock %}
+        </div>
+                        <!------------------------------------------------->
+                        <!----------------------FOOTER--------------------->
+                        <!------------------------------------------------->
         <footer>
             <div>
                 <p class="d-flex justify-content-center w-100" id="copyright">&copy;Eni - Projet 'Sortir'

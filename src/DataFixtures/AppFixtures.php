@@ -144,7 +144,7 @@ class AppFixtures extends Fixture
         $sortie->addParticipant($admin);
         $sortie->setOrganisateur($admin);
         $sortie->setCreatedAt(new \DateTimeImmutable());
-
+        $sortie->setCampus($campus);
         $manager->persist($sortie);
         $manager->flush();
     }
