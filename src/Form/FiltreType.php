@@ -19,6 +19,7 @@ class FiltreType extends AbstractType
         $builder
             ->add('campus', EntityType::class, [
                 'class' => Campus::class,
+//                'placeholder' => 'all',
                 'choice_label' => 'nom',
                 'label' => 'Campus :',
             ])
