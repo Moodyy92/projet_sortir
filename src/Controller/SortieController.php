@@ -60,9 +60,13 @@ class SortieController extends AbstractController
                           SortieRepository $sortieRepo, EtatRepository $etatRepo, $idSortie): Response
     {
         $etatChoisi = $etatRepo->findOneBy(['libelle' => 'Annulée']);
-        $sortieChoisie = $sortieRepo->findOneBy(['id' => $idSortie]);
+        $sortieChoisie = $sortieRepo->find($idSortie);
 
-        if($sortieChoisie->getDateHeureDebut() > new \DateTime()){
+        if($sortieChoisie == null){
+            throw $this->createNotFoundException("La sortie n'existe pas");
+        }
+
+        if($sortieChoisie->getDateHeureDebut() > new \DateTime() && $this->getUser() === $sortieChoisie->getOrganisateur()){
             $sortieChoisie->setEtat($etatChoisi);
             $em->flush();
         }

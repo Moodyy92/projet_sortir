@@ -6,6 +6,7 @@ use App\Repository\SortieRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=SortieRepository::class)
@@ -21,31 +22,38 @@ class Sortie
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Le nom ne doit pas être vide")
      */
     private $nom;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\NotBlank(message="La date de début ne doit pas être vide")
      */
     private $dateHeureDebut;
 
     /**
      * @ORM\Column(type="dateinterval")
+     * @Assert\NotBlank(message="La durée ne doit pas être vide")
      */
     private $duree;
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\NotBlank(message="La date de limite d'inscription ne doit pas être vide")
      */
     private $dateLimiteInscription;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Range(min=0,minMessage="Le nombre d'inscription ne peut pas être négatif")
+     * @Assert\NotBlank(message="Le nombre d'inscription ne doit pas être vide")
      */
     private $nbInscriptionMax;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="Les infos de la sortie ne doivent pas être vide")
      */
     private $infosSortie;
 
