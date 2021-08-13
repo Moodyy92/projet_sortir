@@ -35,13 +35,31 @@ class SortieRepository extends ServiceEntityRepository
                 ->setParameter('val', '%'.$datas['contient'].'%');      //? = $datas['contient']
         }
 
-        if($datas["choices"]){
-            $query->join('s.organisateur', 'o')
-                ->andWhere('o.id = :val')
-                ->setParameter('val', $user-> getId());
-        }
+        if ($datas['choices']){                                     //est ce qu'on a coché une case"
 
-         $response = $query->getQuery()
+
+            if(in_array('orga', $datas['choices'])){
+                $query->join('s.organisateur', 'o')     //La case "inscrit" fait-elle partie des cases cochées?
+                    ->andWhere('o.id = :val')
+                    ->setParameter('val', $user-> getId());
+            }
+//            if(in_array('inscrit', $datas['choices'])){    //La case "inscrit" fait-elle partie des cases cochées?
+//                $query->join('s.etat', 'e')
+//                    ->andWhere('e.id = :val')
+//                    ->setParameter('val', $datas[]->getId());
+            }
+
+
+
+
+//
+//        if ($datas["choices"]){
+//            $query->join('s.etat', 'e')
+//                ->andWhere('e.id = :val')
+//                ->setParameter('val', $datas[]->getId());
+//        }
+
+        $response = $query->getQuery()
             ->getResult()
         ;
         return $response;
