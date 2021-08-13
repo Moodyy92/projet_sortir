@@ -70,10 +70,10 @@
     </div><br>
 
     <div class="d-flex justify-content-around">
-        <span>
-        {{ form_errors(form) }}
-        {{ form_widget(form.Creer, {'attr': {'class': 'btn btn-outline-dark'} }) }}
-        {{ form_widget(form.Publier, {'attr': {'class': 'btn btn-outline-dark'} }) }}
+        <span class="text-danger">
+            {{ form_widget(form.Creer, {'attr': {'class': 'btn btn-outline-dark'} }) }}
+            {{ form_widget(form.Publier, {'attr': {'class': 'btn btn-outline-dark'} }) }}
+            {{ form_errors(form) }}
         </span>
     </div>
 
