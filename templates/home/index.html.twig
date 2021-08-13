@@ -14,13 +14,16 @@
             <!------------------------------------------------->
             <!---------------FORMULAIRE SEARCH----------------->
             <!------------------------------------------------->
-        {{ form_start(filtres) }}
+
     <div class="mt-5 d-flex flex-row">
+        {{ form_start(filtres) }}
         <div class="">
             <h1>Filtrer les sorties</h1>
+
             <div>
                 {{ form_row(filtres.campus) }}
             </div>
+
             <div>
                 {{ form_row(filtres.contient) }}
             </div>
@@ -42,8 +45,9 @@
         <div class="ml-5">
             {{ form_widget(filtres.submit) }}
         </div>
+        {{ form_end(filtres) }}
     </div>
-    {{ form_end(filtres) }}
+
 
             <!------------------------------------------------->
             <!---------------------TABLEAU--------------------->
