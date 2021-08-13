@@ -102,6 +102,11 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $organisations;
 
+  //        /**
+    //     * @var string
+    //     */
+    //    private $profil_pic_url;
+    
 
 
     public function __construct()

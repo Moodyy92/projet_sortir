@@ -89,6 +89,24 @@ class UserController extends AbstractController
                 $password->setPassword($password);
             }
 
+// mise en place de la mise à jour de photo -------------------------------
+//            $file = $form->get('picture')->getData();
+//  //          $fileName = $this->generateUniqueFileName() . '.' . $file->guessExtension();
+//            $fileName = $user->getFileName();
+//            //Déplace le fichier dans le dossier upload
+ //           try {
+//                $file->move(
+//                    $this->getParameter('upload_directory'),
+//                    $fileName
+//                );
+//            } catch (FileException $e) { }
+//
+//            $user->setPicture($fileName);
+
+
+
+
+
             $this->addFlash('success', 'Vous avez bien mis à jour vos informations de profil');
 
             $this->getDoctrine()->getManager()->flush();
