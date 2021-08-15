@@ -14,6 +14,9 @@
     </style>
 {% endblock %}
 
+{% block javascripts %}
+    {{ encore_entry_script_tags("sortie_create") }}
+{% endblock %}
 
 {% block body %}
 
@@ -38,16 +41,25 @@
         <div>
             <div>
                 Campus : {{ app.user.campus.nom }}
-                <button class="btn btn-outline-primary mx-2" type="button">
-                    <a href="{{ path('gestion_campus') }}"> + </a>
-                </button>
+{#                <button class="btn btn-outline-primary mx-2" type="button">#}
+{#                    <a href="{{ path('gestion_campus') }}"> + </a>#}
+{#                </button>#}
             </div>
 
             <div>
                 <label for="lieu"> Lieu </label>
                 <select name="lieu" id="lieu">
                     {% for lieu in lieux %}
-                    <option value="{{ lieu.nom }}"> {{ lieu.nom }} </option>
+                        {% set lieu_json = {
+                            ville:lieu.ville.nom,
+                            rue:lieu.rue,
+                            codePostal:lieu.ville.codePostal,
+                            longitude:lieu.longitude,
+                            latitude:lieu.latitude
+                        } %}
+
+                    <!-- remplacement de lieu.nom par lieu.id dans la value //pour éviter l'erreur dans ajouter un lieu-->
+                    <option data-lieu="{{ lieu_json | json_encode() }}" value="{{ lieu.id }}"> {{ lieu.nom }} </option>
                     {% endfor %}
                 </select>
                 <button class="btn btn-outline-primary mx-2" type="button">
@@ -56,16 +68,16 @@
             </div>
 
             <div>
-                Ville : ville
-                <button class="btn btn-outline-primary mx-2" type="button">
-                    <a href="{{ path('gestion_villes') }}"> + </a>
-                </button>
+                Ville : <span id="ville_js_sortie"></span>
+{#                <button class="btn btn-outline-primary mx-2" type="button">#}
+{#                    <a href="{{ path('gestion_villes') }}"> + </a>#}
+{#                </button>#}
             </div>
 
-            <div> Rue : Rue </div>
-            <div> Code Postal : 00000 </div>
-            <div> Longitude : </div>
-            <div> Latitude : </div>
+            <div> Rue : <span id="rue_js_sortie"> </span> </div>
+            <div> Code Postal : <span id="code_js_sortie"> </span> </div>
+            <div> Longitude : <span id="longitude_js_sortie"> </span> </div>
+            <div> Latitude : <span id="latitude_js_sortie"> </span> </div>
         </div>
     </div><br>
 

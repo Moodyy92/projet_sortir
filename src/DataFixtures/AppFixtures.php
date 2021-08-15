@@ -28,18 +28,52 @@ class AppFixtures extends Fixture
         $paris->setNom("Paris");
         $paris->setCodePostal(75200);
         $manager->persist($paris);
-        $manager->flush();
 
         $bordeaux = new Ville();
         $bordeaux->setNom("Bordeaux");
         $bordeaux->setCodePostal(33000);
         $manager->persist($bordeaux);
-        $manager->flush();
 
         $brest = new Ville();
         $brest->setNom("Brest");
         $brest->setCodePostal(29200);
         $manager->persist($brest);
+
+        $ain = new Ville();
+        $ain->setNom("Bourg-en-bresse");
+        $ain->setCodePostal(1000);
+        $manager->persist($ain);
+
+        $aisne = new Ville();
+        $aisne->setNom("Laon");
+        $aisne->setCodePostal(2000);
+        $manager->persist($aisne);
+
+        $allier = new Ville();
+        $allier->setNom("Digne-les-bains");
+        $allier->setCodePostal(3000);
+        $manager->persist($allier);
+
+        $hauteAlpes = new Ville();
+        $hauteAlpes->setNom("Gap");
+        $hauteAlpes->setCodePostal(5000);
+        $manager->persist($hauteAlpes);
+
+        $ardeche = new Ville();
+        $ardeche->setNom("Privas");
+        $ardeche->setCodePostal(7000);
+        $manager->persist($ardeche);
+
+        $ardennes = new Ville();
+        $ardennes->setNom("Charleville-Mézière");
+        $ardennes->setCodePostal(8000);
+        $manager->persist($ardennes);
+
+        $ariege = new Ville();
+        $ariege->setNom("Foix");
+        $ariege->setCodePostal(9000);
+        $manager->persist($ariege);
+
         $manager->flush();
 
         $lieu = new Lieu();
@@ -93,7 +127,6 @@ class AppFixtures extends Fixture
         $campus = new Campus();
         $campus->setNom("Ecole 42");
         $manager->persist($campus);
-        $manager->flush();
 
         $campus2 = new Campus();
         $campus2->setNom("ENI ecole");
