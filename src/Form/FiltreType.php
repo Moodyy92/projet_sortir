@@ -19,9 +19,10 @@ class FiltreType extends AbstractType
         $builder
             ->add('campus', EntityType::class, [
                 'class' => Campus::class,
-//                'placeholder' => 'all',
+                'placeholder' => 'Tous',
                 'choice_label' => 'nom',
                 'label' => 'Campus :',
+                'required' => false,
             ])
             ->add('contient', TextType::class, [
                 'label'=> 'Le nom de la sortie contient :',
@@ -35,7 +36,7 @@ class FiltreType extends AbstractType
                 'choices' => [
                     'Sorties dont je suis l\'organisateur/trice'=>'orga',
                     'Sorties auxquelles je suis inscrit/e'=>'inscrit',
-                    'Sorties auxquelles je ne suis pas inscrit/e'=>'noninscrit',
+                    'Sorties auxquelles je ne suis pas inscrit/e'=>'noInscrit',
                     'Sorties passées'=>'passees',
                 ],
                 'expanded'=>true,
