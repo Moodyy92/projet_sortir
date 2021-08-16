@@ -102,10 +102,12 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $organisations;
 
-  //        /**
-    //     * @var string
-    //     */
-    //    private $profil_pic_url;
+    /**
+     * @ORM\OneToOne(targetEntity=PhotoDeProfil::class, mappedBy="participant", cascade={"persist", "remove"})
+     */
+    private $photo;
+
+
     
 
 
@@ -386,6 +388,23 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPseudo(?string $pseudo): self
     {
         $this->pseudo = $pseudo;
+
+        return $this;
+    }
+
+    public function getPhoto(): ?PhotoDeProfil
+    {
+        return $this->photo;
+    }
+
+    public function setPhoto(PhotoDeProfil $photo): self
+    {
+        // set the owning side of the relation if necessary
+        if ($photo->getParticipant() !== $this) {
+            $photo->setParticipant($this);
+        }
+
+        $this->photo = $photo;
 
         return $this;
     }

@@ -10,6 +10,7 @@
     {% form_theme form 'bootstrap_4_horizontal_layout.html.twig' %}
     {{ form_start(form) }}
     {{ form_widget(form) }}
+    <div> <img src="{{ asset('upload/'~participant.photo)}}" alt="photo de profil" }}</div>
     <button type="submit"  class="btn-block"><strong> Enregistrer les modifications</strong></button>
     {{ form_end(form) }}
 
