@@ -20,7 +20,11 @@
             <td>{{ lieu.nom }}</td>
             <td>{{ lieu.latitude }}</td>
             <td>{{ lieu.longitude }}</td>
-            <td> <a href="{{ path('delete_lieu', {'idLieu': lieu.id}) }}"> Supprimer </a></td>
+            <td>
+                <button class="btn-outline-dark">
+                    <a href="{{ path('delete_lieu', {'idLieu': lieu.id}) }}"> Supprimer </a>
+                </button>
+            </td>
         </tr>
         {% endfor %}
 
@@ -37,8 +41,10 @@
             <td> {{ form_widget(formLieu.nom) }} </td>
             <td> {{ form_widget(formLieu.latitude) }}</td>
             <td> {{ form_widget(formLieu.longitude) }}</td>
-            <td> {{ form_widget((formLieu.Ajouter)) }}</td>
+            <td> {{ form_widget(formLieu.Ajouter, {'attr': {'class': 'btn-outline-dark'} }) }}</td>
             {{ form_end(formLieu) }}
         </tr>
-    </table>
+    </table><br><br>
+
+    <button class="btn-outline-dark"> <a href="{{ path('sortie_create') }}"> Créer une sortie </a> </button>
 {% endblock %}

@@ -42,7 +42,7 @@
                         <option data-lieu="{{ lieu_json | json_encode() }}" value="{{ lieu.nom }}"> {{ lieu.nom }} </option>
                     {% endfor %}
                 </select>
-                <button class="btn btn-outline-primary mx-2" type="button">
+                <button class="btn btn-outline-dark mx-1" type="button">
                     <a href="{{ path('gestion_lieux') }}"> + </a>
                 </button>
             </div>
