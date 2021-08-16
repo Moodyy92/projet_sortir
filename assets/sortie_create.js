@@ -1,3 +1,4 @@
+import './styles/sortieCreate.scss'
 
 $(function (){
     display_info();
@@ -8,9 +9,8 @@ $("#lieu").on("change",function (){
 })
 
 function display_info(){
-// console.log($("#lieu :selected").data('lieu'));
     let lieu = $("#lieu :selected").data('lieu');
-// console.log(lieu);
+    console.log(lieu+"o");
     $("#ville_js_sortie").text(lieu.ville)
     $("#rue_js_sortie").text(lieu.rue);
     $("#code_js_sortie").text(lieu.codePostal);
