@@ -36,6 +36,7 @@ class SortieController extends AbstractController
             }
 
             $sortie->setCampus($this->getUser()->getCampus());
+
             $sortie->setEtat($etatChoisi);                             //ETAT DE LA SORTIE = OBJET ETAT
             $sortie->setLieu($lieuChoisi);                             //LIEU DE LA SORTIE = OBJET LIEU
             $sortie->setCreatedAt(new \DateTimeImmutable());           //SORTIE CREE = DATE COURANTE
@@ -59,9 +60,13 @@ class SortieController extends AbstractController
                           SortieRepository $sortieRepo, EtatRepository $etatRepo, $idSortie): Response
     {
         $etatChoisi = $etatRepo->findOneBy(['libelle' => 'Annulée']);
-        $sortieChoisie = $sortieRepo->findOneBy(['id' => $idSortie]);
+        $sortieChoisie = $sortieRepo->find($idSortie);
 
-        if($sortieChoisie->getDateHeureDebut() > new \DateTime()){
+        if($sortieChoisie == null){
+            throw $this->createNotFoundException("La sortie n'existe pas");
+        }
+
+        if($sortieChoisie->getDateHeureDebut() > new \DateTime() && $this->getUser() === $sortieChoisie->getOrganisateur()){
             $sortieChoisie->setEtat($etatChoisi);
             $em->flush();
         }

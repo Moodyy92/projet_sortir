@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-sm navbar-light ">
+    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
+            data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse " id="collapsibleNavId">
+        <ul class="navbar-nav mt-0 mt-lg-0 font-weight-bold justify-content-center w-100 text-uppercase ">
+            <li class="nav-item">
+                <a class="nav-link text-light" href="{{ path('home') }}">Accueil</a>
+            </li>
+            <div class="dropdown nav-item ">
+                <a class="btn  dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Profil
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="nav-link" href="{{ path('user_show', {'id':app.user.id}) }}" title="Gérer mon profil">Mon Profil</a>
+                    <a class="nav-link" href="{{ path('app_logout') }}">Se déconnecter</a>
+                </div>
+            </div>
+            {% if is_granted('ROLE_ADMIN') %}
+                <div class="dropdown nav-item ">
+                    <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Administration
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="{{ path('admin') }}">Panel Admin</a>
+                        <a class="dropdown-item" href="{{ path('user_index') }}">Liste utilisateur</a>
+                        <a class="dropdown-item" href="{{ path('user_new') }}">Add new utilisateur</a>
+                    </div>
+                </div>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
