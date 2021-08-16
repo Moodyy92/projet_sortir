@@ -22,7 +22,7 @@ class HomeController extends AbstractController
         $filtres = $this->createForm(FiltreType::class);
         $filtres->handleRequest($request);
         $list = $sortieRepository->findAll();
-
+//        $list = $sortieRepository->findLast();
         if($filtres->isSubmitted() && $filtres->isValid()){
             $datas = $filtres->getData();
             dump($datas);

@@ -59,7 +59,7 @@
                         } %}
 
                     <!-- remplacement de lieu.nom par lieu.id dans la value //pour éviter l'erreur dans ajouter un lieu-->
-                    <option data-lieu="{{ lieu_json | json_encode() }}" value="{{ lieu.id }}"> {{ lieu.nom }} </option>
+                    <option data-lieu="{{ lieu_json | json_encode() }}" value="{{ lieu.nom }}"> {{ lieu.nom }} </option>
                     {% endfor %}
                 </select>
                 <button class="btn btn-outline-primary mx-2" type="button">
