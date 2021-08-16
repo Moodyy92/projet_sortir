@@ -50,7 +50,7 @@
             <!------------------------------------------------->
             <!---------------------TABLEAU--------------------->
             <!------------------------------------------------->
-    <table class="flex-column table table-dark mt-5  mx-auto " id="list-table">
+    <table class="flex-column table table-dark mt-3  mx-auto " id="list-table">
         <thead class="">
             <tr scope="row">
                 <th class="col-1" scope="col">Nom de la sortie</th>
@@ -97,14 +97,22 @@
                         <a href="{{ path('inscription', {'idSortie': sortie.id}) }}">S'incrire</a>
 
                         {% elseif  sortie.etat.libelle!='Ouverte' or sortie.dateLimiteInscription <= ajourdhui%}
-                            Inscription indisponible
+                            {% if sortie.etat.libelle =='Ouverte' and bool==true%}
+                                Vous etes inscrit
+                                {% else %}
+                                Inscription indisponible
+                            {% endif %}
                     {% endif %}
                 </td>
 
-                {% if sortie.organisateur.nom == app.user.nom %}
-                <td>
-                    <a href="{{ path('sortie_annuler', {'idSortie': sortie.id}) }}"> Annuler la sortie </a>
-                </td>
+                {% if sortie.organisateur == app.user %}
+                    <td>
+                        <a href="{{ path('sortie_annuler', {'idSortie': sortie.id}) }}"> Annuler la sortie </a>
+
+                    </td>
+                    <td>
+                        <a href="{{ path('sortie_update', {'idSortie': sortie.id}) }}"> Modifier la sortie </a>
+                    </td>
                 {% endif %}
             </tr>
         {% endfor %}

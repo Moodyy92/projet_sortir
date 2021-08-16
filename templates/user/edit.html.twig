@@ -4,19 +4,60 @@
 
 {% block body %}
 
-    <h1>Modifier mon profil</h1>
+    <!--Affichage d'un message flash -->
+    {% for label,messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
 
-<div >
-    {% form_theme form 'bootstrap_4_horizontal_layout.html.twig' %}
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button type="submit"  class="btn-block"><strong> Enregistrer les modifications</strong></button>
-    {{ form_end(form) }}
+    <h1 class="d-flex justify-content-center">Modifier mon profil</h1>
 
-</div>
-<div >
-    <a href="{{ path('user_index') }}">Revenir</a>
-</div>
+    {% form_theme formUpdate 'bootstrap_4_layout.html.twig' %}
+    {{ form_start(formUpdate, {'attr': {'class': 'd-flex justify-content-around'} }) }}
+
+    <div class="my-custom-class-for-errors">
+        {{ form_errors(formUpdate) }}
+    </div>
+
+
+    <div class="row">
+        <div class="col">
+            {{ form_row(formUpdate.pseudo,{'attr':{'placeholder': app.user.pseudo }}) }}
+        </div>
+        <div class="col">
+            {{ form_row(formUpdate.nom,{'attr':{'placeholder': app.user.nom }}) }}
+        </div>
+        <div class="col">
+            {{ form_row(formUpdate.prenom,{'attr':{'placeholder': app.user.prenom }}) }}
+        </div>
+        <div class="col">
+            {{ form_row(formUpdate.telephone,{'attr':{'placeholder': app.user.telephone }}) }}
+        </div>
+        <div class="col" >
+            {{ form_row(formUpdate.campus) }}
+        </div>
+        <div class="col">
+            {{ form_row(formUpdate.email,{'attr':{'placeholder': app.user.email }}) }}
+        </div>
+
+        <div class="col">
+            {{ form_row(formUpdate.plainPassword) }}
+        </div>
+        <div class="col">
+            <button class="btn btn-outline-info ">Modifier le profil</button>
+        </div>
+
+    </div>
+
+
+
+
+
+    {{ form_end(formUpdate) }}
+
 
 
 {% endblock %}
