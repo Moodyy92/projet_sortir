@@ -14,11 +14,11 @@
             <!------------------------------------------------->
             <!---------------FORMULAIRE SEARCH----------------->
             <!------------------------------------------------->
-
+    {{ form_start(filtres) }}
     <div class="mt-5 d-flex flex-row">
-        {{ form_start(filtres) }}
+
         <div class="">
-            <h1>Filtrer les sorties</h1>
+            <p>Filtrer les sorties</p>
 
             <div>
                 {{ form_row(filtres.campus) }}
@@ -38,21 +38,19 @@
                 </div>
             </div>
         </div>
-
         <div class="ml-5 mr-5">
             {{ form_widget(filtres.choices) }}
         </div>
         <div class="ml-5">
             {{ form_widget(filtres.submit) }}
         </div>
-        {{ form_end(filtres) }}
     </div>
-
+    {{ form_end(filtres) }}
 
             <!------------------------------------------------->
             <!---------------------TABLEAU--------------------->
             <!------------------------------------------------->
-    <table class="flex-column table table-dark mt-5  mx-auto" id="list-table">
+    <table class="flex-column table table-dark mt-5  mx-auto " id="list-table">
         <thead class="">
             <tr scope="row">
                 <th class="col-1" scope="col">Nom de la sortie</th>

@@ -26,7 +26,7 @@ class HomeController extends AbstractController
         if($filtres->isSubmitted() && $filtres->isValid()){
             $datas = $filtres->getData();
             dump($datas);
-
+//            dd($datas);
             $list = $sortieRepository->search($datas,$this->getUser());
 
             if(in_array('passees', $datas['choices'])) {                                            //Si la case "sorties passées" a été cochée

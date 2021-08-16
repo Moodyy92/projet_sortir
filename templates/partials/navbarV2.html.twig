@@ -1,0 +1,28 @@
+<nav class="navbar">
+    <div id="trapezoid">
+
+        <a href="{{ path('home') }}" class="">Accueil</a>
+        <div class="subnav">
+            <p class="subnavbtn">Profil<i class="fa fa-caret-down"></i></p>
+            <div class="subnav-content">
+                <div id="subnav-trapezoid">
+                    <a href="{{ path('user_show', {'id':app.user.id}) }}">Mon profil</a>
+                    <a href="{{ path('app_logout') }}">Se déconnecter</a>
+                </div>
+            </div>
+        </div>
+        {% if is_granted('ROLE_ADMIN') %}
+        <div class="subnav">
+            <p class="subnavbtn">Administration<i class="fa fa-caret-down"></i></p>
+            <div class="subnav-content">
+                <div class="subnav-trapezoid">
+                    <a href="{{ path('admin') }}">Panel Admin</a>
+                    <a href="{{ path('user_index') }}">Liste des utilisateurs</a>
+                    <a href="{{ path('user_new') }}">Add utilisateur</a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        <a href="">Contact</a>
+    </div>
+</nav>
