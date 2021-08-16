@@ -55,6 +55,36 @@ class SortieController extends AbstractController
         ]);
     }
 
+    #[Route('/update/{idSortie}', name: 'sortie_update')]
+    public function update(Request $request, EntityManagerInterface $em, $idSortie,
+                           SortieRepository $repoSortie, LieuRepository $lieuRepo, EtatRepository $etatRepo): Response
+    {
+        $sortie = $repoSortie->find($idSortie);
+        $form = $this->createForm(SortieCreate::class, $sortie);
+        $form->handleRequest($request);
+
+        //REDIRIGE SI L'USER CO != L'ORGANISATEUR DE LA SORTIE
+        if($this->getUser() != $sortie->getOrganisateur()){ return $this->redirectToRoute('home'); }
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $lieuChoisi = $lieuRepo->findOneBy(['nom' => $_POST['lieu']]);
+            $etatChoisi = $etatRepo->findOneBy(['libelle' => $_POST['etat']]);
+
+            $sortie->setEtat($etatChoisi);                         //ETAT DE LA SORTIE = OBJET ETAT
+            $sortie->setLieu($lieuChoisi);                         //LIEU DE LA SORTIE = OBJET LIEU
+            $sortie->setLastUpdate(new \DateTimeImmutable());      //SORTIE UPDATE = DATE COURANTE
+            $em->flush();
+            return $this->redirectToRoute('home');        //REDIRECTION APRES L'UPDATE
+        }
+
+        $lieux = $lieuRepo->findAll();
+        return $this->render('sortie/update.html.twig', [
+            'sortie' => $sortie,
+            'lieux' => $lieux,
+            'form' => $form->createView(),
+        ]);
+    }
+
     #[Route('/annuler/{idSortie}', name: 'sortie_annuler')]
     public function unset(EntityManagerInterface $em,
                           SortieRepository $sortieRepo, EtatRepository $etatRepo, $idSortie): Response

@@ -101,10 +101,14 @@
                     {% endif %}
                 </td>
 
-                {% if sortie.organisateur.nom == app.user.nom %}
-                <td>
-                    <a href="{{ path('sortie_annuler', {'idSortie': sortie.id}) }}"> Annuler la sortie </a>
-                </td>
+                {% if sortie.organisateur == app.user %}
+                    <td>
+                        <a href="{{ path('sortie_annuler', {'idSortie': sortie.id}) }}"> Annuler la sortie </a>
+
+                    </td>
+                    <td>
+                        <a href="{{ path('sortie_update', {'idSortie': sortie.id}) }}"> Modifier la sortie </a>
+                    </td>
                 {% endif %}
             </tr>
         {% endfor %}

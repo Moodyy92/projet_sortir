@@ -29,6 +29,7 @@ class Sortie
     /**
      * @ORM\Column(type="datetime")
      * @Assert\NotBlank(message="La date de début ne doit pas être vide")
+     * @Assert\GreaterThanOrEqual("today")
      */
     private $dateHeureDebut;
 
@@ -41,6 +42,7 @@ class Sortie
     /**
      * @ORM\Column(type="date")
      * @Assert\NotBlank(message="La date de limite d'inscription ne doit pas être vide")
+     * @Assert\GreaterThanOrEqual("today")
      */
     private $dateLimiteInscription;
 
