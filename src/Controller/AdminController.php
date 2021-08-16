@@ -27,6 +27,8 @@ class AdminController extends AbstractController
     #[Route('/addParticipant', name: 'addParticipant')]
     public function new(Request $request ,EntityManagerInterface $entityManager,UserPasswordEncoderInterface $passwordEncoder): Response
     {
+
+
         $newParticipant = new Participant();
         $form = $this->createForm(ParticipantType::class, $newParticipant);
         $form->handleRequest($request);
@@ -65,5 +67,24 @@ class AdminController extends AbstractController
 
             'form' => $form->createView()
              ]);
+    }
+    #[Route('/admin/actDes', name: 'actDes')]
+    public function activerDesactiverPart(Request $request,EntityManagerInterface $entityManager )
+    {
+        $idParticipant=$request->get('idParticipant');
+        $participant = new Participant();
+        $participant= $entityManager->getRepository('App:Participant')->find((int)$idParticipant);
+
+        if ($participant->getActif()==true)
+        {
+            $participant->setActif(false);
+        }
+        else
+        {
+            $participant->setActif(true);
+        }
+        $entityManager->flush($participant);
+        return $this->redirectToRoute('user_index');
+
     }
 }

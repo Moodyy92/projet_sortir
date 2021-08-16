@@ -4,6 +4,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Participant;
 use App\Form\FiltreType;
 use App\Repository\SortieRepository;
 use DateTime;
@@ -18,42 +19,52 @@ class HomeController extends AbstractController
     #[Route('/', name: 'home')]
     public function index(Request $request, SortieRepository $sortieRepository): Response
     {
-    //        dd($this->getUser());
-        $filtres = $this->createForm(FiltreType::class);
-        $filtres->handleRequest($request);
-        $list = $sortieRepository->findAll();
+        $participant=new Participant();
+        $participant=$this->getUser();
+        //dd($participant->getActif());
+        if ($participant->getActif()==true) {
 
-        if($filtres->isSubmitted() && $filtres->isValid()){
-            $datas = $filtres->getData();
-            dump($datas);
-//            dd($datas);
-            $list = $sortieRepository->search($datas,$this->getUser());
+            //        dd($this->getUser());
+            $filtres = $this->createForm(FiltreType::class);
+            $filtres->handleRequest($request);
+            $list = $sortieRepository->findAll();
 
-            if(in_array('passees', $datas['choices'])) {                                            //Si la case "sorties passées" a été cochée
-                foreach ($list as $key => $sortie) {                                                      //On parcourt les sorties issues de la requête
-                    if($sortie->getDateHeureDebut()->add($sortie->getDuree()) > new DateTime()) {        //si la date de debut plus la durée (soit la date de fin) de la sortie est posterieure à la date d'aujourd'hui
-                        unset($list[$key]);                                                               //On l'enlève de la liste des sorties
+            if ($filtres->isSubmitted() && $filtres->isValid()) {
+                $datas = $filtres->getData();
+                dump($datas);
+                //            dd($datas);
+                $list = $sortieRepository->search($datas, $this->getUser());
+
+                if (in_array('passees', $datas['choices'])) {                                            //Si la case "sorties passées" a été cochée
+                    foreach ($list as $key => $sortie) {                                                      //On parcourt les sorties issues de la requête
+                        if ($sortie->getDateHeureDebut()->add($sortie->getDuree()) > new DateTime()) {        //si la date de debut plus la durée (soit la date de fin) de la sortie est posterieure à la date d'aujourd'hui
+                            unset($list[$key]);                                                               //On l'enlève de la liste des sorties
+                        }
                     }
                 }
-            }
 //            dd($list);
-        }
+            }
 
-        $message='';                                      //pour pas qu'il me mette qu'il existe pas
-        $bool=false;
-        $nomUserConnecte = $this->getUser()->getNom();
-        $dateCourante=new DateTime();                   //Recuperation date courante
+            $message = '';                                      //pour pas qu'il me mette qu'il existe pas
+            $bool = false;
+            $nomUserConnecte = $this->getUser()->getNom();
+            $dateCourante = new DateTime();                   //Recuperation date courante
 //        dd($dateCourante);
 
-        return $this->render('home/index.html.twig', [
-            'controller_name' => 'HomeController',
-            'liste' => $list,
-            'ajourdhui' =>$dateCourante,
-            'message' => $message,
-            'nomUser'=>$nomUserConnecte,
-            'bool'=>$bool,
-            'filtres'=>$filtres->createView(),
-        ]);
+            return $this->render('home/index.html.twig', [
+                'controller_name' => 'HomeController',
+                'liste' => $list,
+                'ajourdhui' => $dateCourante,
+                'message' => $message,
+                'nomUser' => $nomUserConnecte,
+                'bool' => $bool,
+                'filtres' => $filtres->createView(),
+            ]);
+        }
+        else
+        {
+            return $this->render('user/nope.html.twig');
+        }
     }
 
     #[Route('/inscription/{idSortie}', name: 'inscription')]
