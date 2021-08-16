@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 #[Route('/user')]
 class UserController extends AbstractController
@@ -53,52 +54,39 @@ class UserController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'user_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Participant $participant): Response
+    public function edit(Request $request, Participant $participant,UserPasswordEncoderInterface $passwordEncoder): Response
     {
-        $participant= new Participant();
-        $form = $this->createForm(ParticipantType::class, $participant);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            if (!empty($pseudo))
-            {
-                $pseudo->setPseudo($pseudo);
-            }
-            if (!empty($nom))
-            {
-                $nom->setNom($nom);
-            }
-            if (!empty($prenom))
-            {
-                $prenom->setPrenom($prenom);
-            }
-            if (!empty($telephone))
-            {
-                $telephone->setTelephone($telephone);
-            }
-            if (!empty($campus))
-            {
-                $campus->setCampus($campus);
-            }
-            if (!empty($email))
-            {
-                $email->setEmail($email);
-            }
-            if (!empty($password))
-            {
-                $password->setPassword($password);
-            }
+
+        $participant=$this->getUser();
+        $modifParticipant = new Participant();
+        $formUpdate = $this->createForm(ParticipantType::class, $participant);
+        $formUpdate->handleRequest($request);
+
+
+
+
+        if ($formUpdate->isSubmitted()&&$formUpdate->isValid()){
+
+
+
+
+
+
+
 
             $this->addFlash('success', 'Vous avez bien mis à jour vos informations de profil');
 
-            $this->getDoctrine()->getManager()->flush();
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($participant);
+            $entityManager->flush();
 
             return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('user/edit.html.twig', [
             'participant' => $participant,
-            'form' => $form->createView(),
+            'formUpdate' => $formUpdate->createView(),
         ]);
     }
 

@@ -19,6 +19,7 @@ class ParticipantType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+
         $builder
             ->add('pseudo',TextType::class,[
 
@@ -27,6 +28,7 @@ class ParticipantType extends AbstractType
             ->add('nom',TextType::class,[
 
                 'label'=>'Nom : ',
+
                 'required'=>true
             ])
             ->add('prenom',TextType::class,[
