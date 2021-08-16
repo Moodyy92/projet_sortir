@@ -42,8 +42,9 @@
         <div class="col">
             {{ form_row(formUpdate.email,{'attr':{'placeholder': app.user.email }}) }}
         </div>
+
         <div class="col">
-            {{ form_row(formUpdate.password) }}
+            {{ form_row(formUpdate.plainPassword) }}
         </div>
         <div class="col">
             <button class="btn btn-outline-info ">Modifier le profil</button>

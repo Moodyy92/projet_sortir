@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Participant;
+use App\Form\ModifParticipantType;
 use App\Form\ParticipantType;
 use App\Repository\ParticipantRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -60,14 +61,18 @@ class UserController extends AbstractController
 
         $participant=$this->getUser();
 
-        $formUpdate = $this->createForm(ParticipantType::class, $participant);
+        $formUpdate = $this->createForm(ModifParticipantType::class, $participant);
         $formUpdate->handleRequest($request);
+
+        $verifPassword=new Participant();
+
 
 
         if ($formUpdate->isSubmitted()&&$formUpdate->isValid()){
 
+
             $this->addFlash('success', 'Vous avez bien mis à jour vos informations de profil');
-            $modifParticipant=$formUpdate['password']->getData();
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($participant);
             $entityManager->flush();
