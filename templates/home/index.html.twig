@@ -93,8 +93,9 @@
                         {% endif %}
                     {% endfor %}
 
-                    {% if sortie.etat.libelle=='Ouverte' and sortie.dateLimiteInscription >= ajourdhui and bool==false and sortie.participant.count<=sortie.nbInscriptionMax %}
+                    {% if sortie.etat.libelle=='Ouverte' and sortie.dateLimiteInscription >= ajourdhui and bool==false and sortie.participant.count<=sortie.nbInscriptionMax and sortie.nbInscriptionMax>sortie.participant.count %}
                         <a href="{{ path('inscription', {'idSortie': sortie.id}) }}">S'incrire</a>
+
 
                         {% elseif  sortie.etat.libelle!='Ouverte' or sortie.dateLimiteInscription <= ajourdhui%}
                             {% if sortie.etat.libelle =='Ouverte' and bool==true%}
@@ -102,7 +103,13 @@
                                 {% else %}
                                 Inscription indisponible
                             {% endif %}
+
                     {% endif %}
+                    {% if sortie.nbInscriptionMax<=sortie.participant.count %}
+                        Plus de place disponible
+                    {% endif %}
+
+
                 </td>
 
                 {% if sortie.organisateur.nom == app.user.nom %}
