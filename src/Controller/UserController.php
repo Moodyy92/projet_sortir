@@ -59,24 +59,15 @@ class UserController extends AbstractController
 
 
         $participant=$this->getUser();
-        $modifParticipant = new Participant();
+
         $formUpdate = $this->createForm(ParticipantType::class, $participant);
         $formUpdate->handleRequest($request);
 
 
-
-
         if ($formUpdate->isSubmitted()&&$formUpdate->isValid()){
 
-
-
-
-
-
-
-
             $this->addFlash('success', 'Vous avez bien mis à jour vos informations de profil');
-
+            $modifParticipant=$formUpdate['password']->getData();
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($participant);
             $entityManager->flush();
