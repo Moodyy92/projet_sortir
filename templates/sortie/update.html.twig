@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Creer une sortie {% endblock %}
+{% block title %} Modifier une sortie {% endblock %}
 {% block stylesheets %} {{ encore_entry_link_tags("sortie_create") }} {% endblock %}
 {% block javascripts %} {{ encore_entry_script_tags("sortie_create") }} {% endblock %}
 
@@ -27,24 +27,37 @@
             <div> Campus : {{ app.user.campus.nom }} </div>
 
             <div>
+                Etat
+                <select name="etat">
+                    {% if sortie.dateHeureDebut > date() %}
+                        <option value="Créée"> Créée </option>
+                        <option value="Ouverte"> Ouverte </option>
+                        <option value="Cloturée"> Cloturée </option>
+                        <option value="Annulée"> Annulée </option>
+                    {% endif %}
+                    {% if sortie.dateHeureDebut < date() %}
+                        <option value="Activité en cours"> Activité en cours </option>
+                        <option value="Passée"> Passée </option>
+                    {% endif %}
+                </select>
+            </div>
+
+            <div>
                 Lieu
                 <select name="lieu" id="lieu">
                     {% for lieu in lieux %}
                         {% set lieu_json =
                             {
-                            ville:lieu.ville.nom,
-                            rue:lieu.rue,
-                            codePostal:lieu.ville.codePostal,
-                            longitude:lieu.longitude,
-                            latitude:lieu.latitude
+                                ville:lieu.ville.nom,
+                                rue:lieu.rue,
+                                codePostal:lieu.ville.codePostal,
+                                longitude:lieu.longitude,
+                                latitude:lieu.latitude
                             }
                         %}
                         <option data-lieu="{{ lieu_json | json_encode() }}" value="{{ lieu.nom }}"> {{ lieu.nom }} </option>
                     {% endfor %}
                 </select>
-                <button class="btn btn-outline-primary mx-2" type="button">
-                    <a href="{{ path('gestion_lieux') }}"> + </a>
-                </button>
             </div>
 
             <div> Ville : <span id="ville_js_sortie"></span> </div>
@@ -57,7 +70,7 @@
 
     <div class="d-flex justify-content-around">
         <span class="text-danger">
-            {{ form_widget(form.Creer, {'attr': {'class': 'btn btn-outline-light'} }) }}
+            {{ form_widget(form.Creer, {'attr': {'class': 'd-none'} }) }} <!-- CE BOUTON N'EST PAS AFFICHE -->
             {{ form_widget(form.Publier, {'attr': {'class': 'btn btn-outline-light'} }) }}
             {{ form_errors(form) }}
         </span>

@@ -47,8 +47,7 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
     private $roles = [];
 
     /**
-     * @Assert\Length(min="10",minMessage="Le mot de passe doit d'etre de minimum 10 characteres.",
-     *                  max="50", maxMessage="Le mot de passe doit d'etre de maximun 50 characteres.")
+     * @Assert\Length(min="10",minMessage="Le mot de passe doit d'etre de minimum 10 characteres.")
      * @var string The hashed password
      * @ORM\Column(type="string")
      */

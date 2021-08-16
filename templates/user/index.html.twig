@@ -17,6 +17,11 @@
                 <th>Actif</th>
                 <th>Date de création</th>
                 <th>Redirections</th>
+                {% if  app.user.roles[0]  == "ROLE_ADMIN" %}
+                    <th>Activer/Desactiver</th>
+                {% endif %}
+
+
             </tr>
         </thead>
         <tbody>
@@ -33,6 +38,18 @@
                 <td>
                     <a href="{{ path('user_show', {'id': participant.id}) }}">Profil</a> </br>
                 </td>
+                {% if app.user!=participant%}
+                    {% if app.user.roles[0]  == "ROLE_ADMIN" and participant.actif%}
+                        <td>
+                            <a href="{{ path('actDes', {'idParticipant': participant.id}) }}">Desactiver</a> </br>
+
+                        </td>
+                    {% else %}
+                        <td>
+                            <a href="{{ path('actDes', {'idParticipant': participant.id}) }}">Activer</a> </br>
+                        </td>
+                    {% endif %}
+                {% endif %}
             </tr>
         {% else %}
             <tr>
