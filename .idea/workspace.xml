@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dd2ddf08-bc59-4b09-8855-121f6438b90f" name="Changes" comment="commit avant de push">
+    <list default="true" id="dd2ddf08-bc59-4b09-8855-121f6438b90f" name="Changes" comment="commit ajout de photos (tout mis en commentaires pour le moment">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Participant.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Participant.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,7 +187,7 @@
       <workItem from="1628607524474" duration="984000" />
       <workItem from="1628666837016" duration="9959000" />
       <workItem from="1628754929194" duration="14743000" />
-      <workItem from="1628839472364" duration="1230000" />
+      <workItem from="1628839472364" duration="7076000" />
     </task>
     <task id="LOCAL-00001" summary="commit après pull, fonctionnalité mon profil">
       <created>1628607661944</created>
@@ -238,7 +238,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628777344659</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="commit ajout de photos (tout mis en commentaires pour le moment">
+      <created>1628840787445</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1628840787445</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -262,6 +269,18 @@
     <MESSAGE value="update anthony" />
     <MESSAGE value="commit modifier et supprimer son profil." />
     <MESSAGE value="commit avant de push" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit avant de push" />
+    <MESSAGE value="commit ajout de photos (tout mis en commentaires pour le moment" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit ajout de photos (tout mis en commentaires pour le moment" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/templates/user/index.html.twig</url>
+          <line>9</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -55,8 +55,8 @@ class UserController extends AbstractController
     #[Route('/{id}/edit', name: 'user_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Participant $participant): Response
     {
-        $participant= new Participant();
-        $form = $this->createForm(ParticipantType::class, $participant);
+
+        $form = $this->createForm(ParticipantType::class, $this->getUser());
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -89,9 +89,9 @@ class UserController extends AbstractController
                 $password->setPassword($password);
             }
 
-// mise en place de la mise à jour de photo -------------------------------
+// mise en place de la mise à jour de la  photo (dans modifier profil)-------------------------------
 //            $file = $form->get('picture')->getData();
-//  //          $fileName = $this->generateUniqueFileName() . '.' . $file->guessExtension();
+//  //        $fileName = $this->generateUniqueFileName() . '.' . $file->guessExtension();
 //            $fileName = $user->getFileName();
 //            //Déplace le fichier dans le dossier upload
  //           try {
