@@ -17,18 +17,8 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class AdminController extends AbstractController
 {
     #[Route('/admin', name: 'admin')]
-    public function index(): Response
+    public function index(Request $request ,EntityManagerInterface $entityManager,UserPasswordEncoderInterface $passwordEncoder): Response
     {
-        return $this->render('admin/index.html.twig', [
-            'controller_name' => 'AdminController',
-        ]);
-    }
-
-    #[Route('/addParticipant', name: 'addParticipant')]
-    public function new(Request $request ,EntityManagerInterface $entityManager,UserPasswordEncoderInterface $passwordEncoder): Response
-    {
-
-
         $newParticipant = new Participant();
         $form = $this->createForm(ParticipantType::class, $newParticipant);
         $form->handleRequest($request);
@@ -48,8 +38,8 @@ class AdminController extends AbstractController
                     $newParticipant,
                     $form->get('password')->getData()
                 )
-
             );
+
             //Et Boom en Bdd...
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($newParticipant);
@@ -57,17 +47,19 @@ class AdminController extends AbstractController
 
             $this->addFlash('success','Participant Ajouter!');
 
-            return $this->redirectToRoute('addParticipant');
+            return $this->redirectToRoute('admin');
 
         }
 
-
-        return $this->render('admin/formParticipant.html.twig',
+        return $this->render('admin/index.html.twig',
             [
 
-            'form' => $form->createView()
-             ]);
+                'form' => $form->createView()
+            ]);
     }
+
+
+
     #[Route('/admin/actDes', name: 'actDes')]
     public function activerDesactiverPart(Request $request,EntityManagerInterface $entityManager )
     {
