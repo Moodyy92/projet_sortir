@@ -85,12 +85,6 @@ class ParticipantType extends AbstractType
                 'mapped' => false,
             ])
 
-            ->add('photo', FileType::class,[
-                'label' => 'Ajouter une photo',
-                'mapped' => false,
-                'required' => false,
-                'multiple' => false
-            ])
 
 
 
