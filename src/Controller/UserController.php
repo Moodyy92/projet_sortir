@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Participant;
+use App\Entity\PhotoDeProfil;
 use App\Form\ModifParticipantType;
 use App\Form\ParticipantType;
 use App\Repository\ParticipantRepository;
@@ -72,6 +73,16 @@ class UserController extends AbstractController
 
 
             $this->addFlash('success', 'Vous avez bien mis à jour vos informations de profil');
+
+            $photo = $formUpdate->get('photo')->getData();
+            $fichier = md5(uniqid()).'.'.$photo->guessExtension();
+            $img = new PhotoDeProfil();
+            $img->setNom($fichier);
+            $participant->setPhoto($img);
+            $photo->move(
+                $this->getParameter('photos'),
+                $fichier
+            );
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($participant);
