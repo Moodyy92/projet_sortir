@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9d31aa55-044c-4089-8a2e-3e90a195fd2b" name="Default Changelist" comment="Contraintes Assert OK + Boutons qui clignotent">
-      <change beforePath="$PROJECT_DIR$/templates/sortie/create.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/sortie/create.html.twig" afterDir="false" />
+    <list default="true" id="9d31aa55-044c-4089-8a2e-3e90a195fd2b" name="Default Changelist" comment="CSS">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -201,7 +201,7 @@
       <option name="presentableId" value="Default" />
       <updated>1629106951417</updated>
       <workItem from="1629106952818" duration="11723000" />
-      <workItem from="1629120802472" duration="1890000" />
+      <workItem from="1629120802472" duration="3554000" />
     </task>
     <task id="LOCAL-00001" summary="SortieUpdate + SortieCreate OK">
       <created>1629117777613</created>
@@ -224,7 +224,14 @@
       <option name="project" value="LOCAL" />
       <updated>1629120642809</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="CSS">
+      <created>1629122730372</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1629122730372</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -245,6 +252,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="SortieUpdate + SortieCreate OK" />
     <MESSAGE value="Contraintes Assert OK + Boutons qui clignotent" />
-    <option name="LAST_COMMIT_MESSAGE" value="Contraintes Assert OK + Boutons qui clignotent" />
+    <MESSAGE value="CSS" />
+    <option name="LAST_COMMIT_MESSAGE" value="CSS" />
   </component>
 </project>
