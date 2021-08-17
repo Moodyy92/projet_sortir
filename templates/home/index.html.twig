@@ -7,10 +7,6 @@
 {% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
             <!------------------------------------------------->
             <!---------------FORMULAIRE SEARCH----------------->
             <!------------------------------------------------->
@@ -74,7 +70,7 @@
                 <td>{{ sortie.participant.count }} / {{ sortie.nbInscriptionMax }}</td>
                 <td>{{ sortie.etat.libelle }}</td>
                 <td>{{ sortie.nbInscriptionMax }}</td>
-                <td>{{ sortie.organisateur }}</td>
+                <td><a href="{{ path('user_show', {'id':app.user.id}) }}">{{ sortie.organisateur.pseudo }}</a></td>
 
                 <td>
                     <button type="button" data-toggle="modal" data-target="#infos{{ sortie.id }}" class="btn btn-outline-info">Info</button>
@@ -112,7 +108,7 @@
 
                 </td>
 
-                {% if sortie.organisateur == app.user %}
+                {% if sortie.organisateur == app.user or is_granted('ROLE_ADMIN') %}
                     <td>
                         <a href="{{ path('sortie_annuler', {'idSortie': sortie.id}) }}"> Annuler la sortie </a>
 
