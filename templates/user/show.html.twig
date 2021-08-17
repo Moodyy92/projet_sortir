@@ -1,44 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Profil{% endblock %}
+{% block title %}Mon profil{% endblock %}
 
 {% block body %}
-    <h1 class="text-light">Profil</h1> </br>
+    <h1>Mon profil</h1>
 
-
-
-    <table class="table table-hover text-light">
+    <table class="table">
         <tbody>
              <tr>
                 <th>Prenom</th>
-                <td><em>{{ participant.prenom }}</em></td>
+                <td>{{ participant.prenom }}</td>
              </tr>
              <tr>
                 <th>Nom</th>
-                <td><em>{{ participant.nom }}</em></td>
+                <td>{{ participant.nom }}</td>
             </tr>
             <tr>
                 <th>Email</th>
-                <td><em>{{ participant.email }}</em></td>
+                <td>{{ participant.email }}</td>
             </tr>
             <tr>
                 <th>Telephone</th>
-                <td><em>{{ participant.telephone }}</em></td>
+                <td>{{ participant.telephone }}</td>
             </tr>
              <tr>
                  <th> Campus</th>
-                 <td> <em>{{ participant.campus.nom }}</em></td>
+                 <td> {{ participant.campus.nom }}</td>
              </tr>
 
             <tr>
                 <th>Date de création du compte</th>
-                <td><em>{{ participant.createdAt ? participant.createdAt|date('Y-m-d H:i:s') : '' }}</em></td>
+                <td>{{ participant.createdAt ? participant.createdAt|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
              <tr>
                  <th> Photo</th>
                  {% if participant.photo is not null %}
                  <td> <img src="{{ asset ('img/'~participant.photo.nom) }}" alt="photo de profil" width="200" height="200"/></td>
-                {% endif %}
+                 {% endif %}
              </tr>
 
         </tbody>

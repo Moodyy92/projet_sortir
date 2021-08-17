@@ -13,9 +13,7 @@
         {% endfor %}
     {% endfor %}
 
-    <link href="{{ asset('css/profil.css') }}" type="text/css" rel="stylesheet">
     <h1 class="d-flex justify-content-center">Modifier mon profil</h1>
-
 
     {{ form_start(formUpdate, {'attr': {'class': 'd-flex justify-content-around'} }) }}
 
@@ -24,7 +22,7 @@
     </div>
 
 
-    <div class="row" id="tableau">
+    <div class="row">
         <div class="col">
             {{ form_row(formUpdate.pseudo,{'attr':{'placeholder': app.user.pseudo }}) }}
         </div>
@@ -56,6 +54,10 @@
 
 
     </div>
+
+
+
+
 
     {{ form_end(formUpdate) }}
 

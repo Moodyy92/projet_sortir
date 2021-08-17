@@ -75,16 +75,18 @@ class UserController extends AbstractController
             $this->addFlash('success', 'Vous avez bien mis à jour vos informations de profil');
 
             $photo = $formUpdate->get('photo')->getData();
-            if ($photo!=null){
-            $fichier = md5(uniqid()).'.'.$photo->guessExtension();
-            $img = new PhotoDeProfil();
-            $img->setNom($fichier);
-            $participant->setPhoto($img);
-            $photo->move(
-                $this->getParameter('photos'),
-                $fichier
-            );
+            if($photo != null){
+                $fichier = md5(uniqid()).'.'.$photo->guessExtension();
+                $img = new PhotoDeProfil();
+                $img->setNom($fichier);
+                $participant->setPhoto($img);
+                $photo->move(
+                    $this->getParameter('photos'),
+                    $fichier
+                );
             }
+
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($participant);
             $entityManager->flush();
