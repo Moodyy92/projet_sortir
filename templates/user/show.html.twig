@@ -34,7 +34,9 @@
             </tr>
              <tr>
                  <th> Photo</th>
-                 <td> <img src="{{ asset ('img/'~participant.photo.nom) }}" alt="photo de profil"/></td>
+                 {% if participant.photo is not null %}
+                 <td> <img src="{{ asset ('img/'~participant.photo.nom) }}" alt="photo de profil" width="200" height="200"/></td>
+                 {% endif %}
              </tr>
 
         </tbody>

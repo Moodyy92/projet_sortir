@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="9d31aa55-044c-4089-8a2e-3e90a195fd2b" name="Default Changelist" comment="CSS">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/show.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,6 +205,7 @@
       <updated>1629106951417</updated>
       <workItem from="1629106952818" duration="11723000" />
       <workItem from="1629120802472" duration="3554000" />
+      <workItem from="1629191558112" duration="2489000" />
     </task>
     <task id="LOCAL-00001" summary="SortieUpdate + SortieCreate OK">
       <created>1629117777613</created>
@@ -231,7 +235,14 @@
       <option name="project" value="LOCAL" />
       <updated>1629122730372</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="CSS">
+      <created>1629191609957</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1629191609957</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
