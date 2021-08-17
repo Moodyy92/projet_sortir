@@ -12,14 +12,18 @@
         {% for camp in campus %}
         <tr>
             <td>{{ camp.nom }}</td>
-            <td> <a href="{{ path('delete_campus', {'idCampus': camp.id}) }}"> Supprimer </a></td>
+            <td>
+                <button class="btn-outline-dark">
+                    <a href="{{ path('delete_campus', {'idCampus': camp.id}) }}"> Supprimer </a>
+                </button>
+            </td>
         </tr>
         {% endfor %}
 
         <tr>
             {{ form_start(formCampus) }}
             <td> {{ form_widget(formCampus.nom) }} </td>
-            <td> {{ form_widget(formCampus.Ajouter) }}</td>
+            <td> {{ form_widget(formCampus.Ajouter, {'attr': {'class': 'btn-outline-dark'} }) }}</td>
             {{ form_end(formCampus) }}
         </tr>
     </table>
