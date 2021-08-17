@@ -1,21 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="79580a05-d952-4ab2-9ab6-9c95f59e47e8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="79580a05-d952-4ab2-9ab6-9c95f59e47e8" name="Changes" comment="commit ajout de photo de profil fait">
+      <change afterPath="$PROJECT_DIR$/public/css/profil.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ModifParticipantType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ModifParticipantType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ParticipantType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ParticipantType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/participant/_delete_form.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/participant/_form.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/participant/edit.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/participant/index.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/participant/new.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/participant/show.html.twig" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/user/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/user/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/show.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -26,6 +18,13 @@
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -178,8 +177,14 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Wamp\www\projet_sortir\public\css" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml.dist" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -196,8 +201,24 @@
       <option name="presentableId" value="Default" />
       <updated>1629126654636</updated>
       <workItem from="1629126655959" duration="3786000" />
-      <workItem from="1629188207239" duration="301000" />
+      <workItem from="1629188207239" duration="5435000" />
+      <workItem from="1629193697263" duration="2553000" />
     </task>
+    <task id="LOCAL-00001" summary="commit ajout de photo de profil fait">
+      <created>1629188575096</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1629188575096</updated>
+    </task>
+    <task id="LOCAL-00002" summary="commit ajout de photo de profil fait">
+      <created>1629188590825</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1629188590825</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -214,5 +235,9 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="commit ajout de photo de profil fait" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit ajout de photo de profil fait" />
   </component>
 </project>

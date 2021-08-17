@@ -13,9 +13,10 @@
         {% endfor %}
     {% endfor %}
 
+    <link href="{{ asset('css/profil.css') }}" type="text/css" rel="stylesheet">
     <h1 class="d-flex justify-content-center">Modifier mon profil</h1>
 
-    {% form_theme formUpdate 'bootstrap_4_layout.html.twig' %}
+
     {{ form_start(formUpdate, {'attr': {'class': 'd-flex justify-content-around'} }) }}
 
     <div class="my-custom-class-for-errors">
@@ -23,7 +24,7 @@
     </div>
 
 
-    <div class="row">
+    <div class="row" id="tableau">
         <div class="col">
             {{ form_row(formUpdate.pseudo,{'attr':{'placeholder': app.user.pseudo }}) }}
         </div>
@@ -55,10 +56,6 @@
 
 
     </div>
-
-
-
-
 
     {{ form_end(formUpdate) }}
 
