@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9d31aa55-044c-4089-8a2e-3e90a195fd2b" name="Default Changelist" comment="CSS">
+    <list default="true" id="9d31aa55-044c-4089-8a2e-3e90a195fd2b" name="Default Changelist" comment="Profil OK">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/edit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/SortieController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SortieController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/partials/navbarV2.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/navbarV2.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,7 +206,7 @@
       <updated>1629106951417</updated>
       <workItem from="1629106952818" duration="11723000" />
       <workItem from="1629120802472" duration="3554000" />
-      <workItem from="1629191558112" duration="2489000" />
+      <workItem from="1629191558112" duration="3380000" />
     </task>
     <task id="LOCAL-00001" summary="SortieUpdate + SortieCreate OK">
       <created>1629117777613</created>
@@ -242,7 +243,14 @@
       <option name="project" value="LOCAL" />
       <updated>1629191609957</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Profil OK">
+      <created>1629194085853</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1629194085853</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -264,6 +272,7 @@
     <MESSAGE value="SortieUpdate + SortieCreate OK" />
     <MESSAGE value="Contraintes Assert OK + Boutons qui clignotent" />
     <MESSAGE value="CSS" />
-    <option name="LAST_COMMIT_MESSAGE" value="CSS" />
+    <MESSAGE value="Profil OK" />
+    <option name="LAST_COMMIT_MESSAGE" value="Profil OK" />
   </component>
 </project>
