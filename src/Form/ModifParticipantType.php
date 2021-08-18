@@ -69,11 +69,11 @@ class ModifParticipantType extends AbstractType
                             'max' => 4096,
                         ]),
                     ],
-                    'label' => 'Modifier ou confirmer votre mot de passe',
+                    'label' => 'Modifier ou confirmer votre mot de passe : ',
                 ],
                 'second_options' => [
                     'attr' => ['autocomplete' => 'new-password'],
-                    'label' => 'Repeter le mot de passe',
+                    'label' => 'Repeter le mot de passe : ',
                 ],
                 'invalid_message' => 'The password fields must match.',
                 // Instead of being set onto the object directly,
@@ -82,7 +82,7 @@ class ModifParticipantType extends AbstractType
             ])
 
             ->add('photo', FileType::class,[
-                'label' => 'Ajouter une photo',
+                'label' => 'Ajouter une photo : ',
                 'mapped' => false,
                 'required' => false,
                 'multiple' => false
