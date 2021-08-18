@@ -45,6 +45,8 @@
                             latitude:lieu.latitude
                             }
                         %}
+                        {# ON CREER UN OBJET JSON AVEC LES INFOS DU LIEU, QU'ON MET DANS L'OPTION, ET QU'ON RECUPERE QUAND ON
+                        RECUPERE L'OPTION SELECTIONNE EN JS #}
                         <option data-lieu="{{ lieu_json | json_encode() }}" value="{{ lieu.nom }}"> {{ lieu.nom }} </option>
                     {% endfor %}
                 </select>
