@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9d31aa55-044c-4089-8a2e-3e90a195fd2b" name="Default Changelist" comment="Add EtatSortie Automatique + NavBar Meilleure" />
+    <list default="true" id="9d31aa55-044c-4089-8a2e-3e90a195fd2b" name="Default Changelist" comment="Add EtatSortie Automatique + NavBar Meilleure">
+      <change beforePath="$PROJECT_DIR$/templates/partials/navbarV2.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/navbarV2.html.twig" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -202,6 +204,7 @@
       <workItem from="1629120802472" duration="3554000" />
       <workItem from="1629191558112" duration="5099000" />
       <workItem from="1629273484259" duration="5124000" />
+      <workItem from="1629292633321" duration="269000" />
     </task>
     <task id="LOCAL-00001" summary="SortieUpdate + SortieCreate OK">
       <created>1629117777613</created>
@@ -259,7 +262,14 @@
       <option name="project" value="LOCAL" />
       <updated>1629277949584</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Add EtatSortie Automatique + NavBar Meilleure">
+      <created>1629292827733</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1629292827733</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
