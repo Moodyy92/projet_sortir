@@ -29,6 +29,15 @@
       "css": [
         "/build/sortie_create.css"
       ]
+    },
+    "profil": {
+      "js": [
+        "/build/runtime.js",
+        "/build/profil.js"
+      ],
+      "css": [
+        "/build/profil.css"
+      ]
     }
   }
 }

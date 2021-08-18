@@ -5,7 +5,7 @@
 {% block body %}
 
     {% block stylesheets %}
-        <link href="{{ asset('css/profil.css') }}" type="text/css" rel="stylesheet">
+        {{ encore_entry_link_tags('profil') }}
     {% endblock %}
 
     <h1 class="text-light"> Mon Profil</h1> </br>
