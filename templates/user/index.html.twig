@@ -3,27 +3,18 @@
 {% block title %}Liste des élèves{% endblock %}
 
 {% block body %}
-
-
-    {% block stylesheets %}
-        <link href="{{ asset('css/profil.css') }}" type="text/css" rel="stylesheet">
-    {% endblock %}
-
     <h1 class="text-light">Liste des participants</h1> </br>
-<div class="tableau_index">
-    <table class="table " id="corpsDuTableau">
+
+    <table class="table text-light">
         <thead>
             <tr class="">
-
+                <th>Id</th>
                 <th>Email</th>
+                <th>Role</th>
                 <th>Nom</th>
                 <th>Prenom</th>
                 <th>Telephone</th>
-                {% for participant in participants %}
-                {% if app.user.roles[0]  == "ROLE_ADMIN" and participant.actif%}
                 <th>Actif</th>
-                {% endif %}
-                {% endfor %}
                 <th>Date de création</th>
                 <th>Redirections</th>
                 {% if  app.user.roles[0]  == "ROLE_ADMIN" %}
@@ -36,14 +27,13 @@
         <tbody>
         {% for participant in participants %}
             <tr class="">
-
+                <td>{{ participant.id }}</td>
                 <td>{{ participant.email }}</td>
+                <td>{{ participant.roles ? participant.roles|json_encode : '' }}</td>
                 <td>{{ participant.nom }}</td>
                 <td>{{ participant.prenom }}</td>
                 <td>{{ participant.telephone }}</td>
-                {% if app.user.roles[0]  == "ROLE_ADMIN" and participant.actif%}
                 <td>{{ participant.actif ? 'Oui' : 'Non' }}</td>
-                {% endif %}
                 <td>{{ participant.createdAt ? participant.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td class="">
                     <a href="{{ path('user_show', {'id': participant.id}) }}">Profil</a> </br>
@@ -68,5 +58,5 @@
         {% endfor %}
         </tbody>
     </table>
-</div>
+
 {% endblock %}
