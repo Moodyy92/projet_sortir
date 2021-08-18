@@ -92,11 +92,8 @@ class SortieController extends AbstractController
         $etatChoisi = $etatRepo->findOneBy(['libelle' => 'Annulée']);
         $sortieChoisie = $sortieRepo->find($idSortie);
 
-        if($sortieChoisie == null){
-            throw $this->createNotFoundException("La sortie n'existe pas");
-        }
-
-        if($sortieChoisie->getDateHeureDebut() > new \DateTime() && $this->getUser() === $sortieChoisie->getOrganisateur()){
+        if($sortieChoisie->getDateHeureDebut() > new \DateTime() && $this->getUser() === $sortieChoisie->getOrganisateur()
+            || $this->isGranted('ROLE_ADMIN') && $sortieChoisie->getDateHeureDebut() > new \DateTime()){
             $sortieChoisie->setEtat($etatChoisi);
             $em->flush();
         }

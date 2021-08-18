@@ -15,7 +15,6 @@
 
     <h1 class="d-flex justify-content-center">Modifier mon profil</h1>
 
-    {% form_theme formUpdate 'bootstrap_4_layout.html.twig' %}
     {{ form_start(formUpdate, {'attr': {'class': 'd-flex justify-content-around'} }) }}
 
     <div class="my-custom-class-for-errors">
@@ -46,9 +45,13 @@
         <div class="col">
             {{ form_row(formUpdate.plainPassword) }}
         </div>
+
+
+
         <div class="col">
             <button class="btn btn-outline-info ">Modifier le profil</button>
         </div>
+
 
     </div>
 

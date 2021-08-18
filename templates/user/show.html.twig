@@ -32,6 +32,13 @@
                 <th>Date de création du compte</th>
                 <td>{{ participant.createdAt ? participant.createdAt|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
+             <tr>
+                 <th> Photo</th>
+                 {% if participant.photo is not null %}
+                 <td> <img src="{{ asset ('img/'~participant.photo.nom) }}" alt="photo de profil" width="200" height="200"/></td>
+                 {% endif %}
+             </tr>
+
         </tbody>
     </table>
     {% if participant.actif==true%}

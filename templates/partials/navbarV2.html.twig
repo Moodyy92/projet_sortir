@@ -3,7 +3,7 @@
 
         <a href="{{ path('home') }}" class="">Accueil</a>
         <div class="subnav">
-            <p class="subnavbtn">Profil<i class="fa fa-caret-down"></i></p>
+            <p class="subnavbtn">{{ app.user.pseudo }}<i class="fa fa-caret-down"></i></p>
             <div class="subnav-content">
                 <div id="subnav-trapezoid">
                     <a href="{{ path('user_show', {'id':app.user.id}) }}">Mon profil</a>

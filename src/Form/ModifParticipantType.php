@@ -6,6 +6,7 @@ use App\Entity\Campus;
 use App\Entity\Participant;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
@@ -79,6 +80,12 @@ class ModifParticipantType extends AbstractType
                 'mapped' => false,
             ])
 
+            ->add('photo', FileType::class,[
+                'label' => 'Ajouter une photo',
+                'mapped' => false,
+                'required' => false,
+                'multiple' => false
+            ])
 
 
         ;}
