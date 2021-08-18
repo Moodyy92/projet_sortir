@@ -22,15 +22,21 @@ class UserController extends AbstractController
             'participants' => $participantRepository->findAll(),
         ]);
     }
-
+/***********************            Creation Participant (Admin)             *****************************/
     #[Route('/new', name: 'user_new', methods: ['GET', 'POST'])]
     public function new(Request $request): Response
     {
+        //Creation du participant "vide"!
         $participant = new Participant();
+
+        //Appelle du form ParticipantType avec le new participant en parametre
         $form = $this->createForm(ParticipantType::class, $participant);
         $form->handleRequest($request);
 
+        //Si Form est envoye et valide(Assert Participant) -> traitement du formulaire...
         if ($form->isSubmitted() && $form->isValid()) {
+
+            //Creation en base de donnees...
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($participant);
             $entityManager->flush();
@@ -38,6 +44,7 @@ class UserController extends AbstractController
             return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
         }
 
+        //Envoie du formulaire en twig...
         return $this->renderForm('user/new.html.twig', [
             'participant' => $participant,
             'form' => $form,
@@ -54,25 +61,27 @@ class UserController extends AbstractController
 
     }
 
+    /***********************            Modifier Participant             *****************************/
     #[Route('/{id}/edit', name: 'user_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Participant $participant,UserPasswordEncoderInterface $passwordEncoder): Response
     {
 
-
+        //Recuperation du Participant connecter
         $participant=$this->getUser();
 
+        //Appelle du form ModifParticipantType avec le new participant en parametre
         $formUpdate = $this->createForm(ModifParticipantType::class, $participant);
         $formUpdate->handleRequest($request);
 
-        $verifPassword=new Participant();
-
-
-
+        //Si Form est envoye et valide(Assert Participant) -> traitement du formulaire...
         if ($formUpdate->isSubmitted()&&$formUpdate->isValid()){
 
 
+            //Message de validation
             $this->addFlash('success', 'Vous avez bien mis à jour vos informations de profil');
 
+
+            //Modification en base de donnees...
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($participant);
             $entityManager->flush();
