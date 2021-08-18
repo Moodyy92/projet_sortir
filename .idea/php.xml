@@ -1,32 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ChangeListManager">
-    <list default="true" id="9d31aa55-044c-4089-8a2e-3e90a195fd2b" name="Default Changelist" comment="Add EtatSortie Automatique + NavBar Meilleure" />
-    <option name="SHOW_DIALOG" value="false" />
-    <option name="HIGHLIGHT_CONFLICTS" value="true" />
-    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
-    <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
-    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="SCSS File" />
-      </list>
-    </option>
-  </component>
-  <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="master" />
-      </map>
-    </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="PhpWorkspaceProjectConfiguration">
+  <component name="PhpIncludePathManager">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/sebastian/diff" />
       <path value="$PROJECT_DIR$/vendor/sebastian/complexity" />
@@ -165,125 +139,10 @@
       <path value="$PROJECT_DIR$/vendor/sebastian/environment" />
     </include_path>
   </component>
-  <component name="ProjectId" id="1wnv1LSjOcxfBwR2rgFQJCMMeNq" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="list.type.of.created.stylesheet" value="SCSS" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="watcher.settings" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
-  <component name="RunManager">
-    <configuration name="phpunit.xml.dist" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
-      <TestRunner scope="XML" />
-      <method v="2" />
-    </configuration>
-  </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
-  <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="9d31aa55-044c-4089-8a2e-3e90a195fd2b" name="Default Changelist" comment="" />
-      <created>1629106951417</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1629106951417</updated>
-      <workItem from="1629106952818" duration="11723000" />
-      <workItem from="1629120802472" duration="3554000" />
-      <workItem from="1629191558112" duration="5099000" />
-      <workItem from="1629273484259" duration="5124000" />
-    </task>
-    <task id="LOCAL-00001" summary="SortieUpdate + SortieCreate OK">
-      <created>1629117777613</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1629117777613</updated>
-    </task>
-    <task id="LOCAL-00002" summary="SortieUpdate + SortieCreate OK">
-      <created>1629118987146</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1629118987146</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Contraintes Assert OK + Boutons qui clignotent">
-      <created>1629120642809</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1629120642809</updated>
-    </task>
-    <task id="LOCAL-00004" summary="CSS">
-      <created>1629122730372</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1629122730372</updated>
-    </task>
-    <task id="LOCAL-00005" summary="CSS">
-      <created>1629191609957</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1629191609957</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Profil OK">
-      <created>1629194085853</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1629194085853</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Plusieurs TODOS">
-      <created>1629195004988</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1629195004988</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Add EtatSortie Automatique + NavBar Meilleure">
-      <created>1629277949584</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1629277949584</updated>
-    </task>
-    <option name="localTasksCounter" value="9" />
-    <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="SortieUpdate + SortieCreate OK" />
-    <MESSAGE value="Contraintes Assert OK + Boutons qui clignotent" />
-    <MESSAGE value="CSS" />
-    <MESSAGE value="Profil OK" />
-    <MESSAGE value="Plusieurs TODOS" />
-    <MESSAGE value="Add EtatSortie Automatique + NavBar Meilleure" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add EtatSortie Automatique + NavBar Meilleure" />
+  <component name="PhpProjectSharedConfiguration" php_language_level="8.0" />
+  <component name="PhpUnit">
+    <phpunit_settings>
+      <PhpUnitSettings configuration_file_path="$PROJECT_DIR$/phpunit.xml.dist" custom_loader_path="$PROJECT_DIR$/vendor/autoload.php" use_configuration_file="true" />
+    </phpunit_settings>
   </component>
 </project>
