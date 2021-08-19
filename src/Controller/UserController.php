@@ -81,7 +81,7 @@ class UserController extends AbstractController
                 $img->setNom($fichier);
                 $participant->setPhoto($img);
                 $photo->move(
-                    $this->getParameter('photos').'/'.$participant->getPhoto(),
+                    $this->getParameter('photos'),
                     $fichier
                 );
             }
