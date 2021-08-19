@@ -13,7 +13,10 @@ import './bootstrap';
 const $=require('jquery');
 require('bootstrap');
 
+//////////////////// DATATABLE ////////////////////
+import 'datatables.net';
 
+//////////////////// NAVBAR ////////////////////
 $('.expandHome').mouseover(function() {
     $('.sub-home').css({
         'display': 'block'
@@ -24,7 +27,6 @@ $('.subnavbtn').mouseover(function() {
         'display': 'none'
     });
 });
-
 $('#trapezoid').mouseleave(function() {
     $('#trapezoid').css({
         'margin-top': '-53px'

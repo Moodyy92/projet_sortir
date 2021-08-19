@@ -1,15 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ajouter un Participant{% endblock %}
+{#{% block title %}Ajouter un Participant{% endblock %}#}
 
-{% block stylesheets %}
-    <style>
-        label{  }
-    </style>
-{% endblock %}
+{#{% block stylesheets %}#}
+{#    <style>#}
+{#        label{  }#}
+{#    </style>#}
+{#{% endblock %}#}
 
 
-{% block body %}
+{#{% block body %}#}
 
     <!--Affichage d'un message flash -->
     {% for label,messages in app.flashes %}
@@ -54,13 +54,7 @@
                 <div class="col">
                     <button class="btn btn-outline-info ">Ajouter le participants</button>
                 </div>
-
             </div>
-
-
-
-
-
     {{ form_end(form) }}
 
-{% endblock %}
+{#{% endblock %}#}
