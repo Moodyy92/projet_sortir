@@ -102,7 +102,8 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
     private $organisations;
 
     /**
-     * @ORM\OneToOne(targetEntity=PhotoDeProfil::class, mappedBy="participant", cascade={"persist", "remove"})
+     *
+     * @ORM\Column(type="string", length=40)
      */
     private $photo;
 
@@ -391,17 +392,17 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getPhoto(): ?PhotoDeProfil
+    public function getPhoto(): ?string
     {
         return $this->photo;
     }
 
-    public function setPhoto(PhotoDeProfil $photo): self
+    public function setPhoto(?string $photo): self
     {
         // set the owning side of the relation if necessary
-        if ($photo->getParticipant() !== $this) {
+        /*if ($photo->getParticipant() !== $this) {
             $photo->setParticipant($this);
-        }
+        }*/
 
         $this->photo = $photo;
 

@@ -16,9 +16,15 @@
                 <tr>
                     <th></th>
                 {% if participant.photo is not null %}
-                    <td> <img src="{{ asset ('img/'~participant.photo.nom) }}" alt="photo de profil" width="200" height="200"/></td>
+                    <td> <img src="{{ asset ('img/'~participant.photo) }}" alt="photo de profil" width="200" height="200"/></td>
                 {% endif %}
                 </tr>
+
+                <tr>
+                    <th>Pseudo :</th>
+                    <td><em>{{ participant.pseudo }}</em></td>
+                </tr>
+
                 <tr>
                     <th>Prénom :</th>
                     <td><em>{{ participant.prenom }}</em></td>
@@ -49,26 +55,19 @@
         </table>
     </div>
 
-    <div class="options"
-        {% if participant.actif==true%}
+    {% if (participant==app.user) %}
+        <div class="options">
+            <div>
+                <strong>
+                    <a href="{{ path('user_edit', {'id': participant.id}) }}">Modifier mon Profil</a>
+                </strong>
+            </div>
             <p>
                 <strong>
-                    <a href="{{ path('user_index') }}">Accéder à la liste des membres</a>
+                    {{ include('user/_delete_form.html.twig') }}
                 </strong>
             </p>
-            {% if (participant==app.user) %}
-                <div>
-                    <strong>
-                        <a href="{{ path('user_edit', {'id': participant.id}) }}">Modifier mon Profil</a>
-                    </strong>
-                </div>
-                <p>
-                    <strong>
-                        {{ include('user/_delete_form.html.twig') }}
-                    </strong>
-                </p>
-            {% endif %}
-        {% endif %}
-    </div>
+        </div>
+    {% endif %}
 
 {% endblock %}

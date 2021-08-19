@@ -70,7 +70,7 @@
                 <td>{{ sortie.participant.count }} / {{ sortie.nbInscriptionMax }}</td>
                 <td>{{ sortie.etat.libelle }}</td>
                 <td>{{ sortie.nbInscriptionMax }}</td>
-                <td><a href="{{ path('user_show', {'id':app.user.id}) }}">{{ sortie.organisateur.pseudo }}</a></td>
+                <td><a href="{{ path('user_show', {'id': sortie.organisateur.pseudo}) }}">{{ sortie.organisateur.pseudo }}</a></td>
 
                 <td>
                     <button type="button" data-toggle="modal" data-target="#infos{{ sortie.id }}" class="btn btn-outline-info">Info</button>
