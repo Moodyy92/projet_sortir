@@ -1,5 +1,10 @@
-    <div class="d-flex">
-        <table id="table-lieu">
+{% block stylesheets %}
+    {{ encore_entry_link_tags('villes') }}
+{% endblock %}
+
+
+<div class="body">
+        <table id="table-lieu" class="tableau">
             <thead>
                 <tr>
                     <th>Ville</th>
@@ -14,7 +19,7 @@
                         <td>{{ ville.nom }}</td>
                         <td>{{ ville.codePostal }}</td>
                         <td>
-                            <button class="btn-outline-dark">
+                            <button class="">
                                 <a href="{{ path('admin_delete_ville', {'idVille': ville.id}) }}"> Supprimer </a>
                             </button>
                         </td>
@@ -28,7 +33,7 @@
                 <div>
                     <div> {{ form_widget(formVille.nom) }} </div>
                     <div> {{ form_widget(formVille.codePostal) }}</div>
-                    <div> {{ form_widget(formVille.Ajouter, {'attr': {'class': 'btn-outline-dark'} }) }}</div>
+                    <div> {{ form_widget(formVille.Ajouter, {'attr': {'class': 'button'} }) }}</div>
                 </div>
                 {{ form_end(formVille) }}
         </div>

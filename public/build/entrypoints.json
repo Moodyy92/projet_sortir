@@ -48,6 +48,39 @@
       "css": [
         "/build/profil.css"
       ]
+    },
+    "campus": {
+      "js": [
+        "/build/runtime.js",
+        "/build/campus.js"
+      ],
+      "css": [
+        "/build/campus.css"
+      ]
+    },
+    "lieux": {
+      "js": [
+        "/build/runtime.js",
+        "/build/lieux.js"
+      ],
+      "css": [
+        "/build/lieux.css"
+      ]
+    },
+    "villes": {
+      "js": [
+        "/build/runtime.js",
+        "/build/villes.js"
+      ],
+      "css": [
+        "/build/villes.css"
+      ]
+    },
+    "formParticipant": {
+      "js": [
+        "/build/runtime.js",
+        "/build/formParticipant.js"
+      ]
     }
   }
 }

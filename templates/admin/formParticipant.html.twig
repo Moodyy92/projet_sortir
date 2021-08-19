@@ -25,11 +25,11 @@
     {% form_theme form 'bootstrap_4_layout.html.twig' %}
     {{ form_start(form, {'attr': {'class': 'd-flex justify-content-around'} }) }}
 
-            <div class="my-custom-class-for-errors">
+            <div class="my-custom-class-for-errors ">
                 {{ form_errors(form) }}
             </div>
 
-            <div class="row">
+            <div class="row body_edit">
                 <div class="col">
                     {{ form_row(form.pseudo) }}
                 </div>

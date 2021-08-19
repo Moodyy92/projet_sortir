@@ -25,7 +25,10 @@ Encore
     .addEntry('sortie_create', './assets/sortie_create.js')
     .addEntry('admin', './assets/admin.js')
     .addEntry('profil','./assets/profil.js')
-
+    .addEntry('campus','./assets/campus.js')
+    .addEntry('lieux','./assets/lieux.js')
+    .addEntry('villes','./assets/villes.js')
+    .addEntry('formParticipant','./assets/formParticipant.js')
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')
 
