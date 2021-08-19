@@ -3,57 +3,76 @@
 {% block title %}Mon profil{% endblock %}
 
 {% block body %}
-    <h1>Mon profil</h1>
 
-    <table class="table">
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('profil') }}
+    {% endblock %}
+
+    <h1 class="text-light"> Mon Profil</h1> </br>
+
+<div class="block_infernal">
+
+    <table  class="body_show tableau_show table-hover table ">
+
         <tbody>
-             <tr>
-                <th>Prenom</th>
-                <td>{{ participant.prenom }}</td>
-             </tr>
-             <tr>
-                <th>Nom</th>
-                <td>{{ participant.nom }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ participant.email }}</td>
-            </tr>
-            <tr>
-                <th>Telephone</th>
-                <td>{{ participant.telephone }}</td>
-            </tr>
-             <tr>
-                 <th> Campus</th>
-                 <td> {{ participant.campus.nom }}</td>
-             </tr>
+        <tr>
+            <th></th>
+        {% if participant.photo is not null %}
+            <td> <img src="{{ asset ('img/'~participant.photo.nom) }}" alt="photo de profil" width="200" height="200"/></td>
+        {% endif %}
+        </tr>
+        <tr>
+            <th>Prénom :</th>
+            <td><em>{{ participant.prenom }}</em></td>
+        </tr>
 
-            <tr>
-                <th>Date de création du compte</th>
-                <td>{{ participant.createdAt ? participant.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-             <tr>
-                 <th> Photo</th>
-                 {% if participant.photo is not null %}
-                 <td> <img src="{{ asset ('img/'~participant.photo.nom) }}" alt="photo de profil" width="200" height="200"/></td>
-                 {% endif %}
-             </tr>
+        <tr>
+            <th>Nom :</th>
+            <td><em>{{ participant.nom }}</em></td>
+        </tr>
+        <tr>
+            <th>Email :</th>
+            <td><em>{{ participant.email }}</em></td>
+        </tr>
+        <tr>
+            <th>Téléphone :</th>
+            <td><em>{{ participant.telephone }}</em></td>
+        </tr>
+        <tr>
+            <th> Campus :</th>
+            <td> <em>{{ participant.campus.nom }}</em></td>
+        </tr>
+
+        <tr>
+            <th>Date de création du compte  :</th>
+            <td><em>{{ participant.createdAt ? participant.createdAt|date('Y-m-d H:i:s') : '' }}</em></td>
+        </tr>
+
+
 
         </tbody>
+
+
     </table>
+
+    </div>
+
+<div class="options"
+
     {% if participant.actif==true%}
-        <div>
-            <a href="{{ path('user_index') }}">Accéder à la liste des membres</a> </br>
-        </div>
+        <p>
+            <strong><a href="{{ path('user_index') }}">Accéder à la liste des membres</a></strong>
+        </p>
 
         {% if (participant==app.user) %}
-
-             <a href="{{ path('user_edit', {'id': participant.id}) }}">Modifier mon Profil</a>
-
-            {{ include('user/_delete_form.html.twig') }}
-
+<div>
+           <strong> <a href="{{ path('user_edit', {'id': participant.id}) }}">Modifier mon Profil</a></strong>
+</div>
+            <p>
+           <strong> {{ include('user/_delete_form.html.twig') }}</strong>
+            </p>
         {% endif %}
     {% endif %}
-
+</p>
 
 {% endblock %}
