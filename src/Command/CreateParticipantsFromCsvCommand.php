@@ -63,6 +63,8 @@ class CreateParticipantsFromCsvCommand extends Command
 
 
                 $newParticipant = new Participant();
+            if($newParticipant != $participantRepo->findOneBy(["id" => $recupTableau["id"]])){
+
                 $newParticipant->setPseudo($recupTableau["pseudo"]);
                 $newParticipant->setEmail($recupTableau["email"]);
                 $newParticipant->setRoles(array($recupTableau["roles"]));
@@ -75,7 +77,7 @@ class CreateParticipantsFromCsvCommand extends Command
                 //Attention au fixture
                 $newParticipant->setCampus($campusRepo->find($recupTableau["campus_id"]));
 
-          if($newParticipant != $participantRepo->findOneBy(["id" => $recupTableau["id"]])){
+
                 $this->entityManager->persist($newParticipant);
                 $this->entityManager->flush();
             }
