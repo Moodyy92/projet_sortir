@@ -7,6 +7,7 @@ use App\Entity\PhotoDeProfil;
 use App\Form\ModifParticipantType;
 use App\Form\ParticipantType;
 use App\Repository\ParticipantRepository;
+use App\Repository\PhotoDeProfilRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -56,18 +57,23 @@ class UserController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'user_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Participant $participant,UserPasswordEncoderInterface $passwordEncoder): Response
+    public function edit(Request $request, Participant $participant,UserPasswordEncoderInterface $passwordEncoder,PhotoDeProfilRepository $photoDeProfilRepository): Response
     {
 
 
         $participant=$this->getUser();
+        //$id=$participant->getId();
+
+        //on hydrate le champ du form avec le nom du fichier image
+        /*if(!is_null($photo)){
+            $participant->setPicture(
+                new File($this->getParameter('upload_directory') . '/' . $participant->getPicture())
+            );
+        }*/
+
 
         $formUpdate = $this->createForm(ModifParticipantType::class, $participant);
         $formUpdate->handleRequest($request);
-
-        $verifPassword=new Participant();
-
-
 
         if ($formUpdate->isSubmitted()&&$formUpdate->isValid()){
 
@@ -75,11 +81,23 @@ class UserController extends AbstractController
             $this->addFlash('success', 'Vous avez bien mis à jour vos informations de profil');
 
             $photo = $formUpdate->get('photo')->getData();
+
+
             if($photo != null){
                 $fichier = md5(uniqid()).'.'.$photo->guessExtension();
+
                 $img = new PhotoDeProfil();
+
+
+
+
                 $img->setNom($fichier);
+                $img->setParticipant($participant);
+
+
+
                 $participant->setPhoto($img);
+
                 $photo->move(
                     $this->getParameter('photos'),
                     $fichier
