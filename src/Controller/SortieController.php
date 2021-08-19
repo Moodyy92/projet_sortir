@@ -20,6 +20,8 @@ class SortieController extends AbstractController
     public function new(Request $request, EntityManagerInterface $em,
                         EtatRepository $etatRepo, LieuRepository $lieuRepo): Response
     {
+        /*** CREER UN OBJET SORTIE, LE CONSTRUIT VIA LE FORM ET L'INSERT ***/
+
         $sortie = new Sortie();
         $form = $this->createForm(SortieCreate::class, $sortie);
         $form->handleRequest($request);
@@ -28,6 +30,7 @@ class SortieController extends AbstractController
             $lieuChoisi = $lieuRepo->findOneBy(['nom' => $_POST['lieu']]);
             $clickedButton = $form->getClickedButton()->getName();
 
+            /*** L'ETAT DE LA SORTIE DEPEND DU BOUTTON CLIQUE  ***/
             if ($clickedButton === "Publier"){
                 $etatChoisi = $etatRepo->findOneBy(['libelle' => 'Ouverte']);
             }
@@ -35,30 +38,31 @@ class SortieController extends AbstractController
                 $etatChoisi = $etatRepo->findOneBy(['libelle' => 'Créée']);
             }
 
-            $sortie->setCampus($this->getUser()->getCampus());
-
+            $sortie->setCampus($this->getUser()->getCampus());         //CAMPUS DE LA SORTIE = CAMPUS DE L'USER CO
             $sortie->setEtat($etatChoisi);                             //ETAT DE LA SORTIE = OBJET ETAT
             $sortie->setLieu($lieuChoisi);                             //LIEU DE LA SORTIE = OBJET LIEU
-            $sortie->setCreatedAt(new \DateTimeImmutable());           //SORTIE CREE = DATE COURANTE
+            $sortie->setCreatedAt(new \DateTimeImmutable());
             $sortie->setOrganisateur($this->getUser());                //ORGANISATEUR = USER CONNECTE
-
             $em->persist($sortie);
             $em->flush();
-
-            return $this->redirectToRoute('home');        //REDIRECTION APRES LA CREATION
+            return $this->redirectToRoute('home');
         }
 
-        $lieux = $lieuRepo->findAll();
+        $lieux = $lieuRepo->findAll(); //LISTE DES LIEUX SELECTIONNABLES EN TWIG
         return $this->render('sortie/create.html.twig', [
             'lieux' => $lieux,
             'form' => $form->createView(),
         ]);
     }
 
+    /***************************************************************************************************************/
+
     #[Route('/update/{idSortie}', name: 'sortie_update')]
     public function update(Request $request, EntityManagerInterface $em, $idSortie,
                            SortieRepository $repoSortie, LieuRepository $lieuRepo, EtatRepository $etatRepo): Response
     {
+        /*** MISE A JOUR DE L'INSTANCE DE SORTIE RECUPEREE VIA l'idSORTIE ET PASSEE EN PARAM DU FORM ***/
+
         $sortie = $repoSortie->find($idSortie);
         $form = $this->createForm(SortieCreate::class, $sortie);
         $form->handleRequest($request);
@@ -72,9 +76,9 @@ class SortieController extends AbstractController
 
             $sortie->setEtat($etatChoisi);                         //ETAT DE LA SORTIE = OBJET ETAT
             $sortie->setLieu($lieuChoisi);                         //LIEU DE LA SORTIE = OBJET LIEU
-            $sortie->setLastUpdate(new \DateTimeImmutable());      //SORTIE UPDATE = DATE COURANTE
+            $sortie->setLastUpdate(new \DateTimeImmutable());
             $em->flush();
-            return $this->redirectToRoute('home');        //REDIRECTION APRES L'UPDATE
+            return $this->redirectToRoute('home');
         }
 
         $lieux = $lieuRepo->findAll();
@@ -85,17 +89,25 @@ class SortieController extends AbstractController
         ]);
     }
 
+    /***************************************************************************************************************/
+
     #[Route('/annuler/{idSortie}', name: 'sortie_annuler')]
     public function unset(EntityManagerInterface $em,
                           SortieRepository $sortieRepo, EtatRepository $etatRepo, $idSortie): Response
     {
-        $etatChoisi = $etatRepo->findOneBy(['libelle' => 'Annulée']);
-        $sortieChoisie = $sortieRepo->find($idSortie);
+        /** La méthode récupère via l'idSortie, la sortie choisie et une instance de l'objet Etat en mode "Annulée".
+        *** Si la date d'aujourd'hui est inférieure à la date de la sortie,
+        *** Si l'userCo est l'organisateur | admin,
+        *** On annule la sortie ***/
 
-        if($sortieChoisie->getDateHeureDebut() > new \DateTime() && $this->getUser() === $sortieChoisie->getOrganisateur()
-            || $this->isGranted('ROLE_ADMIN') && $sortieChoisie->getDateHeureDebut() > new \DateTime()){
-            $sortieChoisie->setEtat($etatChoisi);
-            $em->flush();
+        $sortieChoisie = $sortieRepo->find($idSortie);
+        $etatChoisi = $etatRepo->findOneBy(['libelle' => 'Annulée']);
+
+        if(new \DateTime() < $sortieChoisie->getDateHeureDebut()){
+            if($this->getUser() == $sortieChoisie->getOrganisateur() || $this->isGranted('ROLE_ADMIN')){
+                $sortieChoisie->setEtat($etatChoisi);
+                $em->flush();
+            }
         }
 
         return $this->redirectToRoute('home');

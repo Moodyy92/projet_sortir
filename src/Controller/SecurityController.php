@@ -2,25 +2,40 @@
 
 namespace App\Controller;
 
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use App\Repository\SortieRepository;
+use App\Repository\EtatRepository;
 
 class SecurityController extends AbstractController
 {
     /**
      * @Route("/login", name="app_login")
      */
-    public function login(AuthenticationUtils $authenticationUtils): Response
+    public function login(AuthenticationUtils $authenticationUtils, SortieRepository $repoSortie, EtatRepository $repoEtat,
+    EntityManagerInterface $em): Response
     {
-        // if ($this->getUser()) {
-        //     return $this->redirectToRoute('target_path');
-        // }
+        /*** ON RECUPERE LES SORTIES AU CHARGEMENT DU SITE ET ON CHANGE LEUR ETAT SELON LEUR DATE ***/
+        $sorties = $repoSortie->findAll();
+        $etatCloturee = $repoEtat->findOneBy(['libelle' => 'Cloturée']);
+        $etatEnCours = $repoEtat->findOneBy(['libelle' => 'Activité en cours']);
 
-        // get the login error if there is one
+        foreach($sorties as $sortie){
+            $etatActuel = $sortie->getEtat();
+            if($sortie->getDateLimiteInscription() < new \DateTime()
+                && $etatActuel != $etatCloturee && $etatActuel != $etatEnCours) {
+                $sortie->setEtat($etatCloturee);
+            }
+            if($sortie->getDateHeureDebut() < new \DateTime() && $etatActuel != $etatEnCours){
+                $sortie->setEtat($etatEnCours);
+            }
+            $em->flush();
+        }
+
         $error = $authenticationUtils->getLastAuthenticationError();
-        // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
         return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
