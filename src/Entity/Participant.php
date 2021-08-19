@@ -108,7 +108,7 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
     private $photo;
 
 
-    
+
 
 
     public function __construct()

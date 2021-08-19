@@ -42,6 +42,7 @@ class AdminController extends AbstractController
             //Role user par defaut
             $newParticipant->setRoles(array("ROLE_USER"));
             $newParticipant->setActif('true');
+            $newParticipant->setPhoto('null');
 
             //Date courante
             $newParticipant->setCreatedAt(new \DateTimeImmutable());
@@ -54,7 +55,7 @@ class AdminController extends AbstractController
                 )
             );
 
-            //Et Boom en Bdd...
+            //Envoi en bdd
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($newParticipant);
             $entityManager->flush();

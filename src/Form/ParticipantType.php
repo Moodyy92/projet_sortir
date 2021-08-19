@@ -19,6 +19,8 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 
 class ParticipantType extends AbstractType
 {
+
+    /************************     Formulaire creation d'un participant (Admin)    *********************************************/
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
 
@@ -32,7 +34,6 @@ class ParticipantType extends AbstractType
             ->add('nom',TextType::class,[
 
                 'label'=>'Nom : ',
-
                 'required'=>true
             ])
             ->add('prenom',TextType::class,[
@@ -73,17 +74,18 @@ class ParticipantType extends AbstractType
                             'max' => 4096,
                         ]),
                     ],
-                    'label' => 'New password',
+                    'label' => 'Mot de passe',
                 ],
                 'second_options' => [
                     'attr' => ['autocomplete' => 'new-password'],
-                    'label' => 'Repeat Password',
+                    'label' => 'Confirmation',
                 ],
                 'invalid_message' => 'The password fields must match.',
                 // Instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
             ])
+
 
 
 
