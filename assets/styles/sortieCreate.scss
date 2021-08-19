@@ -1,4 +1,10 @@
-form{ height: 600px; width: 85%; }
+form{
+  height: 600px;
+  width: 85%;
+  margin: 5%;
+  border: 2px double white;
+  background-color: grey;
+}
 form div { margin-top: 15px; }
 label { margin-right: 12px; }
 #sortie_create_duree { display: inline-block; }
