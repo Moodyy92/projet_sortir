@@ -1,7 +1,16 @@
 <nav class="navbar">
     <div id="trapezoid">
 
-        <a href="{{ path('home') }}" class="">Accueil</a>
+        <!--<a href="{{ path('home') }}" class="">Nav</a>-->
+        <div class="subnav">
+            <p class="subnavbtn">Accueil<i class="fa fa-caret-down"></i></p>
+            <div class="subnav-content">
+                <div id="subnav-trapezoid">
+                    <a href="{{ path('home') }}">Liste des sorties</a>
+                    <a href="contactRouteTODO">Contactez-nous</a>
+                </div>
+            </div>
+        </div>
         <div class="subnav">
             <p class="subnavbtn">{{ app.user.pseudo }}<i class="fa fa-caret-down"></i></p>
             <div class="subnav-content">
@@ -13,7 +22,7 @@
         </div>
         {% if is_granted('ROLE_ADMIN') %}
         <div class="subnav">
-            <p class="subnavbtn">Administration<i class="fa fa-caret-down"></i></p>
+            <p class="subnavbtn">Admin<i class="fa fa-caret-down"></i></p>
             <div class="subnav-content">
                 <div class="subnav-trapezoid">
                     <a href="{{ path('admin') }}">Panel Admin</a>
@@ -23,6 +32,6 @@
             </div>
         </div>
         {% endif %}
-        <a href="">Contact</a>
+        <!--<a href="">Contact</a>-->
     </div>
 </nav>
