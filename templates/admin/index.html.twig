@@ -20,7 +20,7 @@
         {% endfor %}
     {% endfor %}
 
-    <h1 class="d-flex justify-content-center">Ajouter un participant</h1>
+    <h1 class="d-flex justify-content-center text-light">Ajouter un participant</h1>
 
     {% form_theme form 'bootstrap_4_layout.html.twig' %}
     {{ form_start(form, {'attr': {'class': 'd-flex justify-content-around'} }) }}
@@ -29,7 +29,7 @@
         {{ form_errors(form) }}
     </div>
 
-    <div class="row">
+    <div class="row body_admin">
         <div class="col">
             {{ form_row(form.pseudo) }}
         </div>

@@ -1,4 +1,8 @@
-<div class="d-flex">
+{% block stylesheets %}
+    {{ encore_entry_link_tags('lieux') }}
+{% endblock %}
+
+<div class="body">
     <table id="table-lieu">
         <thead>
             <tr>
@@ -23,7 +27,7 @@
                 <td>{{ lieu.longitude }}</td>
                 <td>
                 {% if is_granted('ROLE_ADMIN') %}
-                    <button class="btn-outline-dark">
+                    <button class="button">
                         <a href="{{ path('admin_delete_lieu', {'idLieu': lieu.id}) }}"> Supprimer </a>
                     </button>
                 {% endif %}
@@ -33,7 +37,7 @@
         </tbody>
     </table>
 
-    <div class="h-100 d-flex align-items-center justify-content-center">
+    <div class="h-100 d-flex align-items-center justify-content-center formulaire">
         {{ form_start(formLieu) }}
             <div class="d-flex flex-column align-items-end">
                 <select class="" name="ville">#}
@@ -45,7 +49,7 @@
                 <div> {{ form_row(formLieu.nom) }} </div>
                 <div> {{ form_row(formLieu.latitude) }}</div>
                 <div> {{ form_row(formLieu.longitude) }}</div>
-                <div> {{ form_row(formLieu.Ajouter, {'attr': {'class': 'btn-outline-dark'} }) }}</div>
+                <div> {{ form_row(formLieu.Ajouter, {'attr': {'class': 'button'} }) }}</div>
             </div>
         {{ form_end(formLieu) }}
     </div>
