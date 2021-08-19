@@ -21,6 +21,9 @@
     "dependencies": {
         "@popperjs/core": "^2.9.3",
         "bootstrap": "^4.6.0",
+        "datatables.net": "^1.10.25",
+        "datatables.net-bs4": "^3.2.2",
+        "datatables.net-dt": "^1.1.0",
         "jquery": "^3.6.0",
         "popper.js": "^1.16.1"
     }

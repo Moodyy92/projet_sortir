@@ -3,53 +3,52 @@
 {% block title %}Liste des élèves{% endblock %}
 
 {% block body %}
-    <h1>Liste des participants</h1>
 
-    <table class="table">
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('profil') }}
+    {% endblock %}
+    <h1 class="text-light">Liste des participants</h1> </br>
+
+    <table class="table tableau_index " id="corpsDuTableau">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Email</th>
+            <tr class="">
+            <th>Email</th>
+            {% if  app.user.roles[0]  == "ROLE_ADMIN" %}
                 <th>Role</th>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>Telephone</th>
-                <th>Actif</th>
-                <th>Date de création</th>
-                <th>Redirections</th>
-                <!-- Afficher seulement si Admin et pas son profil-->
-                {% if  app.user.roles[0]  == "ROLE_ADMIN" %}
-                    <th>Activer/Desactiver</th>
-                {% endif %}
-
-
+            {% endif %}
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Telephone</th>
+            <th>Date de création</th>
+            <th>Redirections</th>
+            {% if  app.user.roles[0]  == "ROLE_ADMIN" %}
+                <th>Activer/Desactiver</th>
+            {% endif %}
             </tr>
         </thead>
+
         <tbody>
         {% for participant in participants %}
-            <tr>
-                <td>{{ participant.id }}</td>
+            <tr class="">
                 <td>{{ participant.email }}</td>
-                <td>{{ participant.roles ? participant.roles|json_encode : '' }}</td>
+                    {% if  app.user.roles[0]  == "ROLE_ADMIN" %}
+                    <td>{{ participant.roles ? participant.roles|json_encode : '' }}</td>
+                    {% endif %}
                 <td>{{ participant.nom }}</td>
                 <td>{{ participant.prenom }}</td>
                 <td>{{ participant.telephone }}</td>
-                <td>{{ participant.actif ? 'Oui' : 'Non' }}</td>
                 <td>{{ participant.createdAt ? participant.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
+                <td class="">
                     <a href="{{ path('user_show', {'id': participant.id}) }}">Profil</a> </br>
                 </td>
-                <!-- Afficher seulement si Admin et pas son profil-->
-                {% if app.user!=participant and app.user.roles[0]  == "ROLE_ADMIN"%}
-                    <!--  -->
+                {% if app.user!=participant%}
                     {% if app.user.roles[0]  == "ROLE_ADMIN" and participant.actif%}
                         <td>
-                            <a href="{{ path('actDes', {'idParticipant': participant.id}) }}">Desactiver</a> </br>
-
+                            <a href="{{ path('admin_actDes', {'idParticipant': participant.id}) }}">Desactiver</a> </br>
                         </td>
                     {% else %}
                         <td>
-                            <a href="{{ path('actDes', {'idParticipant': participant.id}) }}">Activer</a> </br>
+                            <a href="{{ path('admin_actDes', {'idParticipant': participant.id}) }}">Activer</a> </br>
                         </td>
                     {% endif %}
                 {% endif %}

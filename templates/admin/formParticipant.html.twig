@@ -1,15 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ajouter un Participant{% endblock %}
+{#{% block title %}Ajouter un Participant{% endblock %}#}
 
-{% block stylesheets %}
-    <style>
-        label{  }
-    </style>
-{% endblock %}
+{#{% block stylesheets %}#}
+{#    <style>#}
+{#        label{  }#}
+{#    </style>#}
+{#{% endblock %}#}
 
 
-{% block body %}
+{#{% block body %}#}
 
     <!--Affichage d'un message flash -->
     {% for label,messages in app.flashes %}
@@ -20,7 +20,7 @@
         {% endfor %}
     {% endfor %}
 
-    <h1 class="d-flex justify-content-center">Ajouter un participant</h1>
+    <h1 class="d-flex justify-content-center text-light">Ajouter un participant</h1>
 
     {% form_theme form 'bootstrap_4_layout.html.twig' %}
     {{ form_start(form, {'attr': {'class': 'd-flex justify-content-around'} }) }}
@@ -54,13 +54,7 @@
                 <div class="col">
                     <button class="btn btn-outline-info ">Ajouter le participants</button>
                 </div>
-
             </div>
-
-
-
-
-
     {{ form_end(form) }}
 
-{% endblock %}
+{#{% endblock %}#}

@@ -45,13 +45,13 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'user_show', methods: ['GET'])]
+    #[Route('/{id}', name: 'user_show', methods: ['GET'])]      // On affiche le profil de l'utilisateur
     public function show(Participant $participant): Response
     {
 
         return $this->render('user/show.html.twig', [
             'participant' => $participant
-        ]);
+         ]);
 
     }
 
@@ -72,7 +72,7 @@ class UserController extends AbstractController
         if ($formUpdate->isSubmitted()&&$formUpdate->isValid()){
 
 
-            $this->addFlash('success', 'Vous avez bien mis Ã  jour vos informations de profil');
+            $this->addFlash('success', 'Vous avez bien mis à jour vos informations de profil');
 
             $photo = $formUpdate->get('photo')->getData();
             if($photo != null){
@@ -85,8 +85,8 @@ class UserController extends AbstractController
                     $fichier
                 );
             }
-            else {
-                $participant->setPhoto($photo);
+           else {
+               $participant->setPhoto($photo);
             }
 
             $entityManager = $this->getDoctrine()->getManager();
