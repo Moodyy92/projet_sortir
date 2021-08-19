@@ -77,22 +77,28 @@
                     {% include "home/detailsModal.html.twig" %}
                 </td>
 
-                <td> {% set bool = false %}
+                <td>
+                    {% set bool = false %}
                     {% for p in sortie.participant %}
+
                         {%if p.nom==nomUser %}
+                            <!-- Si la sortie a commence on ne peut pas se desister-->
                             {% if sortie.dateHeureDebut >= ajourdhui%}
                                       <a href="{{ path('seDesister', {'idSortie': sortie.id}) }}">Se desister</a>
                                 {% else %}
                                         Desistement impossible
                              {% endif%}
+                            <!-- Vrai si le participant est inscrit-->
                             {% set bool = true %}
                         {% endif %}
+
                     {% endfor %}
 
+                    <!-- etat sortie 'ouvertes'->date inscription ok->pas inscrit ok ->place disponible ok-->
                     {% if sortie.etat.libelle=='Ouverte' and sortie.dateLimiteInscription >= ajourdhui and bool==false and sortie.participant.count<=sortie.nbInscriptionMax and sortie.nbInscriptionMax>sortie.participant.count %}
-                        <a href="{{ path('inscription', {'idSortie': sortie.id}) }}">S'incrire</a>
+                        <a href="{{ path('inscription', {'idSortie': sortie.id, 'nbParticipant':sortie.participant|length}) }}">S'incrire</a>
 
-
+                        <!-- verification de l'etat d'inscription -->
                         {% elseif  sortie.etat.libelle!='Ouverte' or sortie.dateLimiteInscription <= ajourdhui%}
                             {% if sortie.etat.libelle =='Ouverte' and bool==true%}
                                 Vous etes inscrit
@@ -101,6 +107,7 @@
                             {% endif %}
 
                     {% endif %}
+                    <!-- Si plus de place -->
                     {% if sortie.nbInscriptionMax<=sortie.participant.count %}
                         Plus de place disponible
                     {% endif %}

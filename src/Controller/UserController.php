@@ -72,7 +72,7 @@ class UserController extends AbstractController
         if ($formUpdate->isSubmitted()&&$formUpdate->isValid()){
 
 
-            $this->addFlash('success', 'Vous avez bien mis à jour vos informations de profil');
+            $this->addFlash('success', 'Vous avez bien mis Ã  jour vos informations de profil');
 
             $photo = $formUpdate->get('photo')->getData();
             if($photo != null){
@@ -81,11 +81,13 @@ class UserController extends AbstractController
                 $img->setNom($fichier);
                 $participant->setPhoto($img);
                 $photo->move(
-                    $this->getParameter('photos'),
+                    $this->getParameter('photos').'/'.$participant->getPhoto(),
                     $fichier
                 );
             }
-
+            else {
+                $participant->setPhoto($photo);
+            }
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($participant);

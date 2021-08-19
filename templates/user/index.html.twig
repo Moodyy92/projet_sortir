@@ -17,6 +17,7 @@
                 <th>Actif</th>
                 <th>Date de création</th>
                 <th>Redirections</th>
+                <!-- Afficher seulement si Admin et pas son profil-->
                 {% if  app.user.roles[0]  == "ROLE_ADMIN" %}
                     <th>Activer/Desactiver</th>
                 {% endif %}
@@ -38,7 +39,9 @@
                 <td>
                     <a href="{{ path('user_show', {'id': participant.id}) }}">Profil</a> </br>
                 </td>
-                {% if app.user!=participant%}
+                <!-- Afficher seulement si Admin et pas son profil-->
+                {% if app.user!=participant and app.user.roles[0]  == "ROLE_ADMIN"%}
+                    <!--  -->
                     {% if app.user.roles[0]  == "ROLE_ADMIN" and participant.actif%}
                         <td>
                             <a href="{{ path('actDes', {'idParticipant': participant.id}) }}">Desactiver</a> </br>

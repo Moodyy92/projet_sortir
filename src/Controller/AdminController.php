@@ -23,16 +23,19 @@ class AdminController extends AbstractController
             'controller_name' => 'AdminController',
         ]);
     }
-
+/******************************   Creation d'un nouveau participant (Admin)   *******************************************************/
     #[Route('/addParticipant', name: 'addParticipant')]
     public function new(Request $request ,EntityManagerInterface $entityManager,UserPasswordEncoderInterface $passwordEncoder): Response
     {
 
-
+        //Declaration de l'entity participant
         $newParticipant = new Participant();
+
+        //Creation du formulaire
         $form = $this->createForm(ParticipantType::class, $newParticipant);
         $form->handleRequest($request);
 
+        //Si 'isSubmitted' = |les validations du formulaire| et 'isValid' = |les validations des Asserts Participant|
         if ($form->isSubmitted() && $form->isValid())
         {
             //Role user par defaut
@@ -50,7 +53,7 @@ class AdminController extends AbstractController
                 )
 
             );
-            //Et Boom en Bdd...
+            //Envoie en Bdd...
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($newParticipant);
             $entityManager->flush();
@@ -68,6 +71,7 @@ class AdminController extends AbstractController
             'form' => $form->createView()
              ]);
     }
+
     #[Route('/admin/actDes', name: 'actDes')]
     public function activerDesactiverPart(Request $request,EntityManagerInterface $entityManager )
     {

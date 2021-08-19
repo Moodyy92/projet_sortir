@@ -51,11 +51,14 @@ class CreateParticipantsFromCsvCommand extends Command
         $recupTableau=$this->getCvsRowAsArray();
 
         $participantRepo= $this->entityManager->getRepository(Participant::class);
+
         //Recuperation du Repository de Campus
         $campusRepo = $this->entityManager->getRepository(Campus::class);
+
         //Boucle sur le tableau
         foreach ($recupTableau as $recupTableau)
         {
+
 
 
 
@@ -69,7 +72,9 @@ class CreateParticipantsFromCsvCommand extends Command
                 $newParticipant->setTelephone($recupTableau["telephone"]);
                 $newParticipant->setActif($recupTableau["actif"]);
                 $newParticipant->setCreatedAt($aujourdui);
+                //Attention au fixture
                 $newParticipant->setCampus($campusRepo->find($recupTableau["campus_id"]));
+
           if($newParticipant != $participantRepo->findOneBy(["id" => $recupTableau["id"]])){
                 $this->entityManager->persist($newParticipant);
                 $this->entityManager->flush();
@@ -82,7 +87,7 @@ class CreateParticipantsFromCsvCommand extends Command
 
 
         }
-
+        /**************   Convertie et adresse le fichier.csv   ***************/
         public function getCvsRowAsArray()
         {
             //Chemin du fichier

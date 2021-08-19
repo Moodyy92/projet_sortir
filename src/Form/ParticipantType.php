@@ -19,6 +19,8 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 
 class ParticipantType extends AbstractType
 {
+
+    /************************     Formulaire creation d'un participant (Admin)    *********************************************/
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
 
