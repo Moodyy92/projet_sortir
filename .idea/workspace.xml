@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="7ff4112e-fc4f-49b9-bad7-49f2a69a00b3" name="Changes" comment="changer la photo ça marche">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/gestion_villes_lieux_campus/lieux.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/gestion_villes_lieux_campus/lieux.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/partials/lieux.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/lieux.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/sortieCreate.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/sortieCreate.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/sortie/create.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/sortie/create.html.twig" afterDir="false" />
     </list>
     <list id="6cdcb296-e7ba-4583-a733-98c813e1b4b7" name="Changes by jocelyn" comment="" />
     <list id="99296f04-cd43-4679-82b7-1515bd488d85" name="update panel admin" comment="update panel admin" />
@@ -211,7 +212,7 @@
       <updated>1629271268634</updated>
       <workItem from="1629271270783" duration="17207000" />
       <workItem from="1629299472988" duration="9834000" />
-      <workItem from="1629367542165" duration="7451000" />
+      <workItem from="1629367542165" duration="9012000" />
     </task>
     <task id="LOCAL-00001" summary="Commit CSS sur show edit et index">
       <created>1629290281020</created>
@@ -262,7 +263,14 @@
       <option name="project" value="LOCAL" />
       <updated>1629375930780</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="changer la photo ça marche">
+      <created>1629376102178</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1629376102178</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
