@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="13fe2524-fd1a-4078-8db7-54b56012b8da" name="Changes" comment="commit changement d'emplacement de fichier css">
+    <list default="true" id="13fe2524-fd1a-4078-8db7-54b56012b8da" name="Changes" comment="commit CSS SUPPLEMENTAIRE">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/formParticipant.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/formParticipant.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/partials/navbarV2.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/navbarV2.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/_form.html.twig" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/user/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -198,7 +195,7 @@
       <option name="presentableId" value="Default" />
       <updated>1629271268634</updated>
       <workItem from="1629271270783" duration="17207000" />
-      <workItem from="1629299472988" duration="8486000" />
+      <workItem from="1629299472988" duration="9834000" />
     </task>
     <task id="LOCAL-00001" summary="Commit CSS sur show edit et index">
       <created>1629290281020</created>
@@ -221,7 +218,14 @@
       <option name="project" value="LOCAL" />
       <updated>1629299402882</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="commit CSS SUPPLEMENTAIRE">
+      <created>1629363492374</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1629363492374</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -243,6 +247,7 @@
     <MESSAGE value="Commit CSS sur show edit et index" />
     <MESSAGE value="commit changement d'emplacement de fichier css" />
     <MESSAGE value="fix bug git" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix bug git" />
+    <MESSAGE value="commit CSS SUPPLEMENTAIRE" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit CSS SUPPLEMENTAIRE" />
   </component>
 </project>

@@ -19,7 +19,7 @@
                 <th>Nom</th>
                 <th>Prenom</th>
                 <th>Telephone</th>
-                <th>Actif</th>
+
 
                 <th>Date de création</th>
                 <th>Redirections</th>
@@ -41,20 +41,21 @@
                 <td>{{ participant.nom }}</td>
                 <td>{{ participant.prenom }}</td>
                 <td>{{ participant.telephone }}</td>
-                <td>{{ participant.actif ? 'Oui' : 'Non' }}</td>
+
                 <td>{{ participant.createdAt ? participant.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td class="">
                     <a href="{{ path('user_show', {'id': participant.id}) }}">Profil</a> </br>
-
+                </td>
+                <td>
                 {% if app.user!=participant%}
                     {% if app.user.roles[0]  == "ROLE_ADMIN" and participant.actif%}
 
                             <a href="{{ path('actDes', {'idParticipant': participant.id}) }}">Desactiver</a> </br>
 
                     {% else %}
-
+                    {% if  app.user.roles[0]  == "ROLE_ADMIN" and participant.actif%}
                             <a href="{{ path('actDes', {'idParticipant': participant.id}) }}">Activer</a> </br>
-
+                    {% endif %}
                 </td>
                     {% endif %}
                 {% endif %}
