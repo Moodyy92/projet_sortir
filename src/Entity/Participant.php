@@ -107,7 +107,7 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
     private $photo;
 
 
-    
+
 
 
     public function __construct()
@@ -396,13 +396,15 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->photo;
     }
 
-    /**
-     * @param mixed $photo
-     */
-    public function setPhoto($photo): void
+    public function setPhoto(PhotoDeProfil $photo): self
     {
+        // set the owning side of the relation if necessary
+        if ($photo->getParticipant() !== $this) {
+            $photo->setParticipant($this);
+        }
+
         $this->photo = $photo;
+
+        return $this;
     }
-
-
 }
