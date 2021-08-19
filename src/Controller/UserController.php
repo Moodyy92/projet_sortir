@@ -81,11 +81,13 @@ class UserController extends AbstractController
                 $img->setNom($fichier);
                 $participant->setPhoto($img);
                 $photo->move(
-                    $this->getParameter('photos'),
+                    $this->getParameter('photos').'/'.$participant->getPhoto(),
                     $fichier
                 );
             }
-
+           else {
+               $participant->setPhoto($photo);
+            }
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($participant);
