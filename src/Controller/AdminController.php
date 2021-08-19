@@ -42,6 +42,7 @@ class AdminController extends AbstractController
             //Role user par defaut
             $newParticipant->setRoles(array("ROLE_USER"));
             $newParticipant->setActif('true');
+            $newParticipant->setPhoto('null');
 
             //Date courante
             $newParticipant->setCreatedAt(new \DateTimeImmutable());
