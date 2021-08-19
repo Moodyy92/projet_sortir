@@ -24,8 +24,8 @@ class GestionVillesLieuxCampusController extends AbstractController
 
     //----------------------------------- TROUVER ET AJOUTER DES LIEUX ------------------------------------------//
     #[Route('/gestion/lieux', name: 'gestion_lieux')]
-    public function lieux(VilleRepository $repoVille, LieuRepository $repoLieu,
-                          Request $request, EntityManagerInterface $em): Response
+    public function moduleLieux(VilleRepository $repoVille, LieuRepository $repoLieu,
+                                Request $request, EntityManagerInterface $em): Response
     {
         $lieu = new Lieu();
         $form = $this->createForm(NewLieu::class, $lieu);
@@ -49,34 +49,38 @@ class GestionVillesLieuxCampusController extends AbstractController
     }
 
 
-    //----------------------------------- TROUVER ET AJOUTER DES CAMPUS ------------------------------------------//
-    #[Route('/gestion/campus', name: 'gestion_campus')]
-    public function campus(CampusRepository $repoCampus, Request $request, EntityManagerInterface $em): Response
-    {
-        $campus = new Campus();
-        $form = $this->createForm(NewCampus::class, $campus);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em->persist($campus);
-            $em->flush();
-            $this->redirectToRoute('gestion_campus');
-        }
-
-        $campusList = $repoCampus->findAll();
-        return $this->render('gestion_villes_lieux_campus/campus.html.twig', [
-            'campus' => $campusList,
-            'formCampus' => $form->createView()
-        ]);
-    }
-
+//    //----------------------------------- TROUVER ET AJOUTER DES CAMPUS ------------------------------------------//
+//    #[Route('/gestion/campus', name: 'module_campus')]
+//    public function moduleCampus(CampusRepository $repoCampus, Request $request, EntityManagerInterface $em): Response
+//    {
+//        $campus = new Campus();
+//        $form = $this->createForm(NewCampus::class, $campus);
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
+//            $em->persist($campus);
+//            $em->flush();
+//            $this->redirectToRoute('gestion_campus');
+//        }
+//
+//        $campusList = $repoCampus->findAll();
+//        return $this->render('gestion_villes_lieux_campus/campus.html.twig', [
+//            'campus' => $campusList,
+//            'formCampus' => $form->createView()
+//        ]);
+//    }
 
     //----------------------------------- TROUVER ET AJOUTER DES VILLES ------------------------------------------//
-    #[Route('/gestion/villes', name: 'gestion_villes')]
-    public function villes(VilleRepository $repoVille, Request $request, EntityManagerInterface $em): Response
+    #[Route('/gestion/villes', name: 'villes')]
+    public function moduleVilles(VilleRepository $repoVille, Request $request, EntityManagerInterface $em): Response
     {
         $ville = new Ville();
-        $form = $this->createForm(NewVille::class, $ville);
+
+        $form = $this->createForm(NewVille::class, $ville,[
+            //modifie l'adresse à laquelle le formulaire est envoyé
+            "action"=> $this->generateUrl('module_villes')
+        ]);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -92,57 +96,56 @@ class GestionVillesLieuxCampusController extends AbstractController
         ]);
     }
 
-
-    //----------------------------------- SUPPRIMER DES LIEUX ------------------------------------------//
-    #[Route('/gestion/delete/lieu/{idLieu}', name: 'delete_lieu')]
-    public function deleteLieu(LieuRepository $repoLieu, SortieRepository $repoSortie,
-                               $idLieu, EntityManagerInterface $em): Response
-    {
-        $lieu = $repoLieu->findOneBy(['id' => $idLieu]);
-        $sorties = $repoSortie->findBy(['lieu' => $lieu]);
-        foreach ($sorties as $sortie){ $em->remove($sortie); }  //SUPPRIME LES SORTIES ASSOCIEES A CE LIEU
-        $em->remove($lieu);
-        $em->flush();
-        return $this->redirectToRoute('gestion_lieux');
-    }
-
-
-    //----------------------------------- SUPPRIMER DES CAMPUS ------------------------------------------//
-    #[Route('/gestion/delete/campus/{idCampus}', name: 'delete_campus')]
-    public function deleteCampus(CampusRepository $repoCampus, ParticipantRepository $repoParticipants,
-                                 SortieRepository $repoSortie, $idCampus, EntityManagerInterface $em): Response
-    {
-        $campus = $repoCampus->findOneBy(['id' => $idCampus]);
-        $participants = $repoParticipants->findBy(['campus' => $campus]);
-
-        //SUPPRIME LES PARTICIPANTS ASSOCIES AU CAMPUS, & LES SORTIES DONT ILS SONT ORGANISATEURS
-        foreach ($participants as $participant){
-            $sorties = $repoSortie->findBy(['organisateur' => $participant]);
-            foreach ($sorties as $sortie){ $em->remove($sortie); }
-            $em->remove($participant);
-        }
-        $em->remove($campus);
-        $em->flush();
-        return $this->redirectToRoute('gestion_campus');
-    }
-
-
-    //----------------------------------- SUPPRIMER DES VILLES ------------------------------------------//
-    #[Route('/gestion/delete/ville/{idVille}', name: 'delete_ville')]
-    public function deleteVille(VilleRepository $repoVille, LieuRepository $repoLieu, SortieRepository $repoSortie,
-                                $idVille, EntityManagerInterface $em): Response
-    {
-        $ville = $repoVille->findOneBy(['id' => $idVille]);
-        $lieux = $repoLieu->findBy(['ville' => $ville]);
-
-        //SUPPRIME LES LIEUX ASSOCIES A LA VILLE, & LES SORTIES ASSOCIEES AUX LIEUX
-        foreach ($lieux as $lieu){
-            $sorties = $repoSortie->findBy(['lieu' => $lieu]);
-            foreach ($sorties as $sortie){ $em->remove($sortie); }
-            $em->remove($lieu);
-        }
-        $em->remove($ville);
-        $em->flush();
-        return $this->redirectToRoute('gestion_villes');
-    }
+//    //----------------------------------- SUPPRIMER DES LIEUX ------------------------------------------//
+//    #[Route('/gestion/delete/lieu/{idLieu}', name: 'delete_lieu')]
+//    public function deleteLieu(LieuRepository $repoLieu, SortieRepository $repoSortie,
+//                               $idLieu, EntityManagerInterface $em): Response
+//    {
+//        $lieu = $repoLieu->findOneBy(['id' => $idLieu]);
+//        $sorties = $repoSortie->findBy(['lieu' => $lieu]);
+//        foreach ($sorties as $sortie){ $em->remove($sortie); }  //SUPPRIME LES SORTIES ASSOCIEES A CE LIEU
+//        $em->remove($lieu);
+//        $em->flush();
+//        return $this->redirectToRoute('gestion_lieux');
+//    }
+//
+//
+//    //----------------------------------- SUPPRIMER DES CAMPUS ------------------------------------------//
+//    #[Route('/gestion/delete/campus/{idCampus}', name: 'delete_campus')]
+//    public function deleteCampus(CampusRepository $repoCampus, ParticipantRepository $repoParticipants,
+//                                 SortieRepository $repoSortie, $idCampus, EntityManagerInterface $em): Response
+//    {
+//        $campus = $repoCampus->findOneBy(['id' => $idCampus]);
+//        $participants = $repoParticipants->findBy(['campus' => $campus]);
+//
+//        //SUPPRIME LES PARTICIPANTS ASSOCIES AU CAMPUS, & LES SORTIES DONT ILS SONT ORGANISATEURS
+//        foreach ($participants as $participant){
+//            $sorties = $repoSortie->findBy(['organisateur' => $participant]);
+//            foreach ($sorties as $sortie){ $em->remove($sortie); }
+//            $em->remove($participant);
+//        }
+//        $em->remove($campus);
+//        $em->flush();
+//        return $this->redirectToRoute('gestion_campus');
+//    }
+//
+//
+//    //----------------------------------- SUPPRIMER DES VILLES ------------------------------------------//
+//    #[Route('/gestion/delete/ville/{idVille}', name: 'delete_ville')]
+//    public function deleteVille(VilleRepository $repoVille, LieuRepository $repoLieu, SortieRepository $repoSortie,
+//                                $idVille, EntityManagerInterface $em): Response
+//    {
+//        $ville = $repoVille->findOneBy(['id' => $idVille]);
+//        $lieux = $repoLieu->findBy(['ville' => $ville]);
+//
+//        //SUPPRIME LES LIEUX ASSOCIES A LA VILLE, & LES SORTIES ASSOCIEES AUX LIEUX
+//        foreach ($lieux as $lieu){
+//            $sorties = $repoSortie->findBy(['lieu' => $lieu]);
+//            foreach ($sorties as $sortie){ $em->remove($sortie); }
+//            $em->remove($lieu);
+//        }
+//        $em->remove($ville);
+//        $em->flush();
+//        return $this->redirectToRoute('gestion_villes');
+//    }
 }

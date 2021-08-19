@@ -1,0 +1,26 @@
+<table>
+    <tr>
+        <td>Campus</td>
+        <td>Action</td>
+    </tr>
+
+    {% for camp in campus %}
+        <tr>
+            <td>{{ camp.nom }}</td>
+            <td>
+                <button class="btn-outline-dark">
+                    <a href="{{ path('admin_delete_campus', {'idCampus': camp.id}) }}"> Supprimer </a>
+                </button>
+            </td>
+        </tr>
+    {% endfor %}
+
+    <div>
+        {{ form_start(formCampus) }}
+        <div>
+            <div> {{ form_widget(formCampus.nom) }} </div>
+            <div> {{ form_widget(formCampus.Ajouter, {'attr': {'class': 'btn-outline-dark'} }) }}</div>
+        </div>
+        {{ form_end(formCampus) }}
+    </div>
+</table>

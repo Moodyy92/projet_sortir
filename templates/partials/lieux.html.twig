@@ -1,0 +1,50 @@
+<div class="d-flex">
+    <table id="table-lieu">
+        <thead>
+            <tr>
+                <th>Ville</th>
+                <th>Rue</th>
+                <th>Nom du Lieu</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for lieu in lieux %}
+                <tr>
+                    <td>{{ lieu.ville.nom }}</td>
+                    <td>{{ lieu.rue }}</td>
+                    <td>{{ lieu.nom }}</td>
+                    <td>{{ lieu.latitude }}</td>
+                    <td>{{ lieu.longitude }}</td>
+                    <td>
+                        <button class="btn-outline-dark">
+                            <a href="{{ path('admin_delete_lieu', {'idLieu': lieu.id}) }}"> Supprimer </a>
+                        </button>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="h-100 d-flex align-items-center justify-content-center">
+            {{ form_start(formLieu) }}
+        <div class="d-flex flex-column align-items-end">
+            <select class="" name="ville">#}
+                {% for ville in villes %}
+                    <option value="{{ ville.nom }}"> {{ ville.nom }} </option>
+                {% endfor %}
+            </select>
+                <div> {{ form_row(formLieu.rue) }} </div>
+                <div> {{ form_row(formLieu.nom) }} </div>
+                <div> {{ form_row(formLieu.latitude) }}</div>
+                <div> {{ form_row(formLieu.longitude) }}</div>
+                <div> {{ form_row(formLieu.Ajouter, {'attr': {'class': 'btn-outline-dark'} }) }}</div>
+        </div>
+            {{ form_end(formLieu) }}
+    </div>
+
+</div>
+{#<button class="btn-outline-dark align-self-baseline"> <a href="{{ path('sortie_create') }}"> Créer une sortie </a> </button>#}

@@ -82,4 +82,13 @@ class SortieRepository extends ServiceEntityRepository
         ;
         return $response;
     }
+//    //Récupère les sorties datant de moins de 1 mois
+//    public function findLast()
+//    {
+//        return $this->createQueryBuilder('s')
+//        ->andWhere('s.dateHeureDebut >= DATE_SUB(CURRENT_DATE(),INTERVAL 1 MONTH)')
+//            ->getQuery()
+//            ->getResult()
+//            ;
+//    }
 }

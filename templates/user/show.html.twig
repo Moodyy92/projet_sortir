@@ -8,81 +8,67 @@
         {{ encore_entry_link_tags('profil') }}
     {% endblock %}
 
-    <h1 class="text-light"> Mon Profil</h1> </br>
+<h1 class="text-light"> Mon Profil</h1> </br>
 
     <div class="block_infernal">
+        <table  class="body_show tableau_show table-hover table ">
+            <tbody>
+                <tr>
+                    <th></th>
+                {% if participant.photo is not null %}
+                    <td> <img src="{{ asset ('img/'~participant.photo.nom) }}" alt="photo de profil" width="200" height="200"/></td>
+                {% endif %}
+                </tr>
+                <tr>
+                    <th>Prénom :</th>
+                    <td><em>{{ participant.prenom }}</em></td>
+                </tr>
 
-    <table  class="body_show tableau_show table-hover table ">
+                <tr>
+                    <th>Nom :</th>
+                    <td><em>{{ participant.nom }}</em></td>
+                </tr>
+                <tr>
+                    <th>Email :</th>
+                    <td><em>{{ participant.email }}</em></td>
+                </tr>
+                <tr>
+                    <th>Téléphone :</th>
+                    <td><em>{{ participant.telephone }}</em></td>
+                </tr>
+                <tr>
+                    <th> Campus :</th>
+                    <td> <em>{{ participant.campus.nom }}</em></td>
+                </tr>
 
-        <tbody>
-        <tr>
-            <th></th>
-        {% if participant.photo is not null %}
-            <td> <img src="{{ asset ('img/'~participant.photo.nom) }}" alt="photo de profil" width="200" height="200"/></td>
-        {% endif %}
-        </tr>
-        <tr>
-            <th> Pseudo :</th>
-            <td><em> {{ participant.pseudo }}</em></td>
-        </tr>
-        <tr>
-            <th>Prénom :</th>
-            <td><em>{{ participant.prenom }}</em></td>
-        </tr>
-        <tr>
-            <th>Nom :</th>
-            <td><em>{{ participant.nom }}</em></td>
-        </tr>
-        <tr>
-            <th>Email :</th>
-            <td><em>{{ participant.email }}</em></td>
-        </tr>
-        <tr>
-            <th>Téléphone :</th>
-            <td><em>{{ participant.telephone }}</em></td>
-        </tr>
-        <tr>
-            <th> Campus :</th>
-            <td> <em>{{ participant.campus.nom }}</em></td>
-        </tr>
-
-        <tr>
-            <th>Date de création du compte  :</th>
-            <td><em>{{ participant.createdAt ? participant.createdAt|date('Y-m-d H:i:s') : '' }}</em></td>
-        </tr>
-
-        </tbody>
-
-
-    </table>
-
+                <tr>
+                    <th>Date de création du compte  :</th>
+                    <td><em>{{ participant.createdAt ? participant.createdAt|date('Y-m-d H:i:s') : '' }}</em></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
-
+    <div class="options"
         {% if participant.actif==true%}
-            <div class="options"
-    {% if is_granted('ROLE_ADMIN') %}
-
-
-        <p>
-            <strong><a href="{{ path('user_index') }}">Accéder à la liste des membres</a></strong>
-        </p>
-        </div>
-
-    {% endif %}
-        {% if (participant==app.user) %}
-            <div class="options"
-        <div>
-             <strong> <a href="{{ path('user_edit', {'id': participant.id}) }}">Modifier mon Profil</a></strong>
-        </div>
             <p>
-           <strong> {{ include('user/_delete_form.html.twig') }}</strong>
+                <strong>
+                    <a href="{{ path('user_index') }}">Accéder à la liste des membres</a>
+                </strong>
             </p>
-            </div>
+            {% if (participant==app.user) %}
+                <div>
+                    <strong>
+                        <a href="{{ path('user_edit', {'id': participant.id}) }}">Modifier mon Profil</a>
+                    </strong>
+                </div>
+                <p>
+                    <strong>
+                        {{ include('user/_delete_form.html.twig') }}
+                    </strong>
+                </p>
+            {% endif %}
         {% endif %}
-        {% endif %}
-</div>
-
-
+    </div>
 
 {% endblock %}
