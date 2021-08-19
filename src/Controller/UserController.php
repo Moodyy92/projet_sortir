@@ -45,7 +45,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'user_show', methods: ['GET'])]
+    #[Route('/{id}', name: 'user_show', methods: ['GET'])]      // On affiche le profil de l'utilisateur
     public function show(Participant $participant): Response
     {
 
