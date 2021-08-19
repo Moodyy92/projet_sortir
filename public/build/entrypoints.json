@@ -4,7 +4,7 @@
       "js": [
         "/build/runtime.js",
         "/build/vendors-node_modules_jquery_dist_jquery_js.js",
-        "/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_bootstrap_dist_js_boo-2607f3.js",
+        "/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_bootstrap_dist_js_boo-3f2855.js",
         "/build/app.js"
       ],
       "css": [
@@ -28,6 +28,16 @@
       ],
       "css": [
         "/build/sortie_create.css"
+      ]
+    },
+    "admin": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors-node_modules_jquery_dist_jquery_js.js",
+        "/build/admin.js"
+      ],
+      "css": [
+        "/build/admin.css"
       ]
     },
     "profil": {

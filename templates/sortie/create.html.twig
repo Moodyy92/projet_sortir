@@ -1,8 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block title %} Creer une sortie {% endblock %}
-{% block stylesheets %} {{ encore_entry_link_tags("sortie_create") }} {% endblock %}
-{% block javascripts %} {{ encore_entry_script_tags("sortie_create") }} {% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags("sortie_create") }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags("sortie_create") }}
+{% endblock %}
 
 {% block body %}
     {{ form_start(form) }}

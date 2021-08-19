@@ -8,9 +8,7 @@
         {% block stylesheets %}
         {% endblock %}
 
-        {{ encore_entry_script_tags('app') }}
-        {% block javascripts %}
-        {% endblock %}
+
     </head>
                         <!------------------------------------------------->
                         <!---------------------NAV BAR--------------------->
@@ -38,5 +36,9 @@
                 </p>
             </div>
         </footer>
+
+        {{ encore_entry_script_tags('app') }}
+        {% block javascripts %}
+        {% endblock %}
     </body>
 </html>
