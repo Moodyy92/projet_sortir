@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="13fe2524-fd1a-4078-8db7-54b56012b8da" name="Changes" comment="commit changements front" />
+    <list default="true" id="13fe2524-fd1a-4078-8db7-54b56012b8da" name="Changes" comment="commit">
+      <change afterPath="$PROJECT_DIR$/assets/styles/campus.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/styles/lieux.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/styles/villes.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/partials/campus.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/campus.html.twig" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,8 +21,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="SCSS File" />
         <option value="JavaScript File" />
+        <option value="SCSS File" />
       </list>
     </option>
   </component>
@@ -191,7 +197,7 @@
       <option name="presentableId" value="Default" />
       <updated>1629271268634</updated>
       <workItem from="1629271270783" duration="17207000" />
-      <workItem from="1629299472988" duration="17047000" />
+      <workItem from="1629299472988" duration="17457000" />
     </task>
     <task id="LOCAL-00001" summary="Commit CSS sur show edit et index">
       <created>1629290281020</created>
@@ -242,7 +248,14 @@
       <option name="project" value="LOCAL" />
       <updated>1629371137506</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="commit">
+      <created>1629375761229</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1629375761229</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -267,6 +280,7 @@
     <MESSAGE value="commit CSS SUPPLEMENTAIRE" />
     <MESSAGE value="commit changements sur liste utilisateurs" />
     <MESSAGE value="commit changements front" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit changements front" />
+    <MESSAGE value="commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit" />
   </component>
 </project>
