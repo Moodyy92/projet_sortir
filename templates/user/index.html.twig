@@ -3,18 +3,24 @@
 {% block title %}Liste des élèves{% endblock %}
 
 {% block body %}
-    <h1>Liste des participants</h1>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('profil') }}
+    {% endblock %}
+    <h1 class="text-light">Liste des participants</h1> </br>
 
-    <table class="table">
+    <table class="table tableau_index " id="corpsDuTableau">
         <thead>
-            <tr>
-                <th>Id</th>
+            <tr class="">
+
                 <th>Email</th>
+                {% if  app.user.roles[0]  == "ROLE_ADMIN" %}
                 <th>Role</th>
+                {% endif %}
                 <th>Nom</th>
                 <th>Prenom</th>
                 <th>Telephone</th>
-                <th>Actif</th>
+
+
                 <th>Date de création</th>
                 <th>Redirections</th>
                 {% if  app.user.roles[0]  == "ROLE_ADMIN" %}
@@ -26,28 +32,31 @@
         </thead>
         <tbody>
         {% for participant in participants %}
-            <tr>
-                <td>{{ participant.id }}</td>
+            <tr class="">
+
                 <td>{{ participant.email }}</td>
+                {% if  app.user.roles[0]  == "ROLE_ADMIN" %}
                 <td>{{ participant.roles ? participant.roles|json_encode : '' }}</td>
+                {% endif %}
                 <td>{{ participant.nom }}</td>
                 <td>{{ participant.prenom }}</td>
                 <td>{{ participant.telephone }}</td>
-                <td>{{ participant.actif ? 'Oui' : 'Non' }}</td>
+
                 <td>{{ participant.createdAt ? participant.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
+                <td class="">
                     <a href="{{ path('user_show', {'id': participant.id}) }}">Profil</a> </br>
                 </td>
+                <td>
                 {% if app.user!=participant%}
                     {% if app.user.roles[0]  == "ROLE_ADMIN" and participant.actif%}
-                        <td>
+
                             <a href="{{ path('actDes', {'idParticipant': participant.id}) }}">Desactiver</a> </br>
 
-                        </td>
                     {% else %}
-                        <td>
+                    {% if  app.user.roles[0]  == "ROLE_ADMIN" and participant.actif%}
                             <a href="{{ path('actDes', {'idParticipant': participant.id}) }}">Activer</a> </br>
-                        </td>
+                    {% endif %}
+                </td>
                     {% endif %}
                 {% endif %}
             </tr>

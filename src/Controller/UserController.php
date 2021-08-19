@@ -45,7 +45,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'user_show', methods: ['GET'])]
+    #[Route('/{id}', name: 'user_show', methods: ['GET'])]      // On affiche le profil de l'utilisateur
     public function show(Participant $participant): Response
     {
 
@@ -81,11 +81,13 @@ class UserController extends AbstractController
                 $img->setNom($fichier);
                 $participant->setPhoto($img);
                 $photo->move(
-                    $this->getParameter('photos'),
+                    $this->getParameter('photos').'/'.$participant->getPhoto(),
                     $fichier
                 );
             }
-
+           else {
+               $participant->setPhoto($photo);
+            }
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($participant);
