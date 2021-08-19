@@ -54,7 +54,7 @@ class AdminController extends AbstractController
                 )
             );
 
-            //Et Boom en Bdd...
+            //Envoi en bdd
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($newParticipant);
             $entityManager->flush();

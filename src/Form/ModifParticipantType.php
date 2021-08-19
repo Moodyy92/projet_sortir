@@ -3,7 +3,6 @@
 namespace App\Form;
 
 use App\Entity\Campus;
-use App\Entity\Participant;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -12,12 +11,12 @@ use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
 class ModifParticipantType extends AbstractType
 {
+    /**************************   Formulaire de modificaton des participants    **********************************************/
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -28,7 +27,6 @@ class ModifParticipantType extends AbstractType
             ->add('nom',TextType::class,[
 
                 'label'=>'Nom : ',
-
                 'required'=>true
             ])
             ->add('prenom',TextType::class,[
@@ -54,6 +52,8 @@ class ModifParticipantType extends AbstractType
                 'label'=>'Email : ',
                 'required'=>true
             ])
+
+            //RepeatedType permet de comparer les 2 case 'password' et 'confirmation'
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'first_options' => [
@@ -73,13 +73,15 @@ class ModifParticipantType extends AbstractType
                 ],
                 'second_options' => [
                     'attr' => ['autocomplete' => 'new-password'],
-                    'label' => 'Repeter le mot de passe',
+                    'label' => 'Confirmation',
                 ],
                 'invalid_message' => 'The password fields must match.',
                 // Instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
             ])
+
+            /*********************************************************/
 
             ->add('photo', FileType::class,[
                 'label' => 'Ajouter une photo',

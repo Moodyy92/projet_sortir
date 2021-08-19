@@ -66,27 +66,41 @@ class HomeController extends AbstractController
             return $this->render('user/nope.html.twig');
         }
     }
-
+/***********************  Permet de s'incrire a une sortie  **************************************/
     #[Route('/inscription/{idSortie}', name: 'inscription')]
-    public function inscription(SortieRepository $sortieRepository, EntityManagerInterface $em, $idSortie): Response
+    public function inscription(SortieRepository $sortieRepository, EntityManagerInterface $em, $idSortie,Request $request): Response
     {
+        //Recuperation de la sortie
         $sortie = $sortieRepository->find($idSortie);
-        $sortie->addParticipant($this->getUser());
-        $em->persist($sortie);
-        $em->flush();
+        $nbParticipant=$request->get('nbParticipant');
+
+        //Si passe par url check le nombre de participant
+        if ($nbParticipant<$sortie->getNbInscriptionMax())
+        {
+
+            //Ajout du participant a la sortie
+            $sortie->addParticipant($this->getUser());
+            $em->persist($sortie);
+            $em->flush();
+        }
+
         return $this->redirectToRoute('home');
 
     }
-
+/*********************   Permet de se Desister d'une sortie  ******************************/
     #[Route('/seDesister', name: 'seDesister')]
     public function seDesister(SortieRepository $sortieRepository,Request $request, EntityManagerInterface $em): Response
     {
 
+        //Recuperation de la sortie
         $idSortie=$request->get('idSortie');
         $sortie = $sortieRepository->find($idSortie);
+
+        //On enleve le participant de la sortie
         $sortie->removeParticipant($this->getUser());
         $em->persist($sortie);
         $em->flush();
+
         return $this->redirectToRoute('home');
 
     }
