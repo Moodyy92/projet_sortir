@@ -1,8 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7ff4112e-fc4f-49b9-bad7-49f2a69a00b3" name="Changes" comment="update panel admin" />
+    <list default="true" id="7ff4112e-fc4f-49b9-bad7-49f2a69a00b3" name="Changes" comment="update panel admin">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/entrypoints.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/entrypoints.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/0eb5fdd0700439263f475da2774caaad.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/1ec5089cc8fc602e3c53e66ed712e111.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/25fa319ad9de29fd80168426b3ad8616.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/4ce1965c49be3b6e80ea69be99131f4d.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/54e30788f71435ccb8ccf14f9a6c6236.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/6feb45d27dd8e0f71c6f212f80531640.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/80e75c0d5d84e4a49d4dfd81fb80061c.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/83faf667ecb30701671fe701c14151d9.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/95451696c6e693743ada6a621d09eed2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/9676f340ba66ffdc56a49245b7213484.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/a58d551e903648f315b2d33262cf73ff.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/c93301c8c10849e752c91172319c400d.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/cee0716b2c3824958cf23b13644f8946.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/d75c66ad857b6d92738cc1b26ede31ec.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/dbf0a1826b9c8def23bbd398c0ec0bc9.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/dda6296095844f970de27328e114e0f2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/f146e01998ead72a99395c1c297b06ff.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Participant.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Participant.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/PhotoDeProfil.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/partials/lieux.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/lieux.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/partials/navbarV2.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/navbarV2.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/sortie/create.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/sortie/create.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/show.html.twig" afterDir="false" />
+    </list>
     <list id="6cdcb296-e7ba-4583-a733-98c813e1b4b7" name="Changes by jocelyn" comment="" />
+    <list id="99296f04-cd43-4679-82b7-1515bd488d85" name="update panel admin" comment="update panel admin" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -183,7 +213,11 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -196,13 +230,13 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="13fe2524-fd1a-4078-8db7-54b56012b8da" name="Changes" comment="" />
       <created>1629271268634</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1629271268634</updated>
       <workItem from="1629271270783" duration="17207000" />
       <workItem from="1629299472988" duration="9834000" />
+      <workItem from="1629367542165" duration="7140000" />
     </task>
     <task id="LOCAL-00001" summary="Commit CSS sur show edit et index">
       <created>1629290281020</created>
@@ -232,7 +266,21 @@
       <option name="project" value="LOCAL" />
       <updated>1629363492374</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="update panel admin">
+      <created>1629367339848</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1629367339848</updated>
+    </task>
+    <task id="LOCAL-00006" summary="update panel admin">
+      <created>1629367468291</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1629367468291</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -243,7 +291,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="alexis" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -255,6 +315,7 @@
     <MESSAGE value="commit changement d'emplacement de fichier css" />
     <MESSAGE value="fix bug git" />
     <MESSAGE value="commit CSS SUPPLEMENTAIRE" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit CSS SUPPLEMENTAIRE" />
+    <MESSAGE value="update panel admin" />
+    <option name="LAST_COMMIT_MESSAGE" value="update panel admin" />
   </component>
 </project>

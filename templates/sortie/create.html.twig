@@ -17,19 +17,6 @@
 
         <!--- PARTIE GAUCHE DE LA PAGE -------------------------------------------->
         <div>
-            {{ form_row(form.nom) }}
-            {{ form_row(form.dateHeureDebut) }}
-            {{ form_row(form.dateLimiteInscription) }}
-            {{ form_row(form.nbInscriptionMax) }}
-            {{ form_row(form.duree) }}
-            <div>
-                {{ form_label(form.infosSortie) }} <br>
-                {{ form_widget(form.infosSortie, {'attr': {'rows': 4, 'cols': 50} }) }}
-            </div>
-        </div>
-
-        <!--- PARTIE DROITE DE LA PAGE -------------------------------------------->
-        <div>
             <div> Campus : {{ app.user.campus.nom }} </div>
 
             <div>
@@ -61,7 +48,22 @@
             <div> Longitude : <span id="longitude_js_sortie"> </span> </div>
             <div> Latitude : <span id="latitude_js_sortie"> </span> </div>
         </div>
+
+        <!--- PARTIE DROITE DE LA PAGE -------------------------------------------->
+        <div>
+            {{ form_row(form.nom) }}
+            {{ form_row(form.dateHeureDebut) }}
+            {{ form_row(form.dateLimiteInscription) }}
+            {{ form_row(form.nbInscriptionMax) }}
+            {{ form_row(form.duree) }}
+            <div>
+                {{ form_label(form.infosSortie) }} <br>
+                {{ form_widget(form.infosSortie, {'attr': {'rows': 4, 'cols': 50} }) }}
+            </div>
+        </div>
     </div><br><br>
+
+
 
     <div class="d-flex justify-content-around">
         <span class="text-danger">

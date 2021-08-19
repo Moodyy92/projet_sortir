@@ -7,6 +7,7 @@ use App\Entity\PhotoDeProfil;
 use App\Form\ModifParticipantType;
 use App\Form\ParticipantType;
 use App\Repository\ParticipantRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -56,44 +57,26 @@ class UserController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'user_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Participant $participant,UserPasswordEncoderInterface $passwordEncoder): Response
+    public function edit(Request $request, EntityManagerInterface $entityManager): Response
     {
-
-
-        $participant=$this->getUser();
-
+        $participant = $this->getUser();
         $formUpdate = $this->createForm(ModifParticipantType::class, $participant);
         $formUpdate->handleRequest($request);
 
-        $verifPassword=new Participant();
-
-
-
         if ($formUpdate->isSubmitted()&&$formUpdate->isValid()){
-
-
-            $this->addFlash('success', 'Vous avez bien mis à jour vos informations de profil');
 
             $photo = $formUpdate->get('photo')->getData();
             if($photo != null){
-                $fichier = md5(uniqid()).'.'.$photo->guessExtension();
-                $img = new PhotoDeProfil();
-                $img->setNom($fichier);
-                $participant->setPhoto($img);
+                $nomPhoto = md5(uniqid()).'.'.$photo->guessExtension();   /**  NOM ALEATOIRE .jpg **/
+                $participant->setPhoto($nomPhoto);  /** LE NOM EST SAVE EN BASE **/
                 $photo->move(
-                    $this->getParameter('photos').'/'.$participant->getPhoto(),
-                    $fichier
+                    $this->getParameter('imgDirectory'), /**  DOSSIER OU LE FICHIER EST MOVE (VOIR SERVICES.YAML) **/
+                    $nomPhoto  /**  NOM DU FICHIER DANS CE DOSSIER **/
                 );
             }
-           else {
-               $participant->setPhoto($photo);
-            }
-
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($participant);
             $entityManager->flush();
-
-            return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
+            $this->addFlash('success', 'Vous avez bien mis à jour vos informations de profil');
+            return $this->redirectToRoute('user_show', ['id' => $this->getUser()->getId()]);
         }
 
         return $this->render('user/edit.html.twig', [
