@@ -1,33 +1,35 @@
-<table>
-    <thead>
-        <tr>
-            <th>Ville</th>
-            <th>Code Postal</th>
-            <th>Action</th>
-        </tr>
-    </thead>
+    <div class="d-flex">
+        <table id="table-lieu">
+            <thead>
+                <tr>
+                    <th>Ville</th>
+                    <th>Code Postal</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
 
-    <tbody>
-        {% for ville in villes %}
-            <tr>
-                <td>{{ ville.nom }}</td>
-                <td>{{ ville.codePostal }}</td>
-                <td>
-                    <button class="btn-outline-dark">
-                        <a href="{{ path('admin_delete_ville', {'idVille': ville.id}) }}"> Supprimer </a>
-                    </button>
-                </td>
-            </tr>
-        {% endfor %}
-    </tbody>
+            <tbody>
+                {% for ville in villes %}
+                    <tr>
+                        <td>{{ ville.nom }}</td>
+                        <td>{{ ville.codePostal }}</td>
+                        <td>
+                            <button class="btn-outline-dark">
+                                <a href="{{ path('admin_delete_ville', {'idVille': ville.id}) }}"> Supprimer </a>
+                            </button>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 
-    <tfoot>
-        <tr>
-            {{ form_start(formVille) }}
-            <td> {{ form_widget(formVille.nom) }} </td>
-            <td> {{ form_widget(formVille.codePostal) }}</td>
-            <td> {{ form_widget(formVille.Ajouter, {'attr': {'class': 'btn-outline-dark'} }) }}</td>
-            {{ form_end(formVille) }}
-        </tr>
-    </tfoot>
-</table>
+        <div>
+                {{ form_start(formVille) }}
+                <div>
+                    <div> {{ form_widget(formVille.nom) }} </div>
+                    <div> {{ form_widget(formVille.codePostal) }}</div>
+                    <div> {{ form_widget(formVille.Ajouter, {'attr': {'class': 'btn-outline-dark'} }) }}</div>
+                </div>
+                {{ form_end(formVille) }}
+        </div>
+    </div>

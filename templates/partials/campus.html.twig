@@ -15,10 +15,12 @@
         </tr>
     {% endfor %}
 
-    <tr>
+    <div>
         {{ form_start(formCampus) }}
-        <td> {{ form_widget(formCampus.nom) }} </td>
-        <td> {{ form_widget(formCampus.Ajouter, {'attr': {'class': 'btn-outline-dark'} }) }}</td>
+        <div>
+            <div> {{ form_widget(formCampus.nom) }} </div>
+            <div> {{ form_widget(formCampus.Ajouter, {'attr': {'class': 'btn-outline-dark'} }) }}</div>
+        </div>
         {{ form_end(formCampus) }}
-    </tr>
+    </div>
 </table>
