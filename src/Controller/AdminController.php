@@ -3,9 +3,19 @@
 namespace App\Controller;
 
 
+use App\Entity\Campus;
+use App\Entity\Lieu;
 use App\Entity\Participant;
+use App\Entity\Ville;
+use App\Form\NewCampus;
+use App\Form\NewLieu;
+use App\Form\NewVille;
 use App\Form\ParticipantType;
+use App\Repository\CampusRepository;
+use App\Repository\LieuRepository;
 use App\Repository\ParticipantRepository;
+use App\Repository\SortieRepository;
+use App\Repository\VilleRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -49,10 +59,7 @@ class AdminController extends AbstractController
             $entityManager->persist($newParticipant);
             $entityManager->flush();
 
-            $this->addFlash('success','Participant Ajouter!');
-
-            return $this->redirectToRoute('admin');
-
+            $this->addFlash('success', 'Participant Ajouté!');
         }
         /*******************************************************************************************************************************
          *                                          Gestion du formulaire lieux par Admin                                              *

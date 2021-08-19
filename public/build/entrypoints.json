@@ -30,7 +30,6 @@
         "/build/sortie_create.css"
       ]
     },
-
     "admin": {
       "js": [
         "/build/runtime.js",
@@ -39,6 +38,15 @@
       ],
       "css": [
         "/build/admin.css"
+      ]
+    },
+    "profil": {
+      "js": [
+        "/build/runtime.js",
+        "/build/profil.js"
+      ],
+      "css": [
+        "/build/profil.css"
       ]
     }
   }
