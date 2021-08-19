@@ -12,6 +12,51 @@
 
 
 {% block body %}
+    {% for label,messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+    <h1 class="d-flex justify-content-center">Ajouter un participant</h1>
+
+    {% form_theme form 'bootstrap_4_layout.html.twig' %}
+    {{ form_start(form, {'attr': {'class': 'd-flex justify-content-around'} }) }}
+
+    <div class="my-custom-class-for-errors">
+        {{ form_errors(form) }}
+    </div>
+
+    <div class="row">
+        <div class="col">
+            {{ form_row(form.pseudo) }}
+        </div>
+        <div class="col">
+            {{ form_row(form.nom) }}
+        </div>
+        <div class="col">
+            {{ form_row(form.prenom) }}
+        </div>
+        <div class="col">
+            {{ form_row(form.telephone) }}
+        </div>
+        <div class="col">
+            {{ form_row(form.campus) }}
+        </div>
+        <div class="col">
+            {{ form_row(form.email) }}
+        </div>
+        <div class="col">
+            {{ form_row(form.password) }}
+        </div>
+        <div class="col">
+            <button class="btn btn-outline-info ">Ajouter le participants</button>
+        </div>
+    </div>
+    {{ form_end(form) }}
+
     {% include('partials/lieux.html.twig') %}
     {% include('partials/villes.html.twig') %}
     {% include('partials/campus.html.twig') %}

@@ -41,12 +41,12 @@
                 {% if app.user!=participant%}
                     {% if app.user.roles[0]  == "ROLE_ADMIN" and participant.actif%}
                         <td>
-                            <a href="{{ path('actDes', {'idParticipant': participant.id}) }}">Desactiver</a> </br>
+                            <a href="{{ path('admin_actDes', {'idParticipant': participant.id}) }}">Desactiver</a> </br>
 
                         </td>
                     {% else %}
                         <td>
-                            <a href="{{ path('actDes', {'idParticipant': participant.id}) }}">Activer</a> </br>
+                            <a href="{{ path('admin_actDes', {'idParticipant': participant.id}) }}">Activer</a> </br>
                         </td>
                     {% endif %}
                 {% endif %}
